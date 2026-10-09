@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T07:15:42+00:00",
+  "title": "Design System: Aekarut Phetpradit — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f2f3f4",
+        "oklch": "oklch(96.4% 0.002 247.8)",
+        "tonalRamp": [
+          "oklch(15% 0.002 247.8)",
+          "oklch(26% 0.002 247.8)",
+          "oklch(38% 0.002 247.8)",
+          "oklch(49% 0.002 247.8)",
+          "oklch(61% 0.002 247.8)",
+          "oklch(72% 0.002 247.8)",
+          "oklch(84% 0.002 247.8)",
+          "oklch(95% 0.002 247.8)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Press Ink",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#4a4a46",
+        "oklch": "oklch(40.8% 0.007 106.7)",
+        "tonalRamp": [
+          "oklch(15% 0.007 106.7)",
+          "oklch(26% 0.007 106.7)",
+          "oklch(38% 0.007 106.7)",
+          "oklch(49% 0.007 106.7)",
+          "oklch(61% 0.007 106.7)",
+          "oklch(72% 0.007 106.7)",
+          "oklch(84% 0.007 106.7)",
+          "oklch(95% 0.007 106.7)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "mobile": {
+        "role": "category",
+        "displayName": "Ultramarine (Mobile Apps)",
+        "canonical": "#1f3fd1",
+        "oklch": "oklch(45.6% 0.225 266.4)",
+        "tonalRamp": [
+          "oklch(15% 0.225 266.4)",
+          "oklch(26% 0.225 266.4)",
+          "oklch(38% 0.225 266.4)",
+          "oklch(49% 0.225 266.4)",
+          "oklch(61% 0.225 266.4)",
+          "oklch(72% 0.225 266.4)",
+          "oklch(84% 0.225 266.4)",
+          "oklch(95% 0.225 266.4)"
+        ]
+      },
+      "mobile-on": {
+        "role": "on-category",
+        "displayName": "On Ultramarine",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "data": {
+        "role": "category",
+        "displayName": "Signal Orange (AI & Data)",
+        "canonical": "#ff5a1f",
+        "oklch": "oklch(68.2% 0.211 37.7)",
+        "tonalRamp": [
+          "oklch(15% 0.211 37.7)",
+          "oklch(26% 0.211 37.7)",
+          "oklch(38% 0.211 37.7)",
+          "oklch(49% 0.211 37.7)",
+          "oklch(61% 0.211 37.7)",
+          "oklch(72% 0.211 37.7)",
+          "oklch(84% 0.211 37.7)",
+          "oklch(95% 0.211 37.7)"
+        ]
+      },
+      "data-on": {
+        "role": "on-category",
+        "displayName": "On Signal Orange",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "tools": {
+        "role": "category",
+        "displayName": "Deep Green (Tools & Systems)",
+        "canonical": "#0a7148",
+        "oklch": "oklch(48.5% 0.108 159.1)",
+        "tonalRamp": [
+          "oklch(15% 0.108 159.1)",
+          "oklch(26% 0.108 159.1)",
+          "oklch(38% 0.108 159.1)",
+          "oklch(49% 0.108 159.1)",
+          "oklch(61% 0.108 159.1)",
+          "oklch(72% 0.108 159.1)",
+          "oklch(84% 0.108 159.1)",
+          "oklch(95% 0.108 159.1)"
+        ]
+      },
+      "tools-on": {
+        "role": "on-category",
+        "displayName": "On Deep Green",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "oss": {
+        "role": "category",
+        "displayName": "Process Yellow (Open Source)",
+        "canonical": "#ffd21a",
+        "oklch": "oklch(87.7% 0.176 92.7)",
+        "tonalRamp": [
+          "oklch(15% 0.176 92.7)",
+          "oklch(26% 0.176 92.7)",
+          "oklch(38% 0.176 92.7)",
+          "oklch(49% 0.176 92.7)",
+          "oklch(61% 0.176 92.7)",
+          "oklch(72% 0.176 92.7)",
+          "oklch(84% 0.176 92.7)",
+          "oklch(95% 0.176 92.7)"
+        ]
+      },
+      "oss-on": {
+        "role": "on-category",
+        "displayName": "On Process Yellow",
+        "canonical": "#141414",
+        "oklch": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home name over two lines; project-page title (clamp(2.75rem, 7vw, 6rem), line-height 0.92). Width set in code via font-stretch: 86%."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Home band titles; siblings: pager title and colophon name (750, font-stretch 88%)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section heads (Selected Projects, Visual Evidence & Artifacts, prose h2)."
+      },
+      "column-title": {
+        "displayName": "Column Title",
+        "purpose": "Project names inside Row columns (font-stretch 90%, balanced)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Band summaries (1.55) and project prose (1.62); 62-68ch measure. Tabular figures global."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Home intro (Soft Ink, 40ch), topbar, colophon, links, project spec rows."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Filter buttons, home spec rows (dt 650), figure captions."
+      },
+      "label-small": {
+        "displayName": "Label Small",
+        "purpose": "Row column meta: category and Solo/Team work."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Image filenames under figure captions only, in Soft Ink."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single house curve (exponential ease-out) for every transition, animation and view transition."
+      },
+      {
+        "name": "link-underline",
+        "value": "160ms",
+        "purpose": "Topbar and colophon underline fade-in."
+      },
+      {
+        "name": "filter",
+        "value": "200ms",
+        "purpose": "Filter background/colour and swatch change."
+      },
+      {
+        "name": "gh-link-offset",
+        "value": "220ms",
+        "purpose": "Primary link underline offset 0.3em to 0.45em."
+      },
+      {
+        "name": "fade",
+        "value": "240ms",
+        "purpose": "Row column text and plate fade when filtered out."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "320ms",
+        "purpose": "View details / back arrows translate 5px."
+      },
+      {
+        "name": "title-sweep",
+        "value": "420ms",
+        "purpose": "Band title colour underline sweep; pager title 6px slide."
+      },
+      {
+        "name": "phone-bar-height",
+        "value": "480ms",
+        "purpose": "Row bar height change on phones (50px to 8px sliver)."
+      },
+      {
+        "name": "view-transition",
+        "value": "520ms",
+        "purpose": "Cross-document view transition carrying field-<slug> from Row column to poster header."
+      },
+      {
+        "name": "column-widen",
+        "value": "560ms",
+        "purpose": "Row column flex-grow 1 to 2.3 on hover/focus; 0.12 sliver when filtered."
+      },
+      {
+        "name": "rise",
+        "value": "600ms, stagger calc(var(--i) * 30ms + 60ms)",
+        "purpose": "Row load reveal via clip-path inset from the bottom (from the left on phones); last column settles ~870ms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "All animation/transition durations forced to 0.01ms and view transitions disabled."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "960px",
+        "purpose": "max-width: band and project-page columns span full width; wide captions move under plate."
+      },
+      {
+        "name": "phone",
+        "value": "760px",
+        "purpose": "max-width: Row becomes 50px horizontal bars, masthead stacks, filters scroll, shelf two-up, pager single column."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filter Toggle",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "Legend filter above the Row: flat square toggle; pressed state fills with the category field (All fills with ink).",
+      "html": "<div class=\"ds-filters\" role=\"group\" aria-label=\"Filter projects by category\"><button type=\"button\" class=\"ds-filter ds-all\" aria-pressed=\"true\"><span>All Projects</span><span class=\"ds-count\">8</span></button><button type=\"button\" class=\"ds-filter ds-mobile\" aria-pressed=\"false\"><span class=\"ds-swatch\" aria-hidden=\"true\"></span><span>Mobile Apps</span><span class=\"ds-count\">2</span></button><button type=\"button\" class=\"ds-filter ds-data\" aria-pressed=\"false\"><span class=\"ds-swatch\" aria-hidden=\"true\"></span><span>AI &amp; Data</span><span class=\"ds-count\">2</span></button></div>",
+      "css": ".ds-filters { display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); font-variant-numeric: tabular-nums; } .ds-filter { appearance: none; border: 0; border-radius: 0; background: transparent; color: var(--ink, #141414); display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background-color 200ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)), color 200ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-filter.ds-mobile { --c: var(--mobile, #1f3fd1); --on: var(--mobile-on, #ffffff); } .ds-filter.ds-data { --c: var(--data, #ff5a1f); --on: var(--data-on, #141414); } .ds-filter:hover { background: rgb(20 20 20 / 0.07); } .ds-filter:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-swatch { width: 0.75rem; height: 0.75rem; background: var(--c); } .ds-count { font-weight: 450; } .ds-filter[aria-pressed=\"true\"] { background: var(--c, var(--ink, #141414)); color: var(--on, var(--paper, #f2f3f4)); } .ds-filter[aria-pressed=\"true\"] .ds-swatch { background: currentColor; }"
+    },
+    {
+      "name": "Row Column",
+      "kind": "custom",
+      "refersTo": "row-column-mobile",
+      "description": "Signature: one full-height category field per project; widens on hover/focus, shrinks to a sliver when filtered out, rises from the baseline on load. Dark blocks stand in for the cover captures.",
+      "html": "<ol class=\"ds-row\"><li class=\"ds-col ds-mobile\"><a class=\"ds-col-link\" href=\"#\"><span class=\"ds-col-text\"><span class=\"ds-col-title\">DroneAid</span><span class=\"ds-col-meta\"><span>Mobile Apps</span><span>Team work</span></span></span><span class=\"ds-col-plate\"></span></a></li><li class=\"ds-col ds-data\"><a class=\"ds-col-link\" href=\"#\"><span class=\"ds-col-text\"><span class=\"ds-col-title\">Spaceship Titanic EDA</span><span class=\"ds-col-meta\"><span>AI &amp; Data</span><span>Solo</span></span></span><span class=\"ds-col-plate\"></span></a></li><li class=\"ds-col ds-tools ds-off\"><a class=\"ds-col-link\" href=\"#\" tabindex=\"-1\"><span class=\"ds-col-text\"><span class=\"ds-col-title\">NumMaiLai</span><span class=\"ds-col-meta\"><span>Tools &amp; Systems</span><span>Solo</span></span></span><span class=\"ds-col-plate\"></span></a></li><li class=\"ds-col ds-oss\"><a class=\"ds-col-link\" href=\"#\"><span class=\"ds-col-text\"><span class=\"ds-col-title\">Firstmate Contributions</span><span class=\"ds-col-meta\"><span>Open Source</span><span>Solo</span></span></span><span class=\"ds-col-plate\"></span></a></li></ol>",
+      "css": ".ds-row { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; height: 360px; font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); } .ds-col { flex: 1 1 0; min-width: 0; background: var(--c); color: var(--on); transition: flex-grow 560ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); animation: ds-rise 600ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)) backwards; } .ds-col:nth-child(2) { animation-delay: 90ms; } .ds-col:nth-child(3) { animation-delay: 120ms; } .ds-col:nth-child(4) { animation-delay: 150ms; } @keyframes ds-rise { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } } .ds-mobile { --c: var(--mobile, #1f3fd1); --on: var(--mobile-on, #ffffff); } .ds-data { --c: var(--data, #ff5a1f); --on: var(--data-on, #141414); } .ds-tools { --c: var(--tools, #0a7148); --on: var(--tools-on, #ffffff); } .ds-oss { --c: var(--oss, #ffd21a); --on: var(--oss-on, #141414); } .ds-col:hover, .ds-col:focus-within { flex-grow: 2.3; } .ds-col-link { display: flex; flex-direction: column; height: 100%; overflow: hidden; color: inherit; text-decoration: none; } .ds-col-link:focus-visible { outline: 3px solid currentColor; outline-offset: -6px; } .ds-col-text { display: flex; flex-direction: column; gap: 6px; padding: 14px 14px 16px; min-height: 8.25rem; transition: opacity 240ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-col-title { font-size: clamp(1rem, 1.25vw, 1.1875rem); font-weight: 720; font-stretch: 90%; line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance; } .ds-col-meta { display: flex; flex-direction: column; font-size: 0.75rem; font-weight: 520; line-height: 1.3; } .ds-col-plate { flex: 1; margin-inline: 10px; background: #1e1e1e; transition: opacity 240ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-off { flex-grow: 0.12; } .ds-off .ds-col-text, .ds-off .ds-col-plate { opacity: 0; } @media (prefers-reduced-motion: reduce) { .ds-col, .ds-col-text, .ds-col-plate { animation: none; transition: none; } }"
+    },
+    {
+      "name": "Spec Table",
+      "kind": "custom",
+      "description": "Two-column definition list ruled in ink; replaces chips for all project metadata. Project-page variant shown (2px top rule, 7.5rem terms, 0.9375rem); home band variant uses 1px top rule, 6.5rem, 0.875rem, 9px rows.",
+      "html": "<dl class=\"ds-spec ds-mobile\"><div><dt>Category</dt><dd><span class=\"ds-swatch\" aria-hidden=\"true\"></span>Mobile Apps</dd></div><div><dt>Credit</dt><dd>Group Project · KMUTT CSC291</dd></div><div><dt>Stack</dt><dd>Flutter, Dart, Firebase Firestore</dd></div><div><dt>Source</dt><dd><a href=\"#\">github.com/AokDesu/CSC291-DroneAid<svg class=\"ds-ext\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M3.5 2.5h6v6M9.5 2.5l-7 7\"/></svg></a></dd></div></dl>",
+      "css": ".ds-spec { margin: 0; max-width: 24rem; border-top: 2px solid var(--rule, #141414); font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); color: var(--ink, #141414); } .ds-mobile { --c: var(--mobile, #1f3fd1); --on: var(--mobile-on, #ffffff); } .ds-spec div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; padding-block: 11px; border-bottom: 1px solid var(--rule, #141414); font-size: 0.9375rem; line-height: 1.45; } .ds-spec dt { font-weight: 650; } .ds-spec dd { margin: 0; color: var(--ink-soft, #4a4a46); overflow-wrap: anywhere; } .ds-swatch { display: inline-block; width: 0.75em; height: 0.75em; margin-right: 0.5em; background: var(--c); vertical-align: -0.04em; } .ds-spec a { color: var(--ink, #141414); font-weight: 560; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; } .ds-spec a:hover { text-decoration-thickness: 2px; } .ds-spec a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-ext { width: 0.7em; height: 0.7em; margin-left: 0.3em; vertical-align: 0.05em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; }"
+    },
+    {
+      "name": "Project Band",
+      "kind": "card",
+      "description": "Home project band: 2px ink rule, condensed headline with colour underline sweep, summary, View details link; capture stands on a category plate (a dark block stands in for the capture).",
+      "html": "<article class=\"ds-band ds-tools\"><div class=\"ds-band-text\"><h3 class=\"ds-band-title\"><a href=\"#\">Basic Memory Access Benchmark</a></h3><p class=\"ds-band-summary\">Low-level C++ systems benchmark evaluating CPU cache-line traversal latency.</p><a class=\"ds-band-more\" href=\"#\">View details <svg viewBox=\"0 0 16 12\" aria-hidden=\"true\"><path d=\"M0 6h14M9 1l5 5-5 5\"/></svg></a></div><div class=\"ds-band-plate\"><div class=\"ds-capture\"></div></div></article>",
+      "css": ".ds-band { display: grid; grid-template-columns: 5fr 1fr 6fr; padding-block: 28px 56px; border-top: 2px solid var(--rule, #141414); font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); color: var(--ink, #141414); } .ds-tools { --c: var(--tools, #0a7148); --on: var(--tools-on, #ffffff); } .ds-band-text { display: flex; flex-direction: column; gap: 22px; } .ds-band-title { margin: 0; font-size: clamp(2rem, 3.6vw, 3.25rem); font-weight: 780; font-stretch: 86%; line-height: 0.98; letter-spacing: -0.03em; text-wrap: balance; } .ds-band-title a { color: inherit; text-decoration: none; background-image: linear-gradient(var(--c), var(--c)); background-size: 0% 0.14em; background-position: 0 92%; background-repeat: no-repeat; transition: background-size 420ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-band-title a:hover { background-size: 100% 0.14em; } .ds-band-summary { margin: 0; font-size: 1.0625rem; line-height: 1.55; max-width: 62ch; } .ds-band-more { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-size: 0.9375rem; font-weight: 650; padding-block: 4px; color: inherit; text-decoration: none; } .ds-band-more svg { width: 16px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform 320ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-band-more:hover svg { transform: translateX(5px); } .ds-band a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-band-plate { grid-column: 3; align-self: start; display: flex; justify-content: center; align-items: flex-end; background: var(--c); padding: clamp(20px, 3.2vw, 44px) clamp(20px, 3.2vw, 44px) 0; } .ds-capture { width: 100%; aspect-ratio: 16 / 10; background: #1e1e1e; }"
+    },
+    {
+      "name": "Poster Header",
+      "kind": "custom",
+      "refersTo": "poster-header-tools",
+      "description": "Project page header: full-bleed category field carrying the back link, display title and lead; receives the Row column via view transition.",
+      "html": "<header class=\"ds-poster ds-tools\"><a class=\"ds-back\" href=\"#\"><svg viewBox=\"0 0 16 12\" aria-hidden=\"true\"><path d=\"M16 6H2M7 1L2 6l5 5\"/></svg>Back to all projects</a><h1 class=\"ds-title\">NumMaiLai</h1><p class=\"ds-lead\">Automated monitoring system for Metropolitan Waterworks Authority pipe repairs.</p></header>",
+      "css": ".ds-poster { background: var(--c); color: var(--on); padding: 22px clamp(16px, 3.4vw, 48px) clamp(36px, 4.4vw, 64px); display: flex; flex-direction: column; gap: 18px; font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); } .ds-tools { --c: var(--tools, #0a7148); --on: var(--tools-on, #ffffff); } .ds-back { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-size: 0.9375rem; font-weight: 600; margin-bottom: clamp(48px, 9vw, 140px); color: inherit; text-decoration: none; } .ds-back svg { width: 16px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; transition: transform 320ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-back:hover svg { transform: translateX(-5px); } .ds-back:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-title { margin: 0; font-size: clamp(2.75rem, 7vw, 6rem); font-weight: 820; font-stretch: 86%; line-height: 0.92; letter-spacing: -0.035em; text-wrap: balance; } .ds-lead { margin: 0; font-size: clamp(1.0625rem, 1.4vw, 1.25rem); line-height: 1.5; font-weight: 480; max-width: 60ch; }"
+    },
+    {
+      "name": "Pager Tiles",
+      "kind": "nav",
+      "refersTo": "pager-tile-oss",
+      "description": "Previous/next project tiles in each project's own category field; title slides toward its direction on hover.",
+      "html": "<nav class=\"ds-pager\" aria-label=\"Project pagination\"><a class=\"ds-page ds-prev ds-tools\" href=\"#\"><svg class=\"ds-arrow\" viewBox=\"0 0 16 12\" aria-hidden=\"true\"><path d=\"M16 6H2M7 1L2 6l5 5\"/></svg><span class=\"ds-page-title\">dev-memory-ai</span></a><a class=\"ds-page ds-next ds-oss\" href=\"#\"><svg class=\"ds-arrow\" viewBox=\"0 0 16 12\" aria-hidden=\"true\"><path d=\"M0 6h14M9 1l5 5-5 5\"/></svg><span class=\"ds-page-title\">Firstmate Contributions</span></a></nav>",
+      "css": ".ds-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); } .ds-tools { --c: var(--tools, #0a7148); --on: var(--tools-on, #ffffff); } .ds-oss { --c: var(--oss, #ffd21a); --on: var(--oss-on, #141414); } .ds-page { display: flex; flex-direction: column; gap: 10px; min-height: clamp(140px, 16vw, 220px); justify-content: space-between; padding: 18px clamp(16px, 3.4vw, 48px) 22px; background: var(--c); color: var(--on); text-decoration: none; } .ds-page:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-next { text-align: right; } .ds-arrow { width: clamp(22px, 2.4vw, 32px); height: auto; fill: none; stroke: currentColor; stroke-width: 1.6; } .ds-next .ds-arrow { align-self: flex-end; } .ds-page-title { font-size: clamp(1.5rem, 3vw, 2.75rem); font-weight: 780; font-stretch: 86%; line-height: 1; letter-spacing: -0.03em; text-wrap: balance; transition: transform 420ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-prev:hover .ds-page-title { transform: translateX(-6px); } .ds-next:hover .ds-page-title { transform: translateX(6px); }"
+    },
+    {
+      "name": "Topbar Navigation",
+      "kind": "nav",
+      "description": "Grid-aligned topbar: name left, nav right; links reveal a 1px underline on hover. External links carry the open diagonal arrow.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-topbar-name\" href=\"#\">Aekarut Phetpradit</a><nav class=\"ds-topbar-nav\" aria-label=\"Site\"><a href=\"#\">Projects</a><a href=\"#\">GitHub<svg class=\"ds-ext\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M3.5 2.5h6v6M9.5 2.5l-7 7\"/></svg></a></nav></header>",
+      "css": ".ds-topbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px clamp(16px, 3.4vw, 48px); background: var(--paper, #f2f3f4); color: var(--ink, #141414); font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.005em; } .ds-topbar-nav { display: flex; gap: 28px; } .ds-topbar a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.25em; text-decoration-color: transparent; transition: text-decoration-color 160ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-topbar a:hover { text-decoration-color: currentColor; } .ds-topbar a:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-ext { width: 0.7em; height: 0.7em; margin-left: 0.3em; vertical-align: 0.05em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; }"
+    },
+    {
+      "name": "Primary Text Link",
+      "kind": "button",
+      "description": "The site has no filled buttons; the primary call to action (\"View on GitHub\") is a text link with a permanent 2px underline whose offset grows on hover.",
+      "html": "<a class=\"ds-gh\" href=\"#\">View on GitHub<svg class=\"ds-ext\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M3.5 2.5h6v6M9.5 2.5l-7 7\"/></svg></a>",
+      "css": ".ds-gh { font-family: var(--font, 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif); color: var(--ink, #141414); font-size: 0.9375rem; font-weight: 650; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.3em; transition: text-underline-offset 220ms var(--ease, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-gh:hover { text-underline-offset: 0.45em; } .ds-gh:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; } .ds-ext { width: 0.7em; height: 0.7em; margin-left: 0.3em; vertical-align: 0.05em; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Swiss Poster Series",
+    "overview": "The site reads as a series of International Typographic Style exhibition posters hung in one strict modular grid. Cool white paper carries near-black ink. Four flat process colours each stand for exactly one project category, and colour is applied to whole regions: the Row, the plates behind the captures, the project page header, and the pager tiles. There is no ornament. Hierarchy comes from Archivo's weight and width axes, from position on the 12-column grid, and from ink rules that divide the sheet.\n\nDensity is poster-like. A few very large elements sit over a lot of quiet paper, and the small text is set tight and exact. The home page shows the whole body of work at once as one row of colour columns, then repeats each project as a band with a spec table and a plate. Each project page is a poster: a full-width colour header, a spec table beside the prose, and captured evidence standing on colour plates.\n\nThe world rejects two things, as stated in the direction contract: the dark card grid with tag chips (the look it replaced), and the cream-serif editorial page.\n\nThis North Star comes from the direction contract's THESIS and FORM. No live naming interview took place.",
+    "keyCharacteristics": [
+      "One 12-column grid (`.grid`) with fluid outer margin and gutter, shared by every section.",
+      "Four flat category fields, applied at region scale, each with a paired text colour that clears 4.5:1.",
+      "Archivo Variable sets all interface text (a system mono is used only for image filenames); weight 450–820 and width 86–100% carry the hierarchy.",
+      "Square corners everywhere, no shadows, no gradient surfaces. Structure comes from 2px and 1px ink rules.",
+      "Captures sit on the bottom edge of their colour plate, all standing on one shared baseline, and are never tinted.",
+      "A single exponential ease-out curve drives all motion. Reduced motion turns everything off."
+    ],
+    "rules": [
+      {
+        "name": "The One Field, One Meaning Rule",
+        "body": "Each process colour stands for exactly one category. Bind it through `data-category` and read it as `--c` / `--on`. Never use a category colour as decoration on something that does not belong to that category.",
+        "section": "colors"
+      },
+      {
+        "name": "The Region-Scale Rule",
+        "body": "Colour commits to whole regions: a Row column, a plate, a poster header, a pager tile, or a filled filter. Inside text, category colour appears only as a solid square swatch (0.7–0.75em) or a title underline bar.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paired Text Rule",
+        "body": "Text on a field always uses that field's `-on` colour (white on ultramarine and green, ink on orange and yellow). Never put white on orange or yellow.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-and-Width Rule",
+        "body": "Hierarchy comes from Archivo's weight and width axes plus size. There are no uppercase labels, letter-spaced eyebrows, or second display face. Every large heading is heavy (750–820), condensed (wdth 86–88), tightly tracked (-0.025 to -0.035em), and set solid (line-height 0.9–1).",
+        "section": "typography"
+      },
+      {
+        "name": "The Flush-Left Rule",
+        "body": "Text is set ragged-right and flush-left on grid columns. Right-justification is reserved for a few elements: the topbar nav, the legend filters, the colophon GitHub link, and the \"next\" pager tile on wide screens.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Baseline Rule",
+        "body": "Every plate is bottom-aligned with zero bottom padding (`align-items: flex-end`, padding `… 0`), so each capture stands on the plate's lower edge. In the Row and on shelves, all plates read left to right along one line.",
+        "section": "layout"
+      },
+      {
+        "name": "The Everything-Visible Rule",
+        "body": "The Row always shows all eight projects. Filtering never removes or reorders a column: unmatched columns shrink to a colour sliver (`flex-grow: 0.12`, or 8px tall on phones) and become `inert`.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Sheet Rule",
+        "body": "Nothing casts a shadow or floats. If something needs separating, use a 2px ink rule, a colour field, or space.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** bind category colour through `data-category` and read only `--c` / `--on` in components.",
+      "**Do** keep every plate's bottom padding at 0 so captures stand on one shared baseline.",
+      "**Do** separate sections with a 2px ink rule and spec rows with 1px ink hairlines.",
+      "**Do** set every large heading in Archivo at 750–820 weight, width 86–88%, tracking -0.025 to -0.035em, line-height 0.9–1.",
+      "**Do** keep all eight projects visible in the Row. Filtering shrinks unmatched columns to slivers and marks them `inert`.",
+      "**Do** drive every transition with `cubic-bezier(0.16, 1, 0.3, 1)` and turn motion and view transitions off under `prefers-reduced-motion`.",
+      "**Do** put project metadata (Category, Credit, Stack, Source) in the two-column spec table."
+    ],
+    "donts": [
+      "**Don't** round any corner, add a shadow, or use a gradient surface.",
+      "**Don't** tint, overlay, or recolour a capture; the colour goes on the plate behind it.",
+      "**Don't** use a category colour for something outside that category, or put white text on orange or yellow.",
+      "**Don't** show project metadata as tags or chips; it belongs in the spec table.",
+      "**Don't** wrap content in fully bordered boxes or cards; use rules, fields and space.",
+      "**Don't** introduce a second display face, uppercase eyebrow labels, or a dark page ground."
+    ]
+  }
+}
