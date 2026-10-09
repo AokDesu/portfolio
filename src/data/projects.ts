@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     teamLabel: 'Group Project · KMUTT CSC291',
     teamCredit: '5-person team (CSC291 at KMUTT, 2026). Aekarut Phetpradit served as Team Lead and Backend Architect, authoring backend Cloud Functions (callables, triggers, scheduled ticks), Firestore security rules with comprehensive test suites, role-aware routing guards, and the emulator dev loop.',
     repoUrl: 'https://github.com/AokDesu/CSC291-DroneAid',
-    coverImage: '/src/content/projects/mobile-apps/droneaid/01-login-screen.png',
+    coverImage: '/src/content/projects/mobile-apps/droneaid/04-admin-map.png',
     images: [
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/01-login-screen.png',
@@ -87,23 +87,19 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/01-guest-feed.png',
-        caption: 'Public scam incident discovery feed captured from standalone interactive prototype at mobile viewport (390×844).',
+        caption: 'Public scam incident discovery dashboard and fraud alerts captured from standalone interactive prototype with clipboard banner dismissed (390×844).',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/02-user-report.png',
-        caption: 'Multi-step incident reporting form with evidence attachment captured from standalone interactive prototype (390×844).',
+        caption: 'Multi-step incident reporting form with fraud category selection and evidence attachments captured from standalone interactive prototype (390×844).',
       },
       {
-        srcPath: '/src/content/projects/mobile-apps/scamreport/03-admin-dashboard.png',
-        caption: 'Moderation administrative overview with real-time statistics captured from standalone interactive prototype (390×844).',
+        srcPath: '/src/content/projects/mobile-apps/scamreport/03-moderation-queue.png',
+        caption: 'Content review, triage metrics, and report moderation queue captured from standalone interactive prototype (390×844).',
       },
       {
-        srcPath: '/src/content/projects/mobile-apps/scamreport/04-moderation-queue.png',
-        caption: 'Content review, evidence inspection, and report approval queue captured from standalone interactive prototype (390×844).',
-      },
-      {
-        srcPath: '/src/content/projects/mobile-apps/scamreport/05-feed-search.png',
-        caption: 'Incident search by category, phone number, and account number captured from standalone interactive prototype (390×844).',
+        srcPath: '/src/content/projects/mobile-apps/scamreport/04-feed-search.png',
+        caption: 'Verified incident database feed filterable by scam category with community report counts captured from standalone interactive prototype (390×844).',
       },
     ],
   },

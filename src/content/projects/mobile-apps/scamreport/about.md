@@ -16,8 +16,7 @@ A community-driven incident reporting and scam intelligence mobile application d
 - **Source Code**: [GitHub Repository (CSC234-UserCenteredMobileApp/ScamReport)](https://github.com/CSC234-UserCenteredMobileApp/ScamReport)
 
 ## Image Production
-- `01-guest-feed.png`: Public scam incident discovery feed captured from standalone interactive prototype at mobile viewport (390×844).
-- `02-user-report.png`: Multi-step incident reporting form with evidence attachment captured from standalone interactive prototype (390×844).
-- `03-admin-dashboard.png`: Moderation administrative overview with real-time statistics captured from standalone interactive prototype (390×844).
-- `04-moderation-queue.png`: Content review, evidence inspection, and report approval queue captured from standalone interactive prototype (390×844).
-- `05-feed-search.png`: Incident search by category, phone number, and account number captured from standalone interactive prototype (390×844).
+- `01-guest-feed.png`: Public scam incident discovery dashboard and fraud alerts captured from standalone interactive prototype with clipboard banner dismissed at mobile viewport (390×844).
+- `02-user-report.png`: Multi-step incident reporting form with fraud category selection and evidence attachments captured from standalone interactive prototype (390×844).
+- `03-moderation-queue.png`: Content review, triage metrics, and report moderation queue captured from standalone interactive prototype (390×844).
+- `04-feed-search.png`: Verified incident database feed filterable by scam category with community report counts captured from standalone interactive prototype (390×844).
