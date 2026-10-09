@@ -1,259 +1,203 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import ProjectBand from '../components/ProjectBand.astro';
 import { PROJECTS, CATEGORIES } from '../data/projects';
 ---
 
-<Layout title="Aekarut Phetpradit — Portfolio">
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Aekarut Phetpradit</h1>
-      <p class="hero-role">KMUTT student · Software Developer</p>
-      <p class="hero-bio">
+<Layout title="Aekarut Phetpradit — Portfolio" home>
+  <section class="mast grid" aria-labelledby="name">
+    <h1 class="name" id="name">Aekarut<br />Phetpradit</h1>
+    <div class="about">
+      <p class="role">KMUTT student · Software Developer</p>
+      <p class="intro">
         Building reliable mobile applications, exploratory AI/data research, low-level systems benchmarks, and contributing to open-source software tools.
       </p>
-      <div class="hero-actions">
-        <a 
-          href="https://github.com/AokDesu" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="hero-btn primary-btn"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-          </svg>
-          <span>View on GitHub</span>
-        </a>
-      </div>
+      <a class="gh" href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">
+        View on GitHub<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5l-7 7" /></svg>
+      </a>
     </div>
   </section>
 
-  <section class="portfolio-section" id="projects">
-    <div class="section-header">
-      <h2 class="section-title">Selected Projects</h2>
-      <div class="filter-controls" role="group" aria-label="Filter projects by category">
+  <section class="work" id="work" aria-labelledby="work-title">
+    <div class="legend grid">
+      <h2 class="work-title" id="work-title">Selected Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects by category">
         {CATEGORIES.map((cat, index) => {
-          const count = cat.id === 'all' 
-            ? PROJECTS.length 
-            : PROJECTS.filter(p => p.category === cat.id).length;
+          const count = cat.id === 'all'
+            ? PROJECTS.length
+            : PROJECTS.filter((p) => p.category === cat.id).length;
           return (
-            <button 
-              type="button" 
-              class={`filter-btn ${index === 0 ? 'active' : ''}`}
+            <button
+              type="button"
+              class="filter"
               data-filter={cat.id}
+              data-category={cat.id === 'all' ? undefined : cat.id}
               aria-pressed={index === 0 ? 'true' : 'false'}
             >
+              {cat.id !== 'all' && <span class="swatch" aria-hidden="true" />}
               <span>{cat.label}</span>
-              <span class="filter-count">({count})</span>
+              <span class="count">{count}</span>
             </button>
           );
         })}
       </div>
+      <p class="sr-only" id="filter-status" aria-live="polite"></p>
     </div>
 
-    <div class="projects-grid" id="projects-grid">
-      {PROJECTS.map((project) => (
-        <ProjectCard project={project} />
-      ))}
-    </div>
+    <ProjectRow projects={PROJECTS} />
 
-    <div class="empty-state" id="empty-state" style="display: none;">
-      <p>No projects match this category.</p>
+    <div class="bands">
+      {PROJECTS.map((project) => <ProjectBand project={project} />)}
     </div>
   </section>
 </Layout>
 
 <script>
-  function setupFilters() {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-    const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
-    const emptyState = document.getElementById('empty-state');
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const cols = document.querySelectorAll<HTMLElement>('.row .col');
+  const bands = document.querySelectorAll<HTMLElement>('.bands .band');
+  const status = document.getElementById('filter-status');
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const targetCategory = btn.getAttribute('data-filter');
+  for (const btn of buttons) {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.filter ?? 'all';
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b === btn));
 
-        // Update active buttons
-        filterButtons.forEach((b) => {
-          b.classList.remove('active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-
-        // Filter cards
-        let visibleCount = 0;
-        projectCards.forEach((card) => {
-          const cardCategory = card.getAttribute('data-category');
-          if (targetCategory === 'all' || cardCategory === targetCategory) {
-            card.style.display = 'flex';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        // Toggle empty state
-        if (emptyState) {
-          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-      });
+      let shown = 0;
+      for (const col of cols) {
+        const match = target === 'all' || col.dataset.category === target;
+        col.classList.toggle('off', !match);
+        col.toggleAttribute('inert', !match);
+        if (match) shown++;
+      }
+      for (const band of bands) {
+        band.hidden = !(target === 'all' || band.dataset.category === target);
+      }
+      if (status) {
+        const label = btn.querySelector('span:not(.swatch):not(.count)')?.textContent ?? '';
+        status.textContent = `${label}: ${shown} of ${cols.length} projects`;
+      }
     });
   }
-
-  // Run on page load
-  setupFilters();
-  document.addEventListener('astro:after-swap', setupFilters);
 </script>
 
 <style>
-  .hero-section {
-    padding: 32px 0 54px;
-    border-bottom: 1px solid var(--border-subtle);
-    margin-bottom: 48px;
+  .mast {
+    padding-block: clamp(28px, 4vw, 56px) clamp(36px, 4.5vw, 64px);
+    align-items: end;
+    row-gap: 28px;
   }
 
-  .hero-content {
-    max-width: 720px;
+  .name {
+    grid-column: 1 / span 8;
+    font-size: clamp(3.25rem, 7.4vw, 6rem);
+    font-weight: 820;
+    font-stretch: 86%;
+    line-height: 0.9;
+    letter-spacing: -0.035em;
   }
 
-  .hero-title {
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    color: var(--text-primary);
-    margin-bottom: 12px;
+  .about {
+    grid-column: 9 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 0.35rem;
   }
 
-  .hero-role {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 16px;
+  .role {
+    font-size: 1.0625rem;
+    font-weight: 680;
     letter-spacing: -0.01em;
   }
 
-  .hero-bio {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    margin-bottom: 28px;
-    max-width: 65ch;
+  .intro {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 40ch;
   }
 
-  .hero-actions {
-    display: flex;
-    gap: 14px;
+  .gh {
+    align-self: flex-start;
+    margin-top: 6px;
+    font-size: 0.9375rem;
+    font-weight: 650;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+    transition: text-underline-offset 220ms var(--ease);
   }
 
-  .hero-btn {
-    display: inline-flex;
+  .gh:hover { text-underline-offset: 0.45em; }
+
+  .legend {
     align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: var(--radius-md);
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: all 0.15s ease;
+    row-gap: 14px;
+    padding-block: 14px;
+    border-top: 2px solid var(--rule);
+    margin-bottom: 10px;
   }
 
-  .primary-btn {
-    background-color: var(--text-primary);
-    color: var(--bg-page);
+  .work-title {
+    grid-column: 1 / span 3;
+    font-size: 1.0625rem;
+    font-weight: 720;
+    letter-spacing: -0.01em;
   }
 
-  .primary-btn:hover {
-    background-color: #ffffff;
-    transform: translateY(-1px);
-  }
-
-  .portfolio-section {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  @media (min-width: 768px) {
-    .section-header {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .section-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-  }
-
-  .filter-controls {
+  .filters {
+    grid-column: 4 / -1;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    justify-content: flex-end;
+    gap: 6px;
   }
 
-  .filter-btn {
+  .filter {
     appearance: none;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    color: var(--text-secondary);
-    padding: 7px 14px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
+    border: 0;
+    background: transparent;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: all 0.15s ease;
+    gap: 8px;
+    padding: 7px 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 200ms var(--ease), color 200ms var(--ease);
   }
 
-  .filter-btn:hover {
-    color: var(--text-primary);
-    border-color: var(--border-strong);
-    background: var(--bg-surface-elevated);
+  .filter:hover { background: rgb(20 20 20 / 0.07); }
+
+  .swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--c);
+    transition: background-color 200ms var(--ease);
   }
 
-  .filter-btn.active {
-    background-color: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
+  .count {
+    font-weight: 500;
+    opacity: 0.7;
   }
 
-  .filter-count {
-    opacity: 0.8;
-    font-size: 0.75rem;
+  .filter[aria-pressed='true'] {
+    background: var(--c, var(--ink));
+    color: var(--on, var(--paper));
   }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
+  .filter[aria-pressed='true'] .swatch { background: currentColor; }
 
-  @media (min-width: 640px) {
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+  .bands { margin-top: clamp(80px, 9vw, 140px); }
 
-  .empty-state {
-    text-align: center;
-    padding: 48px;
-    background: var(--bg-surface);
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+  @media (max-width: 760px) {
+    .name,
+    .about { grid-column: 1 / -1; }
+    .about { max-width: 36rem; }
+    .work-title,
+    .filters { grid-column: 1 / -1; justify-content: flex-start; }
+    .filters { margin-inline: -12px; }
   }
 </style>

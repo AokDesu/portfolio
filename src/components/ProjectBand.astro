@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import { getProjectImage, isPhone, widthsFor } from '../utils/images';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const cover = getProjectImage(project.coverImage);
+
+// Phone-shaped captures stand two to a shelf; a wide capture stands alone.
+const plates = cover
+  ? isPhone(cover)
+    ? [
+        cover,
+        ...project.images
+          .map((img) => getProjectImage(img.srcPath))
+          .filter((m): m is NonNullable<typeof m> => !!m && m !== cover && isPhone(m))
+          .slice(0, 1),
+      ]
+    : [cover]
+  : [];
+const href = `/projects/${project.slug}`;
+---
+
+<article class="band grid" data-category={project.category}>
+  <div class="band-text">
+    <h3 class="band-title"><a href={href}>{project.title}</a></h3>
+    <p class="band-summary">{project.summary}</p>
+    <dl class="spec">
+      <div><dt>Category</dt><dd>{project.categoryLabel}</dd></div>
+      <div><dt>Credit</dt><dd>{project.teamLabel}</dd></div>
+      <div><dt>Stack</dt><dd>{project.stack.join(', ')}</dd></div>
+    </dl>
+    <a class="band-more" href={href} aria-label={`View details: ${project.title}`}>
+      View details
+      <svg viewBox="0 0 16 12" aria-hidden="true"><path d="M0 6h14M9 1l5 5-5 5" /></svg>
+    </a>
+  </div>
+
+  <a class:list={['band-plate', { pair: plates.length > 1 }]} href={href} tabindex="-1" aria-hidden="true">
+    {plates.map((m) => (
+      <Image
+        src={m}
+        alt=""
+        widths={widthsFor(m, isPhone(m) ? [300, 520] : [640, 960, 1400])}
+        sizes={isPhone(m) ? '(max-width: 760px) 42vw, 20vw' : '(max-width: 760px) 92vw, 54vw'}
+        loading="lazy"
+      />
+    ))}
+  </a>
+</article>
+
+<style>
+  .band {
+    padding-block: 28px clamp(56px, 6vw, 96px);
+    border-top: 2px solid var(--rule);
+    row-gap: 28px;
+  }
+
+  .band-text {
+    grid-column: 1 / span 5;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 34rem;
+  }
+
+  .band-title {
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
+    font-weight: 780;
+    font-stretch: 86%;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .band-title a {
+    background-image: linear-gradient(var(--c), var(--c));
+    background-size: 0% 0.14em;
+    background-position: 0 92%;
+    background-repeat: no-repeat;
+    transition: background-size 420ms var(--ease);
+  }
+
+  .band-title a:hover { background-size: 100% 0.14em; }
+
+  .band-summary {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 62ch;
+  }
+
+  .spec {
+    display: grid;
+    border-top: 1px solid var(--rule);
+  }
+
+  .spec div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 12px;
+    padding-block: 9px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .spec dt { font-weight: 650; }
+  .spec dd { color: var(--ink-soft); }
+
+  .spec div:first-child dd::before {
+    content: '';
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-right: 0.5em;
+    background: var(--c);
+    vertical-align: -0.02em;
+  }
+
+  .band-more {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9375rem;
+    font-weight: 650;
+    padding-block: 4px;
+  }
+
+  .band-more svg {
+    width: 16px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    transition: transform 320ms var(--ease);
+  }
+
+  .band-more:hover svg { transform: translateX(5px); }
+
+  .band-plate {
+    grid-column: 7 / -1;
+    align-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(12px, 2vw, 28px);
+    background: var(--c);
+    padding: clamp(20px, 3.2vw, 44px) clamp(20px, 3.2vw, 44px) 0;
+  }
+
+  .band-plate :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .band-plate.pair { padding-inline: clamp(28px, 6vw, 96px); }
+  .band-plate.pair :global(img) { width: min(calc(50% - clamp(6px, 1vw, 14px)), 230px); }
+
+  @media (max-width: 960px) {
+    .band-text { grid-column: 1 / -1; max-width: none; }
+    .band-plate { grid-column: 1 / -1; }
+  }
+</style>

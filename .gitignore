@@ -21,3 +21,8 @@ pnpm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# impeccable working files
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/
