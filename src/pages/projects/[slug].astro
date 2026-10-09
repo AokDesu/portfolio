@@ -1,0 +1,503 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import { PROJECTS, type Project } from '../../data/projects';
+import { getProjectImage } from '../../utils/images';
+
+export function getStaticPaths() {
+  return PROJECTS.map((project, index) => {
+    const prevProject = index > 0 ? PROJECTS[index - 1] : null;
+    const nextProject = index < PROJECTS.length - 1 ? PROJECTS[index + 1] : null;
+    return {
+      params: { slug: project.slug },
+      props: { project, prevProject, nextProject },
+    };
+  });
+}
+
+interface Props {
+  project: Project;
+  prevProject: Project | null;
+  nextProject: Project | null;
+}
+
+const { project, prevProject, nextProject } = Astro.props;
+---
+
+<Layout title={`${project.title} — Aekarut Phetpradit`} description={project.summary}>
+  <div class="project-detail">
+    <div class="detail-nav">
+      <a href="/#projects" class="back-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to all projects</span>
+      </a>
+    </div>
+
+    <header class="detail-header">
+      <div class="header-badges">
+        <span class="badge category-badge">{project.categoryLabel}</span>
+        <span class={`badge team-badge ${project.teamType === 'team' ? 'badge-team' : 'badge-solo'}`}>
+          {project.teamLabel}
+        </span>
+      </div>
+
+      <h1 class="project-title">{project.title}</h1>
+      <p class="project-summary-lead">{project.summary}</p>
+
+      <div class="header-actions">
+        {project.repoUrl && (
+          <a 
+            href={project.repoUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="action-btn source-btn"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            <span>View Source Repository</span>
+          </a>
+        )}
+
+        {project.prLinks && project.prLinks.map((pr) => (
+          <a 
+            href={pr.url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="action-btn pr-btn"
+          >
+            <span class={`pr-status-pill pr-${pr.status}`}>
+              {pr.status === 'merged' ? 'Merged' : 'Open'}
+            </span>
+            <span>{pr.title}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <section class="info-section">
+        <div class="info-card">
+          <h2 class="card-heading">Overview</h2>
+          <p class="description-text">{project.description}</p>
+        </div>
+
+        <div class="info-card">
+          <h2 class="card-heading">Team &amp; Authorship</h2>
+          <p class="team-credit-text">{project.teamCredit}</p>
+        </div>
+
+        <div class="info-card">
+          <h2 class="card-heading">Technology Stack</h2>
+          <div class="stack-tags-container">
+            {project.stack.map((tech) => (
+              <span class="detail-tech-tag">{tech}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2 class="gallery-heading">Visual Evidence &amp; Artifacts</h2>
+        <div class="screenshots-list">
+          {project.images.map((img, idx) => {
+            const meta = getProjectImage(img.srcPath);
+            const filename = img.srcPath.split('/').pop() || '';
+            return (
+              <figure class="screenshot-figure">
+                <div class="screenshot-frame">
+                  {meta ? (
+                    <Image 
+                      src={meta} 
+                      alt={img.caption} 
+                      width={1280} 
+                      height={760} 
+                      class="full-img"
+                      loading={idx === 0 ? "eager" : "lazy"}
+                    />
+                  ) : (
+                    <div class="image-missing">Artifact: {filename}</div>
+                  )}
+                </div>
+                <figcaption class="screenshot-caption">
+                  <span class="caption-index">{String(idx + 1).padStart(2, '0')}</span>
+                  <div class="caption-content">
+                    <p class="caption-desc">{img.caption}</p>
+                    <code class="caption-file">{filename}</code>
+                  </div>
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </section>
+    </div>
+
+    <!-- Next / Previous Navigation -->
+    <nav class="project-pagination" aria-label="Project pagination">
+      {prevProject ? (
+        <a href={`/projects/${prevProject.slug}`} class="page-link prev-link">
+          <span class="link-dir">← Previous Project</span>
+          <span class="link-title">{prevProject.title}</span>
+        </a>
+      ) : (
+        <div class="page-link-spacer"></div>
+      )}
+
+      {nextProject ? (
+        <a href={`/projects/${nextProject.slug}`} class="page-link next-link">
+          <span class="link-dir">Next Project →</span>
+          <span class="link-title">{nextProject.title}</span>
+        </a>
+      ) : (
+        <div class="page-link-spacer"></div>
+      )}
+    </nav>
+  </div>
+</Layout>
+
+<style>
+  .project-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .detail-nav {
+    display: flex;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+  }
+
+  .detail-header {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 32px;
+  }
+
+  .header-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+
+  .category-badge {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .badge-team {
+    background-color: rgba(59, 130, 246, 0.18);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .badge-solo {
+    background-color: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .project-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .project-summary-lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 72ch;
+    margin-bottom: 24px;
+  }
+
+  .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+  }
+
+  .source-btn {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+  }
+
+  .source-btn:hover {
+    background-color: var(--border-strong);
+    border-color: #64748b;
+  }
+
+  .pr-btn {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .pr-btn:hover {
+    border-color: var(--border-strong);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .pr-status-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+  }
+
+  .pr-merged {
+    background-color: rgba(168, 85, 247, 0.2);
+    color: #d8b4fe;
+  }
+
+  .pr-open {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #86efac;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media (min-width: 900px) {
+    .content-grid {
+      grid-template-columns: 360px 1fr;
+      align-items: start;
+    }
+  }
+
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+  }
+
+  .card-heading {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .description-text {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .team-credit-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .stack-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .detail-tech-tag {
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .gallery-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .gallery-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .screenshots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .screenshot-figure {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .screenshot-frame {
+    background-color: #0c0e14;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .image-missing {
+    padding: 60px 20px;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .screenshot-caption {
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .caption-index {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    background-color: var(--accent-tint);
+    padding: 3px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  .caption-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .caption-desc {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+
+  .caption-file {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+  }
+
+  .project-pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 36px;
+    margin-top: 24px;
+  }
+
+  .page-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 20px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: all 0.15s ease;
+  }
+
+  .page-link:hover {
+    border-color: var(--border-strong);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .prev-link {
+    text-align: left;
+  }
+
+  .next-link {
+    text-align: right;
+  }
+
+  .link-dir {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .link-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .page-link-spacer {
+    display: block;
+  }
+</style>

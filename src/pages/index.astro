@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { PROJECTS, CATEGORIES } from '../data/projects';
+---
+
+<Layout title="Aekarut Phetpradit — Portfolio">
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Aekarut Phetpradit</h1>
+      <p class="hero-role">KMUTT student · Software Developer</p>
+      <p class="hero-bio">
+        Building reliable mobile applications, exploratory AI/data research, low-level systems benchmarks, and contributing to open-source software tools.
+      </p>
+      <div class="hero-actions">
+        <a 
+          href="https://github.com/AokDesu" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="hero-btn primary-btn"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          <span>View on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="filter-controls" role="group" aria-label="Filter projects by category">
+        {CATEGORIES.map((cat, index) => {
+          const count = cat.id === 'all' 
+            ? PROJECTS.length 
+            : PROJECTS.filter(p => p.category === cat.id).length;
+          return (
+            <button 
+              type="button" 
+              class={`filter-btn ${index === 0 ? 'active' : ''}`}
+              data-filter={cat.id}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              <span>{cat.label}</span>
+              <span class="filter-count">({count})</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+      {PROJECTS.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <p>No projects match this category.</p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function setupFilters() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
+    const emptyState = document.getElementById('empty-state');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetCategory = btn.getAttribute('data-filter');
+
+        // Update active buttons
+        filterButtons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // Filter cards
+        let visibleCount = 0;
+        projectCards.forEach((card) => {
+          const cardCategory = card.getAttribute('data-category');
+          if (targetCategory === 'all' || cardCategory === targetCategory) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Toggle empty state
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
+    });
+  }
+
+  // Run on page load
+  setupFilters();
+  document.addEventListener('astro:after-swap', setupFilters);
+</script>
+
+<style>
+  .hero-section {
+    padding: 32px 0 54px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 48px;
+  }
+
+  .hero-content {
+    max-width: 720px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .hero-role {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 65ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.15s ease;
+  }
+
+  .primary-btn {
+    background-color: var(--text-primary);
+    color: var(--bg-page);
+  }
+
+  .primary-btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .portfolio-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .section-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    appearance: none;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    padding: 7px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+    background: var(--bg-surface-elevated);
+  }
+
+  .filter-btn.active {
+    background-color: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+
+  .filter-count {
+    opacity: 0.8;
+    font-size: 0.75rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px;
+    background: var(--bg-surface);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+</style>
