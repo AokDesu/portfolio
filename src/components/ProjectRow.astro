@@ -84,7 +84,7 @@ const { projects } = Astro.props;
     flex-direction: column;
     gap: 6px;
     padding: 14px 14px 16px;
-    min-height: 7.25rem;
+    min-height: 8.25rem;
     transition: opacity 240ms var(--ease);
   }
 
@@ -140,7 +140,7 @@ const { projects } = Astro.props;
 
     .col {
       flex: none;
-      height: 58px;
+      height: 50px;
       transition: height 480ms var(--ease);
       animation-name: rise-x;
     }
@@ -158,8 +158,10 @@ const { projects } = Astro.props;
       min-height: 0;
       justify-content: center;
       padding: 8px 12px;
-      gap: 2px;
+      gap: 1px;
     }
+
+    .col-title { font-size: 1rem; }
 
     .col-meta { flex-direction: row; }
     .col-meta span + span::before { content: '\00a0·\00a0'; }
