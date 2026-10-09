@@ -178,10 +178,7 @@ import { PROJECTS, CATEGORIES } from '../data/projects';
     transition: background-color 200ms var(--ease);
   }
 
-  .count {
-    font-weight: 500;
-    opacity: 0.7;
-  }
+  .count { font-weight: 450; }
 
   .filter[aria-pressed='true'] {
     background: var(--c, var(--ink));
@@ -196,8 +193,19 @@ import { PROJECTS, CATEGORIES } from '../data/projects';
     .name,
     .about { grid-column: 1 / -1; }
     .about { max-width: 36rem; }
+    .mast { padding-block: 20px 28px; row-gap: 18px; }
+    .about { gap: 8px; }
     .work-title,
     .filters { grid-column: 1 / -1; justify-content: flex-start; }
-    .filters { margin-inline: -12px; }
+    .legend { padding-block: 12px 4px; row-gap: 8px; }
+    .filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-inline: calc(var(--margin) * -1);
+      padding-inline: var(--margin);
+      gap: 2px;
+    }
+    .filter { padding: 6px 9px; white-space: nowrap; gap: 6px; }
   }
 </style>

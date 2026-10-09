@@ -114,6 +114,11 @@ Open `src/data/projects.ts` and append a new entry to the `PROJECTS` array:
 }
 ```
 
+Layout notes:
+- Each category has one flat colour, defined as `--mobile`, `--data`, `--tools`, `--oss` in `src/layouts/Layout.astro`. A new category needs a colour and an `--on` text colour that reaches 4.5:1 contrast on it.
+- Images taller than 1.6× their width are treated as phone screens: they sit side by side on a coloured shelf. Every other image gets its own wide plate. Images are never upscaled past their source width.
+- Design decisions live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
+
 ### 3. Verify Build
 Run the build to ensure images are processed by Astro's optimization pipeline:
 
