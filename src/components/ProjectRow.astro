@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import { getProjectImage, widthsFor } from '../utils/images';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<ol class="row" id="row">
+  {projects.map((project, i) => {
+    const cover = getProjectImage(project.coverImage);
+    return (
+      <li class="col" data-category={project.category} style={`--i:${i}`}>
+        <a
+          href={`/projects/${project.slug}`}
+          class="col-link"
+          style={`view-transition-name: field-${project.slug}`}
+        >
+          <span class="col-text">
+            <span class="col-title">{project.title}</span>
+            <span class="col-meta">
+              <span>{project.categoryLabel}</span>
+              <span>{project.teamType === 'team' ? 'Team work' : 'Solo'}</span>
+            </span>
+          </span>
+          <span class="col-plate">
+            {cover && (
+              <Image
+                src={cover}
+                alt=""
+                widths={widthsFor(cover, [320, 520])}
+                sizes="(max-width: 760px) 40vw, 26vw"
+                loading={i < 4 ? 'eager' : 'lazy'}
+              />
+            )}
+          </span>
+        </a>
+      </li>
+    );
+  })}
+</ol>
+
+<style>
+  .row {
+    list-style: none;
+    display: flex;
+    gap: 6px;
+    height: clamp(340px, 46svh, 480px);
+  }
+
+  .col {
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--c);
+    color: var(--on);
+    transition: flex-grow 560ms var(--ease);
+    animation: rise 600ms var(--ease) backwards;
+    animation-delay: calc(var(--i) * 30ms + 60ms);
+  }
+
+  @keyframes rise {
+    from { clip-path: inset(100% 0 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  .col:hover,
+  .col:focus-within { flex-grow: 2.3; }
+
+  .col-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .col-link:focus-visible { outline-offset: -6px; }
+
+  .col-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 14px 16px;
+    min-height: 8.25rem;
+    transition: opacity 240ms var(--ease);
+  }
+
+  .col-title {
+    font-size: clamp(1rem, 1.25vw, 1.1875rem);
+    font-weight: 720;
+    font-stretch: 90%;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .col-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    font-weight: 520;
+    line-height: 1.3;
+  }
+
+  .col-meta span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .col-plate {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    margin-inline: 10px;
+    overflow: hidden;
+    transition: opacity 240ms var(--ease);
+  }
+
+  .col-plate :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* Filtered out: the column keeps its place in the lineup as a colour sliver. */
+  .col.off { flex-grow: 0.12; }
+  .col.off .col-text,
+  .col.off .col-plate { opacity: 0; }
+
+  @media (max-width: 760px) {
+    .row {
+      flex-direction: column;
+      height: auto;
+      gap: 4px;
+      margin-inline: var(--margin);
+    }
+
+    .col {
+      flex: none;
+      height: 50px;
+      transition: height 480ms var(--ease);
+      animation-name: rise-x;
+    }
+
+    @keyframes rise-x {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    .col-link { flex-direction: row; }
+
+    .col-text {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      justify-content: center;
+      padding: 8px 12px;
+      gap: 1px;
+    }
+
+    .col-title { font-size: 1rem; }
+
+    .col-meta { flex-direction: row; }
+    .col-meta span + span::before { content: '\00a0·\00a0'; }
+
+    .col-plate {
+      flex: 0 0 30%;
+      margin: 6px 6px 0 0;
+    }
+
+    .col.off { height: 8px; }
+  }
+</style>

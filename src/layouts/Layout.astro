@@ -1,0 +1,259 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  home?: boolean;
+}
+
+const {
+  title,
+  description = "Portfolio of Aekarut Phetpradit — KMUTT student building mobile applications, AI systems, low-level systems benchmarks, and open-source contributions.",
+  home = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f2f3f4" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar grid">
+      {home ? (
+        <span class="topbar-name">Aekarut Phetpradit</span>
+      ) : (
+        <a href="/" class="topbar-name">Aekarut Phetpradit</a>
+      )}
+      <nav class="topbar-nav" aria-label="Site">
+        <a href="/#work">Projects</a>
+        <a href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">
+          GitHub<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5l-7 7" /></svg>
+        </a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="colophon">
+      <div class="grid colophon-inner">
+        <p class="colophon-name">Aekarut Phetpradit</p>
+        <p class="colophon-role">KMUTT student · Software Developer</p>
+        <a class="colophon-link" href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">
+          github.com/AokDesu<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5l-7 7" /></svg>
+        </a>
+        <p class="colophon-note">Built with Astro · Hosted on Vercel</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --paper: #f2f3f4;
+    --ink: #141414;
+    --ink-soft: #4a4a46;
+    --rule: #141414;
+
+    /* One flat field per category; --on is the text colour that clears 4.5:1 on it. */
+    --mobile: #1f3fd1;
+    --mobile-on: #ffffff;
+    --data: #ff5a1f;
+    --data-on: #141414;
+    --tools: #0a7148;
+    --tools-on: #ffffff;
+    --oss: #ffd21a;
+    --oss-on: #141414;
+
+    --font: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+    --margin: clamp(16px, 3.4vw, 48px);
+    --gutter: clamp(12px, 1.7vw, 24px);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: light;
+    scrollbar-color: var(--ink) var(--paper);
+  }
+
+  [data-category='mobile-apps'] { --c: var(--mobile); --on: var(--mobile-on); }
+  [data-category='ai-data'] { --c: var(--data); --on: var(--data-on); }
+  [data-category='tools-systems'] { --c: var(--tools); --on: var(--tools-on); }
+  [data-category='open-source'] { --c: var(--oss); --on: var(--oss-on); }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 100%;
+    line-height: 1.5;
+    font-kerning: normal;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    overflow-x: clip;
+  }
+
+  main { flex: 1; }
+
+  ::selection { background: var(--oss); color: var(--ink); }
+
+  [hidden] { display: none !important; }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; height: auto; }
+  button { font: inherit; color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    padding-inline: var(--margin);
+  }
+
+  .ext {
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: 0.3em;
+    vertical-align: 0.05em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: square;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skip {
+    position: absolute;
+    left: var(--margin);
+    top: -100px;
+    z-index: 10;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    font-weight: 600;
+  }
+  .skip:focus { top: 8px; }
+
+  .topbar {
+    align-items: baseline;
+    padding-block: 18px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  .topbar-name { grid-column: 1 / span 6; }
+
+  .topbar-nav {
+    grid-column: 7 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 28px;
+  }
+
+  .topbar a,
+  .colophon-link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 160ms var(--ease);
+  }
+
+  .topbar a:hover,
+  .colophon-link:hover { text-decoration-color: currentColor; }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: clamp(80px, 10vw, 160px);
+  }
+
+  .colophon-inner {
+    row-gap: 6px;
+    padding-block: clamp(40px, 5vw, 72px);
+    align-items: baseline;
+  }
+
+  .colophon-name {
+    grid-column: 1 / span 6;
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    font-weight: 750;
+    font-stretch: 88%;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  .colophon-role,
+  .colophon-link,
+  .colophon-note {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .colophon-role { grid-column: 7 / span 3; }
+  .colophon-link { grid-column: 10 / -1; justify-self: end; }
+  .colophon-note { grid-column: 7 / -1; color: #b9b9b2; margin-top: 18px; }
+
+  @media (max-width: 760px) {
+    .topbar-name { grid-column: 1 / span 5; }
+    .topbar-nav { grid-column: 6 / -1; gap: 18px; }
+    .colophon-name,
+    .colophon-role,
+    .colophon-link,
+    .colophon-note { grid-column: 1 / -1; justify-self: start; }
+    .colophon-name { margin-bottom: 10px; }
+  }
+
+  @view-transition { navigation: auto; }
+
+  ::view-transition-group(*) {
+    animation-duration: 520ms;
+    animation-timing-function: var(--ease);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

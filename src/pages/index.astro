@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import ProjectBand from '../components/ProjectBand.astro';
+import { PROJECTS, CATEGORIES } from '../data/projects';
+---
+
+<Layout title="Aekarut Phetpradit — Portfolio" home>
+  <section class="mast grid" aria-labelledby="name">
+    <h1 class="name" id="name">Aekarut<br />Phetpradit</h1>
+    <div class="about">
+      <p class="role">KMUTT student · Software Developer</p>
+      <p class="intro">
+        Building reliable mobile applications, exploratory AI/data research, low-level systems benchmarks, and contributing to open-source software tools.
+      </p>
+      <a class="gh" href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">
+        View on GitHub<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2.5h6v6M9.5 2.5l-7 7" /></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-title">
+    <div class="legend grid">
+      <h2 class="work-title" id="work-title">Selected Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects by category">
+        {CATEGORIES.map((cat, index) => {
+          const count = cat.id === 'all'
+            ? PROJECTS.length
+            : PROJECTS.filter((p) => p.category === cat.id).length;
+          return (
+            <button
+              type="button"
+              class="filter"
+              data-filter={cat.id}
+              data-category={cat.id === 'all' ? undefined : cat.id}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              {cat.id !== 'all' && <span class="swatch" aria-hidden="true" />}
+              <span>{cat.label}</span>
+              <span class="count">{count}</span>
+            </button>
+          );
+        })}
+      </div>
+      <p class="sr-only" id="filter-status" aria-live="polite"></p>
+    </div>
+
+    <ProjectRow projects={PROJECTS} />
+
+    <div class="bands">
+      {PROJECTS.map((project) => <ProjectBand project={project} />)}
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const cols = document.querySelectorAll<HTMLElement>('.row .col');
+  const bands = document.querySelectorAll<HTMLElement>('.bands .band');
+  const status = document.getElementById('filter-status');
+
+  for (const btn of buttons) {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.filter ?? 'all';
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b === btn));
+
+      let shown = 0;
+      for (const col of cols) {
+        const match = target === 'all' || col.dataset.category === target;
+        col.classList.toggle('off', !match);
+        col.toggleAttribute('inert', !match);
+        if (match) shown++;
+      }
+      for (const band of bands) {
+        band.hidden = !(target === 'all' || band.dataset.category === target);
+      }
+      if (status) {
+        const label = btn.querySelector('span:not(.swatch):not(.count)')?.textContent ?? '';
+        status.textContent = `${label}: ${shown} of ${cols.length} projects`;
+      }
+    });
+  }
+</script>
+
+<style>
+  .mast {
+    padding-block: clamp(28px, 4vw, 56px) clamp(36px, 4.5vw, 64px);
+    align-items: end;
+    row-gap: 28px;
+  }
+
+  .name {
+    grid-column: 1 / span 8;
+    font-size: clamp(2.75rem, 7.4vw, 6rem);
+    font-weight: 820;
+    font-stretch: 86%;
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+  }
+
+  .about {
+    grid-column: 9 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 0.35rem;
+  }
+
+  .role {
+    font-size: 1.0625rem;
+    font-weight: 680;
+    letter-spacing: -0.01em;
+  }
+
+  .intro {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 40ch;
+  }
+
+  .gh {
+    align-self: flex-start;
+    margin-top: 6px;
+    font-size: 0.9375rem;
+    font-weight: 650;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+    transition: text-underline-offset 220ms var(--ease);
+  }
+
+  .gh:hover { text-underline-offset: 0.45em; }
+
+  .legend {
+    align-items: center;
+    row-gap: 14px;
+    padding-block: 14px;
+    border-top: 2px solid var(--rule);
+    margin-bottom: 10px;
+  }
+
+  .work-title {
+    grid-column: 1 / span 3;
+    font-size: 1.0625rem;
+    font-weight: 720;
+    letter-spacing: -0.01em;
+  }
+
+  .filters {
+    grid-column: 4 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .filter {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 200ms var(--ease), color 200ms var(--ease);
+  }
+
+  .filter:hover { background: rgb(20 20 20 / 0.07); }
+
+  .swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--c);
+    transition: background-color 200ms var(--ease);
+  }
+
+  .count { font-weight: 450; }
+
+  .filter[aria-pressed='true'] {
+    background: var(--c, var(--ink));
+    color: var(--on, var(--paper));
+  }
+
+  .filter[aria-pressed='true'] .swatch { background: currentColor; }
+
+  .bands { margin-top: clamp(80px, 9vw, 140px); }
+
+  @media (max-width: 760px) {
+    .name,
+    .about { grid-column: 1 / -1; }
+    .about { max-width: 36rem; }
+    .mast { padding-block: 8px 24px; row-gap: 16px; }
+    .intro { line-height: 1.4; }
+    .about { gap: 8px; }
+    .work-title,
+    .filters { grid-column: 1 / -1; justify-content: flex-start; }
+    .legend { padding-block: 12px 4px; row-gap: 8px; }
+    .filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-inline: calc(var(--margin) * -1);
+      padding-inline: var(--margin);
+      gap: 2px;
+    }
+    .filter { padding: 6px 9px; white-space: nowrap; gap: 6px; }
+  }
+</style>
