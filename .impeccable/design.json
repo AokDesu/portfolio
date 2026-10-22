@@ -326,7 +326,7 @@
     "breakpoints": [
       {
         "name": "stage",
-        "value": "900px wide and 560px tall",
+        "value": "900px wide and 720px tall",
         "purpose": "Pinned 3D stage may run at or above this size."
       },
       {
