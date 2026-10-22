@@ -111,6 +111,17 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
   :global(html[data-world='active']) .lead { font-size:min(clamp(22px,2.2vw,32px),3.6vh); max-width:30ch; margin-bottom:min(18px,2.2vh); }
   :global(html[data-world='active']) .copy { font-size:min(18px,2.4vh); max-width:48ch; margin-bottom:min(24px,2.8vh); }
   :global(html[data-world='active']) .role-note { margin-bottom:min(20px,2.4vh); }
+  @media(max-height:719px) {
+    :global(html[data-world='active']) .station-inner { padding-block:84px 64px; }
+    :global(html[data-world='active']) .back { min-height:28px; margin-bottom:6px; font-size:13px; }
+    :global(html[data-world='active']) .text-link { min-height:36px; padding-block:4px; }
+    :global(html[data-world='active']) h1 { font-size:min(clamp(34px,4.4vw,56px),8vh); margin-block:8px 12px; }
+    :global(html[data-world='active']) h1.long { font-size:min(clamp(30px,3.6vw,46px),7vh); }
+    :global(html[data-world='active']) h2 { font-size:min(clamp(28px,3.2vw,44px),6vh); margin-bottom:12px; }
+    :global(html[data-world='active']) .lead { font-size:clamp(17px,1.6vw,22px); max-width:36ch; margin-bottom:10px; }
+    :global(html[data-world='active']) .copy { font-size:14px; line-height:1.5; max-width:56ch; margin-bottom:12px; }
+    :global(html[data-world='active']) .role-note { font-size:13px; line-height:1.45; margin-bottom:10px; }
+  }
   .station-label { max-width:520px; position:relative; z-index:2; min-width:0; }
   .station + .station { border-top:1px solid var(--line); }
   :global(html[data-world='active']) .station { border-top:0; }

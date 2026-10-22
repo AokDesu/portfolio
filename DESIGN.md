@@ -82,7 +82,7 @@ Desktop: fluid outer margins clamp(20px, 4.5vw, 72px), a 5:6 text/art split with
 
 **Pinned stage (3D running).** The collection becomes one sticky 100vh stage; all stations share it and the scene's camera decides which one is in front. Each station owns one viewport of native scroll: it rests for the first 30% and last 15%, and the camera flies to the next station in between. Labels cross-fade with a 48px drift that follows the camera; captions appear only once their exhibit has settled. A bottom rail names the current station and links to every station; in-page links, the rail and keyboard focus move the camera to the station instead of relying on anchor scroll. When the stage ends, the page continues in normal flow (DroneAid facts, footer) and the navigation regains its solid bar. No wheel interception or scroll-jacking: native scroll is authoritative, the camera follows it with damping.
 
-**Normal flow (no 3D).** Below 900px wide or 720px tall, and whenever the scene is not running, every station is a normal-flow section: text, then artifact on desktop's 5:6 grid or stacked on phones, equal-width phones sharing one baseline. No horizontal pan or tiny 3D text. At 390px, 20px gutters; at 320px, 16px. Long project names wrap. Facts become single-column rows when necessary.
+**Normal flow (no 3D).** Below 900px wide or 560px tall, and whenever the scene is not running, every station is a normal-flow section: text, then artifact on desktop's 5:6 grid or stacked on phones, equal-width phones sharing one baseline. No horizontal pan or tiny 3D text. At 390px, 20px gutters; at 320px, 16px. Long project names wrap. Facts become single-column rows when necessary.
 
 ## Elevation & Depth
 

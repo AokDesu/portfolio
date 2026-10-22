@@ -16,7 +16,7 @@
   const sections = [...(track?.querySelectorAll<HTMLElement>('[data-station]') ?? [])];
   const rail = track?.querySelector<HTMLElement>('[data-rail]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const roomy = matchMedia('(min-width: 900px) and (min-height: 720px)');
+  const roomy = matchMedia('(min-width: 900px) and (min-height: 560px)');
   const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
   const STILL_KEY = 'gallery-view';
   let still = localStorage.getItem(STILL_KEY) === 'still';
