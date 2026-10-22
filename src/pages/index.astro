@@ -4,35 +4,32 @@ import GalleryWorld from '../components/GalleryWorld.astro';
 import Exhibit from '../components/Exhibit.astro';
 import { PROJECTS } from '../data/projects';
 
-const drone = PROJECTS.find(project => project.slug === 'droneaid')!;
-const rest = PROJECTS.filter(project => project !== drone);
-const kinds: Record<string, 'phone' | 'browser' | 'paper' | 'window'> = { scamreport: 'phone', 'spaceship-titanic': 'paper', firstmate: 'browser' };
-const cover = (project: (typeof PROJECTS)[number]) => {
-  const image = project.images.find(item => item.srcPath === project.coverImage);
-  return { path: project.coverImage, caption: image?.caption ?? project.title };
-};
-const credit = (project: (typeof PROJECTS)[number]) => project.teamType === 'team' ? 'Team work' : 'Individual contribution';
+type Project = (typeof PROJECTS)[number];
+const [first, ...rest] = PROJECTS;
+const cover = (project: Project) => project.cover.map(index => {
+  const image = project.images[index];
+  return { path: image.srcPath, caption: image.caption, alt: image.alt };
+});
+const kind = (project: Project) => project.images[project.cover[0]].kind;
+const credit = (project: Project) => project.teamType === 'team' ? 'Team work' : 'Individual contribution';
 ---
 <GalleryLayout title="Aekarut Phetpradit — Portfolio" home>
   <div class="collection" id="work" data-track>
     <div class="stage" data-stage>
       <GalleryWorld />
-      <section class="station opening" id="droneaid" data-station data-title="DroneAid" data-category="mobile-apps" aria-labelledby="name">
+      <section class="station opening" id={first.slug} data-station data-title={first.title} data-category={first.category} aria-labelledby="name">
         <div class="station-inner">
           <div class="station-label">
             <h1 id="name">Aekarut<br />Phetpradit</h1>
             <p class="role">KMUTT student · Software Developer</p>
             <p class="intro">Mobile experiences, systems from first principles, and the tools in between.</p>
             <div class="hero-work">
-              <p class="category-line">{drone.categoryLabel} · {credit(drone)}</p>
-              <a href="/projects/droneaid/" class="text-link">Explore DroneAid <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
+              <p class="category-line">{first.categoryLabel} · {credit(first)}</p>
+              <a href={`/projects/${first.slug}/`} class="text-link">Explore {first.title} <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
             </div>
           </div>
           <div class="station-art">
-            <Exhibit kind="phone" eager scene items={[
-              { path: drone.images[1].srcPath, caption: drone.images[1].caption },
-              { path: drone.images[2].srcPath, caption: drone.images[2].caption },
-            ]} />
+            <Exhibit kind={kind(first)} eager scene items={cover(first)} />
           </div>
           <a class="scroll-cue" href={`#${rest[0].slug}`}>Scroll through the collection <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v13M3 9l5 5 5-5" /></svg></a>
         </div>
@@ -48,15 +45,15 @@ const credit = (project: (typeof PROJECTS)[number]) => project.teamType === 'tea
               <a href={`/projects/${project.slug}/`} class="text-link">View project<span class="sr-only">: {project.title}</span> <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
             </div>
             <div class="station-art">
-              <Exhibit kind={kinds[project.slug] ?? 'window'} scene items={[cover(project)]} />
+              <Exhibit kind={kind(project)} scene items={cover(project)} />
             </div>
           </div>
         </section>
       ))}
       <nav class="rail" data-rail aria-label="Collection">
-        <span>Now showing <span class="rail-current" data-rail-current>{drone.title}</span></span>
+        <span>Now showing <span class="rail-current" data-rail-current>{first.title}</span></span>
         <ol>
-          {[drone, ...rest].map((project, index) => (
+          {PROJECTS.map((project, index) => (
             <li><a href={`#${project.slug}`} data-rail-index={index} aria-current={index === 0 ? 'step' : undefined}><span class="sr-only">{project.title}</span></a></li>
           ))}
         </ol>

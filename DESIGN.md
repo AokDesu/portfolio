@@ -66,7 +66,7 @@ Redesign decision: **Replace direction.** The Swiss Poster Series is superseded,
 
 Fixed: static Astro/Vercel, real captured evidence, honest team credit, HTML text, direct project access, the approved personal details, complete non-3D access. Flexible: composition, light, framing, typography weights. Assumption: retain the already self-hosted Archivo rather than add a font download.
 
-Primary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: graphite frames, dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.
+Primary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: real device models in graphite (one phone, one monitor), dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.
 
 ## Colors
 
@@ -88,7 +88,7 @@ Desktop: fluid outer margins clamp(20px, 4.5vw, 72px), a 5:6 text/art split with
 
 One Three.js scene per page, one perspective camera (36° vertical FOV) and one continuous floor. Stations stand 17 units apart in depth; each next station sits 2.2 units further left, so the camera always passes beside the exhibit it leaves, never through it. At rest the camera is exactly 9 units in front of a station, and every mesh is built from its HTML placeholder's rectangle, so the 3D exhibit occupies the same place and size as the still image and its caption. Paired phones turn 8.6° toward each other in a symmetric V; single exhibits turn 5° toward their wall label.
 
-Light falls on the work: each station has a plinth reaching to the floor, a faint additive light beam from above, a warm light pool on the floor and a 1px category-colour line on the plinth's front edge (the only category colour in the scene). Screens are unlit textures, so they read as glowing. Graphite frames are real extrusions with bevels, lit by a warm key light and a cool rim light. Fog fades the next station into darkness. No particles, bloom passes, orbit toys or fake KPI sculptures.
+Light falls on the work: each station has a plinth reaching to the floor, a faint additive light beam from above, a warm light pool on the floor and a 1px category-colour line on the plinth's front edge (the only category colour in the scene). The exhibits are real 3D models, both CC0 from Poly Pizza and free of brand marks: "Smartphone" by smallbigsquare (19 KB) for every phone capture, "Monitor" by CreativeTrio (15 KB) for every terminal, browser, chart and diagram capture. Only their geometry is used, in the gallery's graphite; the capture is an unlit texture on the device's screen, so screens read as glowing. The phone is scaled so its display is exactly the capture's 344:660 rectangle. The monitor is fitted with a nine-slice: its screen stretches to the capture's aspect while bezel, neck and base keep the model's proportions, and it stands on the plinth; in 3D the HTML caption moves down by the stand's height so it still sits on the plinth. A warm key light and a cool rim light model the devices. Fog fades the next station into darkness. No particles, bloom passes, orbit toys or fake KPI sculptures.
 
 HTML images exist and are visible before the library loads; the 3D layer replaces them only after every texture has loaded, in the same frame the stage pins. Captions and accessible image descriptions stay in the DOM. WebGL unavailable or lost, reduced motion, small viewports, data-saving, low memory/cores and sustained slow frames keep the normal-flow version; Three.js is not even downloaded when the check fails up front. Visitors can choose still view at any time; the choice persists across pages.
 
@@ -96,13 +96,13 @@ The canvas has a dark reading mask behind the label column (0–46% width) and s
 
 ## Shapes
 
-Phone viewport: **344×660**, every screen at this aspect ratio, and **one phone width per page** (`--phone-w`: up to 56vh of height, half the art column, 280px cap; on phones half the content width, 210px cap). Every phone exhibit, single or paired, uses it, so any two screens shown together match. Shared graphite frame proportional to that width: 3% inset, 8.5% inner and 11.5% outer radius (about 8px / 22px / 30px at desktop size), identical in CSS and in the 3D extrusion. No stretching or cropping app content to fill it. Pairs share size, orientation and baseline. Browser viewport: 8px corners, small shared neutral header; no GitHub global navigation in the capture. Terminal: captured window only, no added second titlebar. Charts and architecture: square paper, tightly cropped with readable labels. Wide exhibits are capped at 52vh tall and 90% of the art column.
+Phone viewport: **344×660**, every screen at this aspect ratio, and **one phone width per page** (`--phone-w`: up to 56vh of height (54vh in 3D), half the art column, 280px cap (270px in 3D); on phones half the content width, 210px cap). Every phone exhibit, single or paired, uses it, so any two screens shown together match. Shared graphite frame proportional to that width: 3% inset, 8.5% inner and 11.5% outer radius (about 8px / 22px / 30px at desktop size), matching the phone model's bezel in 3D. No stretching or cropping app content to fill it. Pairs share size, orientation and baseline. Browser viewport: 8px corners, small shared neutral header; no GitHub global navigation in the capture. Terminal: captured window only, no added second titlebar. Charts and architecture: square paper, tightly cropped with readable labels. Wide exhibits are capped at 52vh tall (40vh in 3D, leaving room for the monitor's stand) and 90% of the art column; their caption carries an "Open full size" link.
 
 ## Components
 
 Foundation: semantic Astro/HTML and CSS, no UI framework. Native details/summary is the always-available project index. Native links remain functional without JavaScript. Buttons use 44px minimum targets, 2px accent focus outlines and visible text states.
 
-GalleryWorld: one progressive Three.js enhancement, dynamically imported two frames after content paints, and only when the capability check passes. Exhibit: real optimized Astro images with one figcaption per figure, reused as textures; `kind` is phone, browser, paper or window. Stage: the `[data-track]` collection with a `[data-stage]` that pins only while the scene runs. Rail: current station name plus one link per station, shown only on the pinned stage. ProjectLabel: selectable HTML heading, summary, category, credit, detail link. Facts: definition list, not chips. Footer: name, role, GitHub only.
+GalleryWorld: one progressive Three.js enhancement, dynamically imported two frames after content paints, and only when the capability check passes. Exhibit: real optimized Astro images with one figcaption per figure, reused as textures on the phone or monitor model; `kind` is phone, browser, paper or window. Stage: the `[data-track]` collection with a `[data-stage]` that pins only while the scene runs. Rail: current station name plus one link per station, shown only on the pinned stage. ProjectLabel: selectable HTML heading, summary, category, credit, detail link. Facts: definition list, not chips. Footer: name, role, GitHub only.
 
 ## Do's and Don'ts
 
@@ -112,6 +112,7 @@ GalleryWorld: one progressive Three.js enhancement, dynamically imported two fra
 - Do use category color sparingly and lighting only to explain physical depth.
 - Don't revive colored plates, the expanding column accordion, heavy condensed poster type or a dark card grid.
 - Don't hide content for an entrance animation, draw text in WebGL, require a GPU, distort screenshots, or imply a prototype is a running production app.
+- Don't use device models with brand marks or licences that need more than a credit; every model is credited in the footer.
 
 ## Motion
 
@@ -120,7 +121,7 @@ Camera follows the scroll position with time-based exponential damping (rate 7/s
 ## Signature Details
 
 - Two matching screen frames, equal size and baseline, turned toward each other in a symmetric V: software shown as a coherent system rather than mismatched mockups.
-- One continuous floor with a plinth, beam and light pool per station: the camera travels through one collection rather than separate isolated effects.
+- One continuous floor with a plinth, beam and light pool per station, and real phone and monitor models on the plinths: the camera travels through one collection rather than separate isolated effects.
 - The still image and the lit 3D exhibit occupy the same rectangle, so switching views or losing WebGL never moves the work.
 - Quiet wall-label facts: the work is spectacular; the evidence stays matter-of-fact.
 
@@ -133,9 +134,9 @@ Camera follows the scroll position with time-based exponential damping (rate 7/s
 
 ## Screens
 
-Home problem: eight colored strips crop evidence and repeat into colored bands. Replacement: one pinned stage the camera flies through, opening on the name, role and the DroneAid pair, then one station per project with an HTML wall label and its cover exhibit on a lit plinth; a rail and the project index reach any project without flying through the rest. Default/loading/error state is the complete static gallery, never a loading screen.
+Home problem: eight colored strips crop evidence and repeat into colored bands. Replacement: one pinned stage the camera flies through, opening on the name, role and the DroneAid pair, then one station per project in collection order (applications first: DroneAid, ScamReport, Poke Monopoly Rules Helper, NumMaiLai, dev-memory-ai; then Spaceship Titanic EDA, Neural Network From Scratch, Basic Memory Access Benchmark, Firstmate Contributions), each with an HTML wall label and its cover exhibit on a lit plinth; a rail and the project index reach any project without flying through the rest. Default/loading/error state is the complete static gallery, never a loading screen.
 
-DroneAid problem: 520×1126 images contain a 344×660 phone surrounded by prototype-page padding. Replacement: exact app crops in one shared frame across three stations — the opening pair (request, tracking; same framing as the home station, so the click reads as stepping closer), the two-roles pair (civilian sign-in, coordinator map) and the architecture diagram on its own white paper — then a normal-flow facts section with context, stack, contribution, screen provenance and source. Every screen appears once.
+Project pages problem: 520×1126 images contained a 344×660 phone surrounded by prototype-page padding; other captures carried dark padding, GitHub's site bars and colour plates. Replacement: one template for every project. An opening station (title, lead, summary, credit, the cover exhibit), one station per authored stop in the project's data (a short heading, one or two sentences, a matched phone pair or one capture), then a normal-flow facts section (context, stack, contribution, what the images are, image credits, pull requests, source or "Private repository") and the next project. Every image appears once. DroneAid: request/tracking pair, then the two roles, then the architecture. The rail reads the project name at the opening and "Project · Station" after it.
 
 ## Accessibility
 
@@ -145,7 +146,7 @@ Text contrast ≥4.5:1; large type ≥3:1. Visible focus, skip link, semantic la
 
 - Preserve project data, routing, captions' provenance, team credit, source links, image optimization and native scrolling.
 - Replace ProjectRow and ProjectBand on the home page with the continuous gallery; remove obsolete unused components.
-- Recompose the shared shell for the night gallery; DroneAid gets the complete new detail surface in preview. Other detail pages and remaining captures migrate only after approval.
+- Recompose the shared shell for the night gallery; every project page uses the new gallery template and the old Swiss detail layout is removed.
 - Replace paper #f2f3f4 / ink #141414 with stage #101211 / ink #eeeae2; soft ink #4a4a46 becomes #aaa9a4.
 - Replace region-scale #1f3fd1/#ff5a1f/#0a7148/#ffd21a with small #9bd4c5/#dcb997/#afc2db/#d6ce9a accents.
 - Keep Archivo and exponential easing; replace 750–820 condensed headings with 450 normal-width headings.
@@ -154,7 +155,3 @@ Text contrast ≥4.5:1; large type ≥3:1. Visible focus, skip link, semantic la
 ## Removed
 
 Colored capture plates (compete with artifacts); sliver-filter navigation (hides project names); filename-as-primary-caption (obscures meaning); artificial loading/reveal states (delay evidence). Category filtering remains in the direct project index, with all projects recoverable through All Projects.
-
-## Preview boundary
-
-Approval checkpoint: home and DroneAid, not permission to ship the whole refresh. Remaining project pages and the private Poke Monopoly Rules Helper follow only after firstmate relays approval. The previous design snapshot is preserved outside the repository in preview/DESIGN.v1.md so it cannot compete with this normative contract.

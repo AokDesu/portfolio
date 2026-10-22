@@ -71,7 +71,7 @@
       await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
       const { mountGallery } = await import('../scripts/gallery-world.js');
       if (current !== generation) return;
-      const api = await mountGallery({ host, track, stage, sections, onFailure: () => { failed = true; ++generation; teardown(); label(); } }) as World | null;
+      const api = await mountGallery({ host, track, stage, sections, modelBase: '/models/', onFailure: () => { failed = true; ++generation; teardown(); label(); } }) as World | null;
       if (!api) return;
       if (current !== generation) { api.dispose(); return; }
       const fromTop = scrollY < 8;

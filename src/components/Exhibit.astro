@@ -35,13 +35,15 @@ const sizes = kind === 'phone' ? '(max-width: 899px) 45vw, 300px' : '(max-width:
           class="artifact-image"
         />
       </div>
-      <figcaption>{caption}</figcaption>
+      <figcaption>{caption}{kind !== 'phone' && <> <a class="full-size" href={image.src} target="_blank" rel="noopener">Open full size<span class="sr-only"> image</span></a></>}</figcaption>
     </figure>
   ))}
 </div>
 <style>
   .exhibit { display:flex; justify-content:center; align-items:flex-start; gap:var(--pair-gap); min-width:0; }
   .artifact { min-width:0; }
+  .full-size { color:var(--ink); text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+  .full-size:hover { text-decoration-color:var(--accent); }
   .artifact-frame { overflow:hidden; box-shadow:0 30px 60px -20px rgb(0 0 0 / .55); }
   .artifact-image { display:block; width:100%; height:auto; }
 
@@ -63,6 +65,7 @@ const sizes = kind === 'phone' ? '(max-width: 899px) 45vw, 300px' : '(max-width:
   .exhibit-phone figcaption { min-height:3lh; }
   .exhibit-phone:not(.exhibit-pair) figcaption { width:calc(var(--phone-w) * 2); margin-inline:calc(var(--phone-w) * -.47); text-align:center; }
   :global(html[data-world='active']) [data-in-scene] .artifact-frame { opacity:0; }
+  :global(html[data-world='active']) [data-in-scene] figcaption { margin-top:calc(var(--stand, 0px) + var(--caption-gap)); }
   /* Still view keeps the gallery lighting: a soft pool of warm light behind the work. */
   .exhibit { position:relative; isolation:isolate; }
   .exhibit::before { content:''; position:absolute; inset:-14% -18% 18%; z-index:-1; pointer-events:none; background:radial-gradient(ellipse 50% 50% at 50% 45%, rgb(243 230 208 / .085), rgb(243 230 208 / 0)); }

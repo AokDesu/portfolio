@@ -6,13 +6,16 @@ Hosted statically on [Vercel](https://vercel.com).
 
 ## 🚀 Projects Included
 
+Software and applications first, then studies and open-source work (the same order as the site):
+
 - **DroneAid**: Drone-based relief-supply delivery simulator for conflict zones (Flutter + Firebase).
 - **ScamReport**: Mobile scam reporting and intelligence feed (Flutter + Elysia.js + TypeBox).
+- **Poke Monopoly Rules Helper**: Rulebook chatbot that answers only from cited passages (Python BM25 + Claude Haiku); private repository.
+- **NumMaiLai**: Real-time water outage monitor with Discord alerts and GIS dashboard (Python, MWA API).
+- **dev-memory-ai**: Semantic codebase memory engine and Model Context Protocol (MCP) server (TypeScript, Tree-sitter, Prisma).
 - **Spaceship Titanic EDA**: Kaggle exploratory data analysis with 12 empirical findings (Python, Pandas, Seaborn).
 - **Neural Network From Scratch**: Deep learning engine written from first principles in C++ (C++20, Matrix math, MNIST).
 - **Basic Memory Access Benchmark**: Cache line access and zero-cost abstraction latency study in C++ (C++20, GCC -O3).
-- **NumMaiLai**: Real-time water outage monitor with Discord alerts and GIS dashboard (Python, MWA API).
-- **dev-memory-ai**: Semantic codebase memory engine and Model Context Protocol (MCP) server (TypeScript, Tree-sitter, Prisma).
 - **Firstmate Contributions**: Open-source pull requests contributed to `kunchenguid/firstmate`.
 
 ---
@@ -89,7 +92,7 @@ Write an `about.md` containing:
 - How each numbered screenshot was captured
 
 ### 2. Register the Project
-Open `src/data/projects.ts` and append a new entry to the `PROJECTS` array:
+Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its position is its place in the collection (home page, project index and "next project"): software and applications before studies and contributions.
 
 ```typescript
 {
@@ -97,27 +100,35 @@ Open `src/data/projects.ts` and append a new entry to the `PROJECTS` array:
   title: 'My Project Title',
   category: 'mobile-apps', // 'mobile-apps' | 'ai-data' | 'tools-systems' | 'open-source'
   categoryLabel: 'Mobile Apps',
-  summary: 'A short 1-2 sentence card summary.',
+  summary: 'A 1-2 sentence summary for the home page.',
+  lead: 'One line under the project title.',
   description: 'Full one-paragraph description from about.md.',
-  stack: ['TypeScript', 'Astro', 'TailwindCSS'],
+  stack: ['TypeScript', 'Astro'],
   teamType: 'solo', // 'team' | 'solo'
   teamLabel: 'Solo Project',
+  roleNote: 'Individual project.',
   teamCredit: 'Project authored by Aekarut Phetpradit.',
-  repoUrl: 'https://github.com/AokDesu/my-project',
-  coverImage: '/src/content/projects/mobile-apps/my-project/01-cover.png',
+  repoUrl: 'https://github.com/AokDesu/my-project', // null with privateRepo: true for a private repository
+  evidence: 'What the images are, for the facts list.',
+  cover: [0, 1], // images shown with the opening and on the home page
+  stations: [
+    { id: 'detail', title: 'A short heading.', copy: 'One or two sentences.', images: [2] },
+  ],
   images: [
     {
       srcPath: '/src/content/projects/mobile-apps/my-project/01-cover.png',
-      caption: 'Detailed explanation of what this image shows and how it was produced.',
+      kind: 'phone', // 'phone' | 'browser' | 'paper' | 'window'
+      caption: 'What this image shows and how it was produced.',
     },
   ],
 }
 ```
 
 Layout notes:
-- The night-gallery preview covers the home page and DroneAid. Other project detail pages retain their previous presentation until the preview is approved. `DESIGN.md` is the new direction; old category plates are not rules for new work.
-- `GalleryLayout.astro` supplies the project index and the pinned-stage CSS. A page opts into the 3D gallery by wrapping its stations in `[data-track]` > `[data-stage]`, marking each station `[data-station]` (with `id` and `data-title`), and placing `<GalleryWorld />` inside the stage. `GalleryWorld.astro` decides whether the scene may run (viewport at least 900×560, no reduced motion, no data-saving, WebGL available, enough memory and cores, not switched to Still view) and only then imports `src/scripts/gallery-world.js` (Three.js). Otherwise, and until every texture has loaded, the stations stay in normal flow with their HTML images.
-- `Exhibit.astro` owns shared frames: `kind` is `phone`, `browser`, `paper` or `window`, and `scene` makes it a lit object in the 3D gallery. Every phone on a page uses the same `--phone-w`, so screens shown together match. Phone images are app-only 344×660 captures, never stretched; terminal captures contain only their window, browser captures omit site chrome, and charts retain matching paper. The preview remakes all home covers and all DroneAid images; remaining detail captures follow in phase two.
+- Every project page is generated from this entry by `src/pages/projects/[slug].astro`: an opening with the cover images, one station per entry in `stations`, then the facts and the next project.
+- `GalleryLayout.astro` supplies the project index and the pinned-stage CSS. A page opts into the 3D gallery by wrapping its stations in `[data-track]` > `[data-stage]`, marking each station `[data-station]` (with `id` and `data-title`), and placing `<GalleryWorld />` inside the stage. `GalleryWorld.astro` decides whether the scene may run (viewport at least 900×560, no reduced motion, no data-saving, WebGL available, enough memory and cores, not switched to Still view) and only then imports `src/scripts/gallery-world.js` (Three.js). Otherwise, and until every texture and model has loaded, the stations stay in normal flow with their HTML images.
+- In 3D, phone captures are shown on the phone model (`public/models/phone.glb`) and every other capture on the monitor model (`public/models/monitor.glb`); `src/scripts/gallery-models.js` fits each model's screen to the capture. Both models are CC0; their sources are in the site footer.
+- `Exhibit.astro` owns the still-view frames: `kind` picks the frame, and `scene` makes it an object in the 3D gallery. Every phone on a page uses the same `--phone-w`, so screens shown together match. Phone images are app-only 344×660 captures, never stretched; terminal captures contain only their window, browser captures omit site chrome, and charts retain their own paper.
 - Design decisions live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
 
 ### 3. Verify Build

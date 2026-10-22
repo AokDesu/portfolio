@@ -16,4 +16,4 @@ A deep learning neural network built entirely from scratch in modern C++ with ze
 
 ## Image Production
 - `01-training-output.png`: Recorded Release-build training output, showing 92.23% accuracy on 10,000 test images. ImageMagick crop of the existing capture: 860×402 at x=70, y=124, retaining the terminal window only and removing surrounding dark padding. This refresh did not re-run training.
-- `02-architecture-and-accuracy.png`: Network topology diagram (784 → 256 → 128 → 10) and performance benchmark card rendered from verified execution metrics.
+- `02-architecture-and-accuracy.png`: Network topology (784 → 256 → 128 → 10) and results card rendered from the recorded run's metrics. ImageMagick crop of the existing image: 900×474 at x=50, y=88, the card's own bounds, removing the surrounding dark padding.

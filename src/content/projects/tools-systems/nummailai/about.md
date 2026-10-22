@@ -16,4 +16,4 @@ An automated monitoring and notification service for Metropolitan Waterworks Aut
 
 ## Image Production
 - `01-discord-alert.png`: Discord-style Rich Embed rendered from official test-fixture event data without live credentials. ImageMagick crop of the existing capture: 820×584 at x=70, y=68, retaining the client window and removing surrounding dark padding.
-- `02-web-dashboard.png`: Live capture of the local NumMaiLai GIS web dashboard (`http://localhost:8085`) displaying interactive outage map and filter controls.
+- `02-web-dashboard.png`: Recorded capture of the local NumMaiLai GIS web dashboard (`http://localhost:8085`) with the outage map and filter controls. The app fills the whole 1440×900 page with no browser or site chrome, so it is kept uncropped and shown in the portfolio's shared browser frame.

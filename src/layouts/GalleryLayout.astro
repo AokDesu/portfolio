@@ -45,7 +45,7 @@ const { title, description = 'Aekarut Phetpradit — KMUTT student · Software D
     <footer class="gallery-footer">
       <div><p class="footer-name">Aekarut Phetpradit</p><p>KMUTT student · Software Developer</p></div>
       <a href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">github.com/AokDesu <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" /></svg></a>
-      <p class="footer-note">{home ? 'End of the collection.' : 'More work in the project index.'} Built with Astro.</p>
+      <p class="footer-note">{home ? 'End of the collection.' : 'More work in the project index.'} Built with Astro and Three.js. 3D models: <a href="https://poly.pizza/m/4DRZmTs3jq" target="_blank" rel="noopener noreferrer">Smartphone</a> by smallbigsquare and <a href="https://poly.pizza/m/PvSjEbz11k" target="_blank" rel="noopener noreferrer">Monitor</a> by CreativeTrio, both CC0 via Poly Pizza. Pokémon icons in the Rules Helper captures by Darius Dan – Flaticon.</p>
     </footer>
   </body>
 </html>
@@ -80,7 +80,9 @@ const { title, description = 'Aekarut Phetpradit — KMUTT student · Software D
   ::view-transition-old(root),::view-transition-new(root) { animation-duration:420ms; animation-timing-function:var(--ease); }
   *,*::before,*::after { box-sizing:border-box; }
   html { margin:0; background:var(--stage); color:var(--ink); font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif; font-weight:400; line-height:1.65; -webkit-font-smoothing:antialiased; scrollbar-color:var(--muted) var(--stage); scroll-padding-top:100px; }
-  body { margin:0; overflow-x:clip; }
+  body { margin:0; }
+  /* On main, not body: body overflow propagates to the viewport, and phones then widen the layout viewport to fit the exhibits' light pools. */
+  main { display:block; overflow-x:clip; }
   h1,h2,h3,p,figure,dl,dd { margin:0; }
   h1,h2,h3 { font-weight:450; line-height:1.1; text-wrap:balance; }
   a { color:inherit; text-decoration:none; }
@@ -129,10 +131,13 @@ const { title, description = 'Aekarut Phetpradit — KMUTT student · Software D
   .gallery-footer { position:relative; z-index:2; background:var(--stage); border-top:1px solid var(--line); display:grid; grid-template-columns:1fr auto; gap:32px; padding:64px var(--margin) 32px; color:var(--muted); font-size:14px; }
   .footer-name { color:var(--ink); font-size:28px; margin-bottom:8px; }
   .gallery-footer>a { color:var(--ink); align-self:center; min-height:44px; display:flex; align-items:center; gap:8px; }
-  .footer-note { grid-column:1/-1; border-top:1px solid var(--line); padding-top:24px; font-size:12px; }
+  .footer-note { grid-column:1/-1; border-top:1px solid var(--line); padding-top:24px; font-size:12px; max-width:110ch; }
+  .footer-note a { text-decoration:underline; text-underline-offset:3px; }
+  .footer-note a:hover { color:var(--ink); }
 
   /* Pinned stage: only while the 3D gallery runs. Every station shares the viewport and the
      scene's camera decides which one is in front; without it the stations are normal flow. */
+  html[data-world='active'] { --art-h:min(40vh, 420px); --phone-w:min(calc(54vh * 344 / 660), calc((50vw - var(--margin) - 40px) / 2.12), 270px); }
   html[data-world='active'] [data-stage] { position:sticky; top:0; height:100vh; overflow:clip; }
   html[data-world='active'] [data-station] { position:absolute; inset:0; z-index:1; will-change:opacity,transform; }
   html[data-world='active'] [data-station][data-current] { z-index:2; }

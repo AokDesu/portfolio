@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T16:22:58+00:00",
+  "generatedAt": "2026-10-22T17:04:32+00:00",
   "title": "Design System: Aekarut Phetpradit — Work After Dark",
   "extensions": {
     "colorMeta": {
@@ -395,14 +395,15 @@
   ],
   "narrative": {
     "northStar": "Work After Dark",
-    "overview": "**Concept: Work After Dark.** Aekarut's real software is the light source in a quiet exhibition space. Visitors move through projects, not a grid of decorated cards. The first viewport pairs the name and role with two precisely aligned DroneAid screens; the gallery continues in depth behind them.\n\nRedesign decision: **Replace direction.** The Swiss Poster Series is superseded, including its flat-sheet, square-corner and category-plate rules. The earlier rejected dark card grid remains rejected. Dark is explicitly requested here; cards, chips and ornamental glows are not.\n\nFixed: static Astro/Vercel, real captured evidence, honest team credit, HTML text, direct project access, the approved personal details, complete non-3D access. Flexible: composition, light, framing, typography weights. Assumption: retain the already self-hosted Archivo rather than add a font download.\n\nPrimary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: graphite frames, dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.",
+    "overview": "**Concept: Work After Dark.** Aekarut's real software is the light source in a quiet exhibition space. Visitors move through projects, not a grid of decorated cards. The first viewport pairs the name and role with two precisely aligned DroneAid screens; the gallery continues in depth behind them.\n\nRedesign decision: **Replace direction.** The Swiss Poster Series is superseded, including its flat-sheet, square-corner and category-plate rules. The earlier rejected dark card grid remains rejected. Dark is explicitly requested here; cards, chips and ornamental glows are not.\n\nFixed: static Astro/Vercel, real captured evidence, honest team credit, HTML text, direct project access, the approved personal details, complete non-3D access. Flexible: composition, light, framing, typography weights. Assumption: retain the already self-hosted Archivo rather than add a font download.\n\nPrimary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: real device models in graphite (one phone, one monitor), dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.",
     "keyCharacteristics": [
       "One continuous 3D space; the camera flies between projects as you scroll.",
-      "Real captures as the light source: unlit screens on lit plinths.",
+      "Real captures as the light source: unlit screens on real phone and monitor models, standing on lit plinths.",
       "Every title, summary, caption and fact is real HTML.",
       "One phone size per page; pairs are symmetric.",
       "A complete still version for reduced motion, small or weak devices and no WebGL.",
-      "Category colour only as small dots and plinth edge lines."
+      "Category colour only as small dots and plinth edge lines.",
+      "Collection order: applications first, then studies and open-source work."
     ],
     "rules": [],
     "dos": [
@@ -413,7 +414,8 @@
     ],
     "donts": [
       "Don't revive colored plates, the expanding column accordion, heavy condensed poster type or a dark card grid.",
-      "Don't hide content for an entrance animation, draw text in WebGL, require a GPU, distort screenshots, or imply a prototype is a running production app."
+      "Don't hide content for an entrance animation, draw text in WebGL, require a GPU, distort screenshots, or imply a prototype is a running production app.",
+      "Don't use device models with brand marks or licences that need more than a credit; every model is credited in the footer."
     ]
   }
 }

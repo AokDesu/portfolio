@@ -25,7 +25,9 @@ Static Astro build hosted on Vercel; no new service. Project records in src/data
 ## Capabilities and Constraints
 
 - One continuous spatial gallery with native scroll and pointer camera movement; direct project list remains available.
-- Every existing project remains reachable. Add only Poke Monopoly Rules Helper, AI & Data, in the full-build phase. Private repository: label it; do not link its source.
+- Collection order: software and applications first (DroneAid, ScamReport, Poke Monopoly Rules Helper, NumMaiLai, dev-memory-ai), then studies, experiments and open-source work (Spaceship Titanic EDA, Neural Network From Scratch, Basic Memory Access Benchmark, Firstmate Contributions). The same order drives the home page, the project index and next-project links.
+- Exhibits are real 3D models in the 3D view: one phone model for every phone capture, one monitor model for every other capture. Models are CC0 with no brand marks; their sources are credited on the site.
+- Poke Monopoly Rules Helper (AI & Data) is the only added project. Private repository: labelled, source not linked; captured offline with no paid model request.
 - Full, readable static experience for reduced motion, small/weak devices, no WebGL and no JavaScript.
 - Capture the real app, not the surrounding prototype page. Phone screenshots share one size/aspect ratio and one frame; terminal windows lose padding; browser captures lose GitHub site chrome; charts retain matching paper.
 - Team work stays labelled. Credits from README and commit authorship; no invented impact metrics or claims.
@@ -33,11 +35,11 @@ Static Astro build hosted on Vercel; no new service. Project records in src/data
 
 ## Brand Commitments
 
-The owner chose Full 3D world and Night gallery, with small category accents. The previous Swiss Poster Series is replaced. The previously rejected dark card grid/tag-chip design remains rejected. DroneAid and ScamReport are design-prototype evidence, not running production-app captures.
+The owner chose Full 3D world and Night gallery, with small category accents, and after the preview asked for applications first and real 3D models. The previous Swiss Poster Series is replaced. The previously rejected dark card grid/tag-chip design remains rejected. DroneAid and ScamReport are design-prototype evidence, not running production-app captures.
 
 ## Build Order
 
-Preview first: updated direction, home and DroneAid, remade evidence, desktop/phone proof, library/tool disclosure, local preview server, commit without push. Stop for review. Only after approval: remaining pages/captures and Rules Helper, full fallback/mobile coverage, final committed handoff.
+Preview (home and DroneAid) reviewed and approved with two changes: applications first, real 3D models. Full build: every project page, every capture, the Rules Helper, phone and non-3D coverage.
 
 ## Product Principles
 

@@ -2,20 +2,20 @@
 version: 1
 slug: src-pages-index-astro
 primary_target: src/pages/index.astro
-related_targets: ["src/pages/projects/droneaid.astro", "src/layouts/GalleryLayout.astro", "src/components/GalleryWorld.astro", "src/components/Exhibit.astro", "src/scripts/gallery-world.js"]
+related_targets: ["src/pages/projects/[slug].astro", "src/scripts/gallery-models.js", "src/layouts/GalleryLayout.astro", "src/components/GalleryWorld.astro", "src/components/Exhibit.astro", "src/scripts/gallery-world.js"]
 ---
 
 # Night gallery — home and project evidence
 
-Mode: Experience. Captain-approved direction: Full 3D world + Night gallery. Preview scope is home and DroneAid; stop for review before other detail pages and Rules Helper.
+Mode: Experience. Captain-approved direction: Full 3D world + Night gallery; after the preview review: applications first, real 3D models. Scope: home and every project page.
 
 THESIS: Real software artifacts are lit exhibits in one continuous near-black space. Scroll moves the camera from station to station; text remains real HTML on a pinned stage. Direct project access takes precedence over spectacle.
 
 FIRST VIEWPORT: Name and exact role at left, two equally sized DroneAid phones at right in a symmetric V on a lit plinth, the next station faint in the fog. Quiet transparent navigation at the top with the project index; a station rail at the bottom. On first load the camera dollies in once. No full-screen introduction or loading gate.
 
-FORM: One sticky stage, eight stations on home and three on DroneAid, each one viewport of native scroll: rest, fly, rest. Graphite frames, plinths, a beam and a floor light pool per station, a 1px category line on each plinth. Warm-white Archivo at normal width. One phone width per page for every phone.
+FORM: One sticky stage, nine stations on home (applications first) and an opening plus one station per authored stop on each project page, each one viewport of native scroll: rest, fly, rest. Real CC0 phone and monitor models in graphite, plinths, a beam and a floor light pool per station, a 1px category line on each plinth. Warm-white Archivo at normal width. One phone width per page for every phone.
 
-STORY: See real work immediately; scroll through the collection, jump with the rail, or open any project from the index. DroneAid opens on the same pair as its home station, then shows the two roles, the architecture, and the facts in normal flow.
+STORY: See real work immediately; scroll through the collection, jump with the rail, or open any project from the index. Each project page opens on the same exhibit as its home station, then its stations, then the facts in normal flow and the next project.
 
 CONSTRAINTS: All content static HTML before Three.js loads; the scene replaces images only after every texture has loaded. Narrow/short viewports, weak devices, reduced motion, no WebGL, context loss and the still-view choice keep the entire normal-flow content. No tag chips, card grid, colored plates, invented metrics or additional personal details.
 

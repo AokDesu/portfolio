@@ -6,7 +6,6 @@ import {
   CylinderGeometry,
   DirectionalLight,
   DoubleSide,
-  ExtrudeGeometry,
   Fog,
   Group,
   HemisphereLight,
@@ -25,6 +24,7 @@ import {
   Vector3,
   WebGLRenderer,
 } from 'three';
+import { loadModels, monitorGeometry, monitorScale, monitorStand } from './gallery-models.js';
 
 // One continuous gallery: every station on the page sits somewhere along one camera path.
 // The HTML stage is the layout authority. At rest the camera stands exactly DISTANCE in front
@@ -101,9 +101,9 @@ const beamShader = {
 };
 
 /**
- * @param {{ host: HTMLElement, track: HTMLElement, stage: HTMLElement, sections: HTMLElement[], onFailure: () => void }} options
+ * @param {{ host: HTMLElement, track: HTMLElement, stage: HTMLElement, sections: HTMLElement[], modelBase: string, onFailure: () => void }} options
  */
-export async function mountGallery({ host, track, stage, sections, onFailure }) {
+export async function mountGallery({ host, track, stage, sections, modelBase, onFailure }) {
   const renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance', failIfMajorPerformanceCaveat: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
   renderer.setClearColor(STAGE);
@@ -157,6 +157,7 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
   const intro = new Vector3();
   let slowFrames = 0;
   let sampledFrames = 0;
+  let models = null;
 
   const restX = index => -DRIFT * index;
   const restPosition = index => new Vector3(restX(index), 0, -index * SPACING + DISTANCE);
@@ -166,46 +167,64 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
     for (const item of disposable.splice(0)) item.dispose();
   }
 
+  // The capture on the device's screen: unlit, so it reads as a lit display.
+  function screenMesh(texture, width, height, radius) {
+    const geometry = own(new ShapeGeometry(roundedShape(width, height, radius), 16));
+    const position = geometry.getAttribute('position');
+    const uv = geometry.getAttribute('uv');
+    for (let index = 0; index < position.count; index++) uv.setXY(index, position.getX(index) / width + 0.5, position.getY(index) / height + 0.5);
+    return new Mesh(geometry, own(new MeshBasicMaterial({ map: texture, toneMapped: false })));
+  }
+
+  /**
+   * One exhibit: the phone model for phone screens, the monitor model for everything else.
+   * `width` × `height` is the screen in world units (for browser captures it includes the shared
+   * browser bar of `headerHeight`). Returns the group with the screen centred on its origin and
+   * the model's outer extent below and beside the screen.
+   */
   function makeArtifact(item, width, height, headerHeight) {
     const group = new Group();
     const { kind, texture } = item;
-    const phone = kind === 'phone';
-    const rimSize = phone ? width * 0.03 : kind === 'paper' ? width * 0.006 : width * 0.008;
-    const radius = phone ? width * 0.085 : kind === 'paper' ? 0.0001 : Math.min(width, height) * 0.018;
-    const depth = phone ? width * 0.05 : 0.05;
-    const bodyHeight = height + headerHeight;
-    const bevel = Math.min(rimSize * 0.5, 0.02);
-    // Extruded bevels grow the shape outward and forward; shrink by the bevel so the outer edge
-    // matches the CSS frame, and set the front face flush with z = 0 behind the screen.
-    const frame = new Mesh(own(new ExtrudeGeometry(roundedShape(width + (rimSize - bevel) * 2, bodyHeight + (rimSize - bevel) * 2, radius + rimSize - bevel), {
-      depth,
-      bevelEnabled: true,
-      bevelSize: bevel,
-      bevelThickness: bevel,
-      bevelSegments: 3,
-      curveSegments: 16,
-    })), graphite);
-    frame.position.set(0, headerHeight / 2, -(depth + bevel) - 0.001);
-    group.add(frame);
-    const screenGeometry = own(new ShapeGeometry(roundedShape(width, height, radius), 16));
-    const position = screenGeometry.getAttribute('position');
-    const uv = screenGeometry.getAttribute('uv');
-    for (let index = 0; index < position.count; index++) uv.setXY(index, position.getX(index) / width + 0.5, position.getY(index) / height + 0.5);
-    const screen = new Mesh(screenGeometry, own(new MeshBasicMaterial({ map: texture, toneMapped: false })));
-    screen.position.z = 0.004;
+    if (kind === 'phone') {
+      const { geometry, screenWidth, screenHeight, bottom } = models.phone;
+      const body = new Mesh(geometry, graphite);
+      body.scale.set(width / screenWidth, height / screenHeight, width / screenWidth);
+      group.add(body);
+      const screen = screenMesh(texture, width, height, width * 0.06);
+      screen.position.z = 0.002;
+      group.add(screen);
+      const scaleX = width / screenWidth;
+      return { group, bottom: bottom * (height / screenHeight), halfWidth: models.phone.halfWidth * scaleX };
+    }
+    const monitor = monitorGeometry(models.monitor, width, height);
+    group.add(new Mesh(own(monitor.geometry), graphite));
+    const imageHeight = height - headerHeight;
+    const screen = screenMesh(texture, width, imageHeight, 0.0001);
+    screen.position.set(0, -headerHeight / 2, 0.002);
     group.add(screen);
     if (kind === 'browser' && headerHeight > 0) {
       const bar = new Mesh(own(new PlaneGeometry(width, headerHeight)), browserBar);
-      bar.position.set(0, height / 2 + headerHeight / 2, 0.004);
+      bar.position.set(0, height / 2 - headerHeight / 2, 0.002);
       group.add(bar);
       const dotGeometry = own(new PlaneGeometry(headerHeight * 0.25, headerHeight * 0.25));
       for (let index = 0; index < 3; index++) {
         const dot = new Mesh(dotGeometry, browserDot);
-        dot.position.set(-width / 2 + headerHeight * (0.6 + index * 0.42), height / 2 + headerHeight / 2, 0.006);
+        dot.position.set(-width / 2 + headerHeight * (0.6 + index * 0.42), height / 2 - headerHeight / 2, 0.004);
         group.add(dot);
       }
     }
-    return group;
+    return { group, bottom: monitor.bottom, halfWidth: monitor.right };
+  }
+
+  // The monitor's neck and base hang below the screen; in 3D the HTML caption moves down by the
+  // same distance so it still sits on the plinth below the model.
+  function reserveStands() {
+    for (const station of stations) for (const item of station.items) {
+      const figure = item.image.closest('figure');
+      if (item.kind === 'phone' || !figure) continue;
+      const rect = item.image.closest('.artifact-frame').getBoundingClientRect();
+      figure.style.setProperty('--stand', `${monitorStand(monitorScale(rect.width, rect.height)).toFixed(1)}px`);
+    }
   }
 
   // Rebuilt on resize: the HTML stage changes and every mesh follows it.
@@ -224,6 +243,7 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
     floor.position.set(0, floorY, -(sections.length * SPACING) / 2 + DISTANCE);
     const stageRect = stage.getBoundingClientRect();
     for (const station of stations) station.section.style.transform = '';
+    reserveStands();
     for (const station of stations) {
       const z = -station.index * SPACING;
       const rest = restPosition(station.index);
@@ -235,18 +255,20 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
       let bottom = Infinity;
       const pair = station.items.length === 2;
       station.items.forEach((item, order) => {
-        const rect = item.image.getBoundingClientRect();
-        const bar = item.image.closest('.browser-frame')?.querySelector('.browser-bar')?.getBoundingClientRect();
+        // Phones show the image itself as the screen; monitors show the whole frame (browser bar included).
+        const target = item.kind === 'phone' ? item.image : item.image.closest('.artifact-frame');
+        const rect = target.getBoundingClientRect();
+        const bar = item.kind === 'browser' ? target.querySelector('.browser-bar')?.getBoundingClientRect() : null;
         const headerHeight = bar ? bar.height * unit : 0;
-        const w = rect.width * unit;
-        const h = rect.height * unit;
-        const group = makeArtifact(item, w, h, headerHeight);
-        group.position.set(toWorldX(rect.left + rect.width / 2), toWorldY(rect.top + rect.height / 2), z);
+        const { group, bottom: modelBottom, halfWidth } = makeArtifact(item, rect.width * unit, rect.height * unit, headerHeight);
+        const centerX = toWorldX(rect.left + rect.width / 2);
+        const centerY = toWorldY(rect.top + rect.height / 2);
+        group.position.set(centerX, centerY, z);
         group.rotation.y = pair ? (order === 0 ? PAIR_YAW : -PAIR_YAW) : SINGLE_YAW;
         built.add(group);
-        left = Math.min(left, toWorldX(rect.left));
-        right = Math.max(right, toWorldX(rect.right));
-        bottom = Math.min(bottom, toWorldY(rect.bottom));
+        left = Math.min(left, centerX - halfWidth);
+        right = Math.max(right, centerX + halfWidth);
+        bottom = Math.min(bottom, centerY + modelBottom);
       });
       for (const caption of station.captions) {
         const rect = caption.getBoundingClientRect();
@@ -255,7 +277,7 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
       }
       const pad = 0.35;
       const plinthWidth = right - left + pad * 2;
-      const top = bottom - 0.06;
+      const top = bottom - 0.004;
       const plinthHeight = Math.max(top - floorY, 0.2);
       const centerX = (left + right) / 2;
       const plinth = new Mesh(own(new BoxGeometry(plinthWidth, plinthHeight, 1.5)), plinthMaterial);
@@ -395,6 +417,7 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
     renderer.domElement.removeEventListener('webglcontextlost', onLost);
     clearBuilt();
     for (const item of shared) item.dispose();
+    if (models) { models.phone.geometry.dispose(); models.monitor.geometry.dispose(); }
     for (const item of textures) item.dispose();
     renderer.dispose();
     renderer.domElement.remove();
@@ -405,7 +428,11 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
       style.opacity = style.transform = style.pointerEvents = '';
       for (const caption of station.captions) caption.style.opacity = '';
       delete station.section.dataset.current;
-      for (const item of station.items) item.image.closest('figure')?.removeAttribute('data-in-scene');
+      for (const item of station.items) {
+        const figure = item.image.closest('figure');
+        figure?.removeAttribute('data-in-scene');
+        figure?.style.removeProperty('--stand');
+      }
     }
   }
 
@@ -420,7 +447,11 @@ export async function mountGallery({ host, track, stage, sections, onFailure }) 
       textures.push(texture);
       return { image, texture, kind: image.closest('[data-kind]')?.dataset.kind ?? 'window' };
     };
-    const loaded = await Promise.all(sections.map(section => Promise.all([...section.querySelectorAll('[data-scene] .artifact-image')].map(load))));
+    const [loaded, loadedModels] = await Promise.all([
+      Promise.all(sections.map(section => Promise.all([...section.querySelectorAll('[data-scene] .artifact-image')].map(load)))),
+      loadModels(modelBase),
+    ]);
+    models = loadedModels;
     if (dead) return null;
     for (const [index, section] of sections.entries()) {
       const accent = getComputedStyle(section).getPropertyValue('--category').trim() || '#b9d9cd';
