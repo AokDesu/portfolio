@@ -13,7 +13,7 @@ export function getStaticPaths() {
       prevProject: index > 0 ? PROJECTS[index - 1] : null,
       nextProject: index < PROJECTS.length - 1 ? PROJECTS[index + 1] : null,
     },
-  }));
+  })).filter(({ params }) => params.slug !== 'droneaid');
 }
 
 interface Props {

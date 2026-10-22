@@ -1,278 +1,160 @@
 ---
-name: Aekarut Phetpradit — Portfolio
-description: A Swiss exhibition poster series for eight real projects; four flat category fields on cool paper, Archivo set large and flush-left.
+version: alpha
+name: Aekarut Phetpradit — Work After Dark
+description: A continuous night gallery of real software artifacts, with quiet HTML labels and a scroll-driven spatial camera.
 colors:
-  paper: "#f2f3f4"
-  ink: "#141414"
-  ink-soft: "#4a4a46"
-  rule: "#141414"
-  mobile: "#1f3fd1"
-  mobile-on: "#ffffff"
-  data: "#ff5a1f"
-  data-on: "#141414"
-  tools: "#0a7148"
-  tools-on: "#ffffff"
-  oss: "#ffd21a"
-  oss-on: "#141414"
+  primary: "#eeeae2"
+  secondary: "#aaa9a4"
+  tertiary: "#b9d9cd"
+  neutral: "#101211"
+  surface: "#191d1b"
+  line: "#3c423e"
+  mobile: "#9bd4c5"
+  data: "#dcb997"
+  tools: "#afc2db"
+  oss: "#d6ce9a"
+  graphite: "#272d2a"
+  browser-paper: "#e9ecef"
+  browser-dot: "#858b8e"
+  chart-paper: "#fafafa"
+  gallery-light: "#f3e6d0"
 typography:
-  display:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 7.4vw, 6rem)"
-    fontWeight: 820
-    lineHeight: 0.9
-    letterSpacing: "-0.035em"
-    fontVariation: "'wdth' 86"
-  headline:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(2rem, 3.6vw, 3.25rem)"
-    fontWeight: 780
-    lineHeight: 0.98
-    letterSpacing: "-0.03em"
-    fontVariation: "'wdth' 86"
-  title:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "1.0625rem"
-    fontWeight: 720
-    lineHeight: 1.5
-    letterSpacing: "-0.01em"
-  column-title:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "clamp(1rem, 1.25vw, 1.1875rem)"
-    fontWeight: 720
-    lineHeight: 1.08
-    letterSpacing: "-0.015em"
-    fontVariation: "'wdth' 90"
-  body:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "1.0625rem"
-    fontWeight: 400
-    lineHeight: 1.55
-    fontFeature: "'tnum'"
-  body-small:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    fontFeature: "'tnum'"
-  label:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 600
-    lineHeight: 1.45
-  label-small:
-    fontFamily: "'Archivo Variable', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 520
-    lineHeight: 1.3
-  mono:
-    fontFamily: "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
+  display: { fontFamily: Archivo Variable, fontSize: 88px, fontWeight: 450, lineHeight: 1, letterSpacing: -0.035em }
+  headline-lg: { fontFamily: Archivo Variable, fontSize: 64px, fontWeight: 450, lineHeight: 1.05, letterSpacing: -0.03em }
+  headline-md: { fontFamily: Archivo Variable, fontSize: 36px, fontWeight: 450, lineHeight: 1.15 }
+  title: { fontFamily: Archivo Variable, fontSize: 24px, fontWeight: 500, lineHeight: 1.3 }
+  body-lg: { fontFamily: Archivo Variable, fontSize: 18px, fontWeight: 400, lineHeight: 1.65 }
+  body-md: { fontFamily: Archivo Variable, fontSize: 16px, fontWeight: 400, lineHeight: 1.65 }
+  label-md: { fontFamily: Archivo Variable, fontSize: 14px, fontWeight: 500, lineHeight: 1.5 }
+  label-sm: { fontFamily: Archivo Variable, fontSize: 12px, fontWeight: 400, lineHeight: 1.5 }
+rounded:
+  none: 0px
+  browser: 8px
+  phone: 30px
+  phone-screen: 22px
+  phone-screen-small: 13px
 spacing:
-  margin: "clamp(16px, 3.4vw, 48px)"
-  gutter: "clamp(12px, 1.7vw, 24px)"
-  field-gap: "6px"
+  unit: 8px
+  small: 16px
+  medium: 24px
+  large: 48px
+  section: 100px
+  margin: 72px
 components:
-  filter:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    padding: "7px 12px"
-  filter-pressed-all:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-  filter-pressed-mobile:
-    backgroundColor: "{colors.mobile}"
-    textColor: "{colors.mobile-on}"
-  row-column-mobile:
-    backgroundColor: "{colors.mobile}"
-    textColor: "{colors.mobile-on}"
-    typography: "{typography.column-title}"
-    height: "clamp(340px, 46svh, 480px)"
-  row-column-phone:
-    height: "50px"
-  poster-header-tools:
-    backgroundColor: "{colors.tools}"
-    textColor: "{colors.tools-on}"
-    typography: "{typography.display}"
-  pager-tile-oss:
-    backgroundColor: "{colors.oss}"
-    textColor: "{colors.oss-on}"
-    padding: "18px clamp(16px, 3.4vw, 48px) 22px"
-  colophon:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-    padding: "clamp(40px, 5vw, 72px) clamp(16px, 3.4vw, 48px)"
-  skip-link:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-    padding: "10px 14px"
+  page: { backgroundColor: "{colors.neutral}", textColor: "{colors.primary}", typography: "{typography.body-md}" }
+  caption: { backgroundColor: "{colors.neutral}", textColor: "{colors.secondary}", typography: "{typography.label-md}" }
+  index: { backgroundColor: "{colors.surface}", textColor: "{colors.primary}", typography: "{typography.label-md}" }
+  action: { backgroundColor: "{colors.neutral}", textColor: "{colors.primary}", rounded: "{rounded.none}", padding: 8px }
+  rule: { backgroundColor: "{colors.line}", height: 1px }
+  mobile-marker: { backgroundColor: "{colors.mobile}", width: 6px, height: 6px }
+  data-marker: { backgroundColor: "{colors.data}", width: 6px, height: 6px }
+  tools-marker: { backgroundColor: "{colors.tools}", width: 6px, height: 6px }
+  oss-marker: { backgroundColor: "{colors.oss}", width: 6px, height: 6px }
+  phone-frame: { backgroundColor: "{colors.graphite}", rounded: "{rounded.phone}", padding: 8px }
+  browser-bar: { backgroundColor: "{colors.browser-paper}", height: 24px }
+  browser-dot: { backgroundColor: "{colors.browser-dot}", size: 6px }
+  chart: { backgroundColor: "{colors.chart-paper}", rounded: "{rounded.none}" }
 ---
 
-# Design System: Aekarut Phetpradit — Portfolio
+# Work After Dark
 
 ## Overview
 
-**Creative North Star: "The Swiss Poster Series"**
+**Concept: Work After Dark.** Aekarut's real software is the light source in a quiet exhibition space. Visitors move through projects, not a grid of decorated cards. The first viewport pairs the name and role with two precisely aligned DroneAid screens; the gallery continues in depth behind them.
 
-The site reads as a series of International Typographic Style exhibition posters hung in one strict modular grid. Cool white paper carries near-black ink. Four flat process colours each stand for exactly one project category, and colour is applied to whole regions: the Row, the plates behind the captures, the project page header, and the pager tiles. There is no ornament. Hierarchy comes from Archivo's weight and width axes, from position on the 12-column grid, and from ink rules that divide the sheet.
+Redesign decision: **Replace direction.** The Swiss Poster Series is superseded, including its flat-sheet, square-corner and category-plate rules. The earlier rejected dark card grid remains rejected. Dark is explicitly requested here; cards, chips and ornamental glows are not.
 
-Density is poster-like. A few very large elements sit over a lot of quiet paper, and the small text is set tight and exact. The home page shows the whole body of work at once as one row of colour columns, then repeats each project as a band with a spec table and a plate. Each project page is a poster: a full-width colour header, a spec table beside the prose, and captured evidence standing on colour plates.
+Fixed: static Astro/Vercel, real captured evidence, honest team credit, HTML text, direct project access, the approved personal details, complete non-3D access. Flexible: composition, light, framing, typography weights. Assumption: retain the already self-hosted Archivo rather than add a font download.
 
-The world rejects two things, as stated in the direction contract: the dark card grid with tag chips (the look it replaced), and the cream-serif editorial page.
-
-This North Star comes from the direction contract's THESIS and FORM. No live naming interview took place.
-
-**Key Characteristics:**
-- One 12-column grid (`.grid`) with fluid outer margin and gutter, shared by every section.
-- Four flat category fields, applied at region scale, each with a paired text colour that clears 4.5:1.
-- Archivo Variable sets all interface text (a system mono is used only for image filenames); weight 450–820 and width 86–100% carry the hierarchy.
-- Square corners everywhere, no shadows, no gradient surfaces. Structure comes from 2px and 1px ink rules.
-- Captures sit on the bottom edge of their colour plate, all standing on one shared baseline, and are never tinted.
-- A single exponential ease-out curve drives all motion. Reduced motion turns everything off.
+Primary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: graphite frames, dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.
 
 ## Colors
 
-The palette is cool paper and near-black ink plus four saturated process colours. Each process colour means exactly one category.
-
-### Category fields (coequal; one per category, never ranked)
-- **Ultramarine** (`mobile`): Mobile Apps. Uses white text (`mobile-on`).
-- **Signal Orange** (`data`): AI & Data. Uses ink text (`data-on`).
-- **Deep Green** (`tools`): Tools & Systems. Uses white text (`tools-on`).
-- **Process Yellow** (`oss`): Open Source. Uses ink text (`oss-on`). (The build also uses it for the global `::selection` highlight. That is a known deviation from the One Field, One Meaning Rule, not a pattern to extend.)
-
-Category colour is bound through the cascade. An element with `data-category="mobile-apps" | "ai-data" | "tools-systems" | "open-source"` receives `--c` (field) and `--on` (text on field). Components read only `--c` and `--on`, never a category hex directly.
-
-### Neutral
-- **Cool Paper** (`paper`): page ground, `theme-color`, and text on the ink colophon.
-- **Press Ink** (`ink`): all primary text, the "All" filter when pressed, the colophon field, and the skip link.
-- **Soft Ink** (`ink-soft`): secondary text, meaning the home intro, spec values (`dd`), and filename captions.
-- **Rule** (`rule`, same value as ink): section rules and spec-table hairlines.
-
-### Named Rules
-**The One Field, One Meaning Rule.** Each process colour stands for exactly one category. Bind it through `data-category` and read it as `--c` / `--on`. Never use a category colour as decoration on something that does not belong to that category.
-
-**The Region-Scale Rule.** Colour commits to whole regions: a Row column, a plate, a poster header, a pager tile, or a filled filter. Inside text, category colour appears only as a solid square swatch (0.7–0.75em) or a title underline bar.
-
-**The Paired Text Rule.** Text on a field always uses that field's `-on` colour (white on ultramarine and green, ink on orange and yellow). Never put white on orange or yellow.
+Primary is warm white ink; secondary is muted ink; tertiary is the focus/action accent; neutral is the near-black stage. Category colors mark small dots and exhibit lines only, never image backgrounds. Text sits on a solid or nearly opaque dark reading plane, not over uncontrolled bright screenshots. Charts retain their own paper color.
 
 ## Typography
 
-**Display Font:** Archivo Variable with the width axis (with 'Helvetica Neue', Arial, sans-serif)
-**Body Font:** Archivo Variable (same stack)
-**Label/Mono Font:** ui-monospace, 'SF Mono', Menlo, Consolas, monospace. Used only for image filenames in figure captions.
-
-**Character:** A single neo-grotesk does all the work. The heavy, slightly condensed cuts (wdth 86–90) make the display and headline levels, and normal-width 400–650 weights make the reading text. Tabular figures are on globally (`font-variant-numeric: tabular-nums` on `html`), so counts and numbers align. In code, width is set with `font-stretch` (86%, 88%, 90%).
-
-### Hierarchy
-- **Display** (820, wdth 86, `clamp(2.75rem, 7.4vw, 6rem)`, line-height 0.9, -0.035em): the home name, set over two lines. The project-page title uses the same treatment at `clamp(2.75rem, 7vw, 6rem)` with line-height 0.92 and `text-wrap: balance`.
-- **Headline** (780, wdth 86, `clamp(2rem, 3.6vw, 3.25rem)`, 0.98, -0.03em): home band titles. Two siblings share the treatment: the pager title (780, wdth 86, `clamp(1.5rem, 3vw, 2.75rem)`, line-height 1) and the colophon name (750, wdth 88, `clamp(1.5rem, 2.6vw, 2.25rem)`, line-height 1, -0.025em).
-- **Title** (720, 1.0625rem, -0.01em): section heads such as "Selected Projects", "Visual Evidence & Artifacts" and the prose h2s. The role line uses 680 at the same size.
-- **Column title** (720, wdth 90, `clamp(1rem, 1.25vw, 1.1875rem)`, 1.08, -0.015em, balanced): project names inside Row columns.
-- **Body** (400, 1.0625rem, 1.55 for band summaries and 1.62 for project prose; measure 62–68ch): reading text. The project lead is `clamp(1.0625rem, 1.4vw, 1.25rem)` at 480 weight, 60ch.
-- **Body small** (0.9375rem, 1.5): the home intro (40ch, Soft Ink), topbar, colophon, links, and project-page spec rows.
-- **Label** (600–650, 0.875rem): filter buttons, home spec rows, figure captions. Spec `dt` uses 650. Filter counts drop to 450.
-- **Label small** (520, 0.75rem, 1.3): Row column meta (category, Solo/Team work).
-- **Mono** (0.75rem, Soft Ink): image filenames under each caption, e.g. `01-login-screen.png`.
-
-### Named Rules
-**The Weight-and-Width Rule.** Hierarchy comes from Archivo's weight and width axes plus size. There are no uppercase labels, letter-spaced eyebrows, or second display face. Every large heading is heavy (750–820), condensed (wdth 86–88), tightly tracked (-0.025 to -0.035em), and set solid (line-height 0.9–1).
-
-**The Flush-Left Rule.** Text is set ragged-right and flush-left on grid columns. Right-justification is reserved for a few elements: the topbar nav, the legend filters, the colophon GitHub link, and the "next" pager tile on wide screens.
+Archivo Variable throughout; normal width, 400–500 for text, 450 for large titles. No condensed poster weights. Home display is fluid from 48px to 88px; DroneAid display from 64px to 96px; section titles 36px to 64px. Body 16–18px at 1.6–1.65, max 65ch. Captions 14px desktop, 13px phone. No eyebrow headings, artificial uppercase, metadata chips or decorative monospace. English interface; Thai inside captures is left untouched.
 
 ## Layout
 
-**Grid.** Every section uses a 12-column grid (`repeat(12, minmax(0, 1fr))`) with `column-gap: var(--gutter)` and `padding-inline: var(--margin)`. The Row and the pager are the exceptions: they run full-bleed (edge to edge) on desktop.
+Desktop: fluid outer margins clamp(20px, 4.5vw, 72px), a 5:6 text/art split with 6vw gap, left-side wall labels and right-side exhibits. A fixed top navigation exposes the project index without a flight. Every station has a real HTML title, summary, credit and direct detail link.
 
-**Home masthead.** The name occupies columns 1–8, bottom-aligned. The role line, intro and GitHub link fill columns 9–12. Below 760px both span the full width.
+**Pinned stage (3D running).** The collection becomes one sticky 100vh stage; all stations share it and the scene's camera decides which one is in front. Each station owns one viewport of native scroll: it rests for the first 30% and last 15%, and the camera flies to the next station in between. Labels cross-fade with a 48px drift that follows the camera; captions appear only once their exhibit has settled. A bottom rail names the current station and links to every station; in-page links, the rail and keyboard focus move the camera to the station instead of relying on anchor scroll. When the stage ends, the page continues in normal flow (DroneAid facts, footer) and the navigation regains its solid bar. No wheel interception or scroll-jacking: native scroll is authoritative, the camera follows it with damping.
 
-**Legend and Row.** A 2px ink rule opens the legend: "Selected Projects" sits in columns 1–3 and the filter buttons are right-aligned across columns 4–12. Directly beneath, the Row places eight columns side by side, 6px apart, at `clamp(340px, 46svh, 480px)` tall. Below 760px the Row becomes a vertical stack of 50px horizontal bars (4px gap, inset by the page margin), and the filters become one horizontally scrolling line that bleeds to the screen edges.
-
-**Bands.** Each project band opens with a 2px ink rule. Text sits in columns 1–5 (max 34rem) and the colour plate in columns 7–12. Below 960px both span the full width.
-
-**Project page.** The poster header runs full-bleed in the category colour, with the title on columns 1–10 and the lead on 1–7. The facts section puts the spec table on columns 1–4 and the prose on 6–12. In the gallery, phone captures share a "shelf": an equal-column grid using subgrid rows so captions align. Wide captures each get a plate on columns 4–12, with the caption bottom-aligned in columns 1–3. Below 960px everything stacks, and the caption moves under the plate.
-
-**Rhythm.** Large section spacing is always fluid: `clamp(48px, 6vw, 96px)` between figures, `clamp(56px, 6vw, 96px)` under bands, and `clamp(80px, 10vw, 160px)` above the colophon. Small gaps repeat at 6, 10, 12, 14, 18, 22 and 28px. There is no named step scale beyond `margin`, `gutter` and the 6px gap between Row columns and pager tiles (`field-gap`).
-
-**Breakpoints.** 960px: the band and project-page columns stack. 760px: the Row turns into horizontal bars, the masthead stacks, the shelf becomes two-up, and the pager becomes a single column.
-
-### Named Rules
-**The Shared Baseline Rule.** Every plate is bottom-aligned with zero bottom padding (`align-items: flex-end`, padding `… 0`), so each capture stands on the plate's lower edge. In the Row and on shelves, all plates read left to right along one line.
-
-**The Everything-Visible Rule.** The Row always shows all eight projects. Filtering never removes or reorders a column: unmatched columns shrink to a colour sliver (`flex-grow: 0.12`, or 8px tall on phones) and become `inert`.
+**Normal flow (no 3D).** Below 900px wide or 560px tall, and whenever the scene is not running, every station is a normal-flow section: text, then artifact on desktop's 5:6 grid or stacked on phones, equal-width phones sharing one baseline. No horizontal pan or tiny 3D text. At 390px, 20px gutters; at 320px, 16px. Long project names wrap. Facts become single-column rows when necessary.
 
 ## Elevation & Depth
 
-The system is completely flat. There is no `box-shadow`, no gradient surface, no blur, and no layering. Depth comes only from colour regions laid against paper and from the ink colophon at the foot of every page. Hover states change flex size, underline, or position, and never add lift.
+One Three.js scene per page, one perspective camera (36° vertical FOV) and one continuous floor. Stations stand 17 units apart in depth; each next station sits 2.2 units further left, so the camera always passes beside the exhibit it leaves, never through it. At rest the camera is exactly 9 units in front of a station, and every mesh is built from its HTML placeholder's rectangle, so the 3D exhibit occupies the same place and size as the still image and its caption. Paired phones turn 8.6° toward each other in a symmetric V; single exhibits turn 5° toward their wall label.
 
-### Named Rules
-**The Flat Sheet Rule.** Nothing casts a shadow or floats. If something needs separating, use a 2px ink rule, a colour field, or space.
+Light falls on the work: each station has a plinth reaching to the floor, a faint additive light beam from above, a warm light pool on the floor and a 1px category-colour line on the plinth's front edge (the only category colour in the scene). Screens are unlit textures, so they read as glowing. Graphite frames are real extrusions with bevels, lit by a warm key light and a cool rim light. Fog fades the next station into darkness. No particles, bloom passes, orbit toys or fake KPI sculptures.
+
+HTML images exist and are visible before the library loads; the 3D layer replaces them only after every texture has loaded, in the same frame the stage pins. Captions and accessible image descriptions stay in the DOM. WebGL unavailable or lost, reduced motion, small viewports, data-saving, low memory/cores and sustained slow frames keep the normal-flow version; Three.js is not even downloaded when the check fails up front. Visitors can choose still view at any time; the choice persists across pages.
+
+The canvas has a dark reading mask behind the label column (0–46% width) and soft top and bottom fades. In the still view, a warm radial light pool sits behind each exhibit so the gallery lighting survives without WebGL. Artifact shadow: 0 30px 60px -20px rgb(0 0 0 / .55). Index shadow: 0 24px 72px rgb(0 0 0 / .4). These are separation shadows, not colored halos.
 
 ## Shapes
 
-Every corner is square. The codebase contains no `border-radius` anywhere: not on buttons, plates, swatches, focus outlines or the favicon. Structure comes from ink rules rather than boxes. A **2px** rule opens each major section (legend, band, project spec table, gallery title), and **1px** hairlines divide spec-table rows. No element is enclosed by a full border. Category swatches are solid squares (0.7–0.75em). Arrows are open strokes of 1.6–1.8px; the external-link marker has square caps, and the other arrows use default caps. The favicon is a 2×2 grid of the four category squares on paper.
+Phone viewport: **344×660**, every screen at this aspect ratio, and **one phone width per page** (`--phone-w`: up to 56vh of height, half the art column, 280px cap; on phones half the content width, 210px cap). Every phone exhibit, single or paired, uses it, so any two screens shown together match. Shared graphite frame proportional to that width: 3% inset, 8.5% inner and 11.5% outer radius (about 8px / 22px / 30px at desktop size), identical in CSS and in the 3D extrusion. No stretching or cropping app content to fill it. Pairs share size, orientation and baseline. Browser viewport: 8px corners, small shared neutral header; no GitHub global navigation in the capture. Terminal: captured window only, no added second titlebar. Charts and architecture: square paper, tightly cropped with readable labels. Wide exhibits are capped at 52vh tall and 90% of the art column.
 
 ## Components
 
-### Filter toggle (legend)
-Flat, rectangular, toggle-pressed.
-- **Shape:** square, no border, transparent fill. Padding 7px 12px, or 6px 9px on phones.
-- **Content:** a category swatch (0.75rem square of `--c`), the label, and a count at 450 weight.
-- **Hover:** a 7% ink wash (`rgb(20 20 20 / 0.07)`).
-- **Pressed (`aria-pressed="true"`):** filled with the category field and its `-on` text. The swatch switches to `currentColor`. "All" fills with ink on paper.
-- Transition: background and colour at 200ms on the house ease. A polite live region announces "Label: n of 8 projects".
+Foundation: semantic Astro/HTML and CSS, no UI framework. Native details/summary is the always-available project index. Native links remain functional without JavaScript. Buttons use 44px minimum targets, 2px accent focus outlines and visible text states.
 
-### Row column (signature)
-One full-height colour field per project, linking to its page.
-- Field `--c`, text `--on`. Title block at the top (padding 14px 14px 16px, min-height 8.25rem), then the cover capture cropped `object-fit: cover` from the top, inset 10px from the sides.
-- **Hover / focus-within:** the column widens (`flex-grow: 2.3`, 560ms ease). Focus outline is inset (`outline-offset: -6px`).
-- **Filtered out (`.off`):** text and capture fade to 0 (240ms) and the column shrinks to a sliver while keeping its position.
-- **Load:** columns are revealed upward from the baseline with `clip-path: inset(100% 0 0 0)`, 600ms each, staggered 30ms starting at 60ms. On phones they are revealed left to right instead.
-- Phone (≤760px): a 50px horizontal bar with the title and meta on one line ("Category · Solo") and the capture in the right 30%.
-- Carries `view-transition-name: field-<slug>` into the project page's poster header.
-
-### Project band
-- 2px rule on top. Headline title whose link draws a category-coloured underline bar (0.14em, sweeping 0→100% over 420ms) on hover.
-- Summary in body text, then the spec table, then a "View details →" link whose arrow nudges 5px right on hover.
-- **Plate:** a category field padded `clamp(20px, 3.2vw, 44px)` on top and sides with 0 at the bottom. A phone capture appears as a pair (each up to 230px wide); a wide capture appears alone at full width.
-
-### Spec table
-A two-column definition list with ink rules. It replaces chips for all project metadata.
-- **Home band variant:** 1px top rule, 6.5rem term column, 0.875rem, 9px row padding.
-- **Project page variant:** 2px top rule, 7.5rem term column (6.25rem on phones), 0.9375rem, 11px row padding. It adds Source and Pull requests rows, with links in ink at 560 weight that underline at 1px and thicken to 2px on hover.
-- `dt` 650 in ink; `dd` in Soft Ink. The Category row leads with a category swatch.
-
-### Poster header (project page)
-Full-bleed category field with `-on` text. It holds the back link (arrow nudges 5px left on hover), a large gap of `clamp(48px, 9vw, 140px)`, the display title, and the lead.
-
-### Figure plates and captions (project page)
-Captures sit on a category-field plate, bottom-aligned, never tinted or overlaid. Captions are in the grid beside or beneath the plate, not in a box: a label-size sentence, then the filename in mono Soft Ink. Wide captures link to the full-size source (`cursor: zoom-in`).
-
-### Pager tiles
-Two full-bleed category tiles (previous and next project), 6px apart, `min-height: clamp(140px, 16vw, 220px)`, each in that project's category colour. Large arrow plus headline title. On hover the title slides 6px toward its direction (420ms). An empty slot is transparent on desktop and hidden on phones.
-
-### Navigation and links
-- **Topbar:** sits on the grid, name in columns 1–6 and nav right-aligned in 7–12. 0.9375rem/600. Links show a 1px underline that fades in on hover (160ms). On the home page the name is plain text, not a link.
-- **Primary text link ("View on GitHub"):** a permanent 2px underline whose offset grows from 0.3em to 0.45em on hover (220ms).
-- **External marker:** a 0.7em open-stroke diagonal arrow SVG after external links.
-- **Focus:** `3px solid currentColor`, offset 3px, on every focusable element.
-- **Colophon:** an ink field holding the name (headline treatment), role, GitHub link and a build note.
+GalleryWorld: one progressive Three.js enhancement, dynamically imported two frames after content paints, and only when the capability check passes. Exhibit: real optimized Astro images with one figcaption per figure, reused as textures; `kind` is phone, browser, paper or window. Stage: the `[data-track]` collection with a `[data-stage]` that pins only while the scene runs. Rail: current station name plus one link per station, shown only on the pinned stage. ProjectLabel: selectable HTML heading, summary, category, credit, detail link. Facts: definition list, not chips. Footer: name, role, GitHub only.
 
 ## Do's and Don'ts
 
-### Do:
-- **Do** bind category colour through `data-category` and read only `--c` / `--on` in components.
-- **Do** keep every plate's bottom padding at 0 so captures stand on one shared baseline.
-- **Do** separate sections with a 2px ink rule and spec rows with 1px ink hairlines.
-- **Do** set every large heading in Archivo at 750–820 weight, width 86–88%, tracking -0.025 to -0.035em, line-height 0.9–1.
-- **Do** keep all eight projects visible in the Row. Filtering shrinks unmatched columns to slivers and marks them `inert`.
-- **Do** drive every transition with `cubic-bezier(0.16, 1, 0.3, 1)` and turn motion and view transitions off under `prefers-reduced-motion`.
-- **Do** put project metadata (Category, Credit, Stack, Source) in the two-column spec table.
+- Do show the artifact in the first viewport, keep exact screen aspect ratios and symmetric pairs.
+- Do keep a direct route to every project and all facts in HTML.
+- Do preserve natural scrolling, keyboard navigation, image zoom and source links.
+- Do use category color sparingly and lighting only to explain physical depth.
+- Don't revive colored plates, the expanding column accordion, heavy condensed poster type or a dark card grid.
+- Don't hide content for an entrance animation, draw text in WebGL, require a GPU, distort screenshots, or imply a prototype is a running production app.
 
-### Don't:
-- **Don't** round any corner, add a shadow, or use a gradient surface.
-- **Don't** tint, overlay, or recolour a capture; the colour goes on the plate behind it.
-- **Don't** use a category colour for something outside that category, or put white text on orange or yellow.
-- **Don't** show project metadata as tags or chips; it belongs in the spec table.
-- **Don't** wrap content in fully bordered boxes or cards; use rules, fields and space.
-- **Don't** introduce a second display face, uppercase eyebrow labels, or a dark page ground.
+## Motion
+
+Camera follows the scroll position with time-based exponential damping (rate 7/s); the flight between stations uses a quintic smootherstep, a 0.8-unit lift at mid-flight and a look target that turns toward the next station slightly ahead of the body. Pointer parallax is bounded to ±0.25 × ±0.14 units and damped at 4/s. On first load at the top, the camera dollies in from 6.5 units back (decay 2.4/s). Cross-page navigation uses a 420ms cross-document view transition. UI transitions 240–400ms with cubic-bezier(0.16, 1, 0.3, 1). Render only while something is moving; stop in background tabs and dispose on page exit. Still view and reduced motion never start the scene and retain complete content; reduced motion also disables view transitions. No auto-rotation, scroll-jacking or continuous idle animation.
+
+## Signature Details
+
+- Two matching screen frames, equal size and baseline, turned toward each other in a symmetric V: software shown as a coherent system rather than mismatched mockups.
+- One continuous floor with a plinth, beam and light pool per station: the camera travels through one collection rather than separate isolated effects.
+- The still image and the lit 3D exhibit occupy the same rectangle, so switching views or losing WebGL never moves the work.
+- Quiet wall-label facts: the work is spectacular; the evidence stays matter-of-fact.
+
+## References
+
+- Primary: the captain's approved Night gallery / Full 3D world board, supplied in the brief; binding direction, not an externally viewed image.
+- Incumbent: live portfolio viewed in Chrome on 2026-10-22; before capture in task preview evidence. Preserve facts, not plates.
+- Secondary: Dark Luxury and Glass direction registries, read 2026-10-22. Adopt spatial pacing and a separate control layer; do not copy luxury branding, serif defaults or glass cards. External reference sites remain unverified.
+- Component foundation: native HTML/Astro already in this repo. Three.js 0.186.1 selected for actual shared perspective geometry without a React runtime.
+
+## Screens
+
+Home problem: eight colored strips crop evidence and repeat into colored bands. Replacement: one pinned stage the camera flies through, opening on the name, role and the DroneAid pair, then one station per project with an HTML wall label and its cover exhibit on a lit plinth; a rail and the project index reach any project without flying through the rest. Default/loading/error state is the complete static gallery, never a loading screen.
+
+DroneAid problem: 520×1126 images contain a 344×660 phone surrounded by prototype-page padding. Replacement: exact app crops in one shared frame across three stations — the opening pair (request, tracking; same framing as the home station, so the click reads as stepping closer), the two-roles pair (civilian sign-in, coordinator map) and the architecture diagram on its own white paper — then a normal-flow facts section with context, stack, contribution, screen provenance and source. Every screen appears once.
+
+## Accessibility
+
+Text contrast ≥4.5:1; large type ≥3:1. Visible focus, skip link, semantic landmarks, native keyboard controls, ≥44px targets. No information encoded only by color or motion. Image alt text describes evidence. No canvas text; canvas aria-hidden. All images and links remain present with JavaScript disabled. Static mode is not a reduced-content page.
+
+## Migration Decisions
+
+- Preserve project data, routing, captions' provenance, team credit, source links, image optimization and native scrolling.
+- Replace ProjectRow and ProjectBand on the home page with the continuous gallery; remove obsolete unused components.
+- Recompose the shared shell for the night gallery; DroneAid gets the complete new detail surface in preview. Other detail pages and remaining captures migrate only after approval.
+- Replace paper #f2f3f4 / ink #141414 with stage #101211 / ink #eeeae2; soft ink #4a4a46 becomes #aaa9a4.
+- Replace region-scale #1f3fd1/#ff5a1f/#0a7148/#ffd21a with small #9bd4c5/#dcb997/#afc2db/#d6ce9a accents.
+- Keep Archivo and exponential easing; replace 750–820 condensed headings with 450 normal-width headings.
+- Replace square flat plates with artifact-specific frames and real scene depth. High risk: GPU failure and motion sensitivity; mitigate with visible-by-default HTML and explicit still mode.
+
+## Removed
+
+Colored capture plates (compete with artifacts); sliver-filter navigation (hides project names); filename-as-primary-caption (obscures meaning); artificial loading/reveal states (delay evidence). Category filtering remains in the direct project index, with all projects recoverable through All Projects.
+
+## Preview boundary
+
+Approval checkpoint: home and DroneAid, not permission to ship the whole refresh. Remaining project pages and the private Poke Monopoly Rules Helper follow only after firstmate relays approval. The previous design snapshot is preserved outside the repository in preview/DESIGN.v1.md so it cannot compete with this normative contract.

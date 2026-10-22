@@ -17,5 +17,5 @@ An AI-powered semantic codebase memory engine and Model Context Protocol (MCP) s
 - **Source Code**: [GitHub Repository (AokDesu/dev-memory-ai)](https://github.com/AokDesu/dev-memory-ai)
 
 ## Image Production
-- `01-cli-help.png`: Live terminal execution of `memory-dev --help` and natural language query workflow.
+- `01-cli-help.png`: Recorded `memory-dev --help` and natural-language query workflow. ImageMagick crop of the existing capture: 880×534 at x=60, y=58, retaining the terminal window only and removing surrounding dark padding.
 - `02-architecture-and-mcp.png`: Architecture diagram showing AST chunking, local vector storage, and Model Context Protocol delivery to AI coding agents.

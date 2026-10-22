@@ -51,23 +51,23 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/01-login-screen.png',
-        caption: 'Authentication and role selection view captured from UI design specifications (P-U-01).',
+        caption: 'Authentication and role selection — design prototype P-U-01, cropped to the complete 344×660 app bounds.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/02-request-screen.png',
-        caption: 'Civilian emergency relief supply request interface captured from UI design specifications (P-U-03).',
+        caption: 'Emergency supply request — design prototype P-U-03, cropped to the complete 344×660 app bounds.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/03-tracking-screen.png',
-        caption: 'Real-time relief flight and delivery tracking view captured from UI design specifications (P-U-05).',
+        caption: 'Delivery tracking — design prototype P-U-05, cropped to the complete 344×660 app bounds.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/04-admin-map.png',
-        caption: 'Operational command center map with drone telemetry and relief hubs captured from UI specifications (P-A-05).',
+        caption: 'Coordinator map — design prototype P-A-05, cropped to the complete 344×660 app bounds.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/05-architecture.png',
-        caption: 'C4 software architecture diagram rendered from technical documentation.',
+        caption: 'C4 context diagram from technical documentation, tightly trimmed on its original white paper with an 8px margin.',
       },
     ],
   },
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/01-guest-feed.png',
-        caption: 'Public scam incident discovery dashboard and fraud alerts captured from standalone interactive prototype with clipboard banner dismissed (390×844).',
+        caption: 'Guest dashboard re-captured from a copy of the standalone design prototype: app-only 344×660 viewport, clipboard banner dismissed; prototype page and device chrome removed.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/02-user-report.png',
@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/01-companion-fate.png',
-        caption: 'Passenger survival correlation segmented by traveling group size and companion outcome.',
+        caption: 'Passenger survival correlation by group and companion outcome; original chart tightly trimmed with an 8px matching-paper margin.',
       },
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/02-cryosleep-rule.png',
@@ -155,7 +155,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/ai-data/neural-network-from-scratch/01-training-output.png',
-        caption: 'Live terminal output capture of the Release build compiling and running the training loop, successfully achieving 92.23% accuracy on 10,000 test images.',
+        caption: 'Recorded Release-build training output showing 92.23% test accuracy; cropped to the 860×402 terminal window, with surrounding dark padding removed.',
       },
       {
         srcPath: '/src/content/projects/ai-data/neural-network-from-scratch/02-architecture-and-accuracy.png',
@@ -179,7 +179,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/tools-systems/basic-memory-access-benchmark/01-benchmark-run.png',
-        caption: 'Live terminal capture of the compilation and execution of bechmark.sh with millisecond timings and throughputs.',
+        caption: 'Recorded benchmark compilation and execution output; cropped to the 860×484 terminal window without surrounding dark padding.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/basic-memory-access-benchmark/02-performance-chart.png',
@@ -203,7 +203,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/tools-systems/nummailai/01-discord-alert.png',
-        caption: 'Discord Rich Embed notification rendered in Discord dark-theme client using official test fixture event data without requiring live credentials.',
+        caption: 'Discord-style alert rendered from the official test fixture without live credentials; cropped to the 820×584 client window, removing surrounding padding.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/nummailai/02-web-dashboard.png',
@@ -227,7 +227,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/tools-systems/dev-memory-ai/01-cli-help.png',
-        caption: 'Live terminal execution of memory-dev --help and natural language query workflow.',
+        caption: 'Recorded memory-dev help and query workflow; cropped to the 880×534 terminal window without surrounding dark padding.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/dev-memory-ai/02-architecture-and-mcp.png',
@@ -263,7 +263,7 @@ export const PROJECTS: Project[] = [
     images: [
       {
         srcPath: '/src/content/projects/open-source/firstmate/01-pr-6699-merged.png',
-        caption: 'Live browser capture of merged Pull Request #6699 on GitHub.',
+        caption: 'Recorded merged pull-request content, cropped to 1216×708 without GitHub site or repository navigation; shown in a shared browser frame.',
       },
       {
         srcPath: '/src/content/projects/open-source/firstmate/02-pr-6695-open.png',

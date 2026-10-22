@@ -15,5 +15,5 @@ An automated monitoring and notification service for Metropolitan Waterworks Aut
 - **Source Code**: [GitHub Repository (AokDesu/NumMaiLai)](https://github.com/AokDesu/NumMaiLai)
 
 ## Image Production
-- `01-discord-alert.png`: Discord Rich Embed notification rendered in Discord dark-theme client using official test fixture event data without requiring live credentials.
+- `01-discord-alert.png`: Discord-style Rich Embed rendered from official test-fixture event data without live credentials. ImageMagick crop of the existing capture: 820×584 at x=70, y=68, retaining the client window and removing surrounding dark padding.
 - `02-web-dashboard.png`: Live capture of the local NumMaiLai GIS web dashboard (`http://localhost:8085`) displaying interactive outage map and filter controls.

@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import { getProjectImage, widthsFor } from '../utils/images';
+
+interface Item { path: string; caption: string; alt?: string }
+interface Props {
+  items: Item[];
+  kind?: 'phone' | 'browser' | 'paper' | 'window';
+  eager?: boolean;
+  /** Also shown as a lit object in the 3D gallery when it is running. */
+  scene?: boolean;
+}
+
+const { items, kind = 'window', eager = false, scene = false } = Astro.props;
+const resolved = items.flatMap(item => {
+  const image = getProjectImage(item.path);
+  return image ? [{ ...item, image }] : [];
+});
+const sizes = kind === 'phone' ? '(max-width: 899px) 45vw, 300px' : '(max-width: 899px) 92vw, 50vw';
+---
+<div class:list={['exhibit', `exhibit-${kind}`, { 'exhibit-pair': resolved.length === 2 }]} data-kind={kind} data-scene={scene ? '' : undefined}>
+  {resolved.map(({ image, caption, alt }) => (
+    <figure class="artifact" style={`--ar:${image.width / image.height}`}>
+      <div class:list={['artifact-frame', { 'phone-frame': kind === 'phone', 'browser-frame': kind === 'browser' }]}>
+        {kind === 'browser' && <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>}
+        <Image
+          src={image}
+          width={image.width}
+          height={image.height}
+          alt={alt ?? caption}
+          widths={widthsFor(image, kind === 'phone' ? [344, 688] : [688, 1000, 1440])}
+          sizes={sizes}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : undefined}
+          class="artifact-image"
+        />
+      </div>
+      <figcaption>{caption}</figcaption>
+    </figure>
+  ))}
+</div>
+<style>
+  .exhibit { display:flex; justify-content:center; align-items:flex-start; gap:var(--pair-gap); min-width:0; }
+  .artifact { min-width:0; }
+  .artifact-frame { overflow:hidden; box-shadow:0 30px 60px -20px rgb(0 0 0 / .55); }
+  .artifact-image { display:block; width:100%; height:auto; }
+
+  /* One phone size for every screen on a page, so any two screens shown together match. */
+  .exhibit-phone .artifact { width:calc(var(--phone-w) * 1.06); flex:none; }
+  .phone-frame { padding:calc(var(--phone-w) * .03); background:#272d2a; border-radius:calc(var(--phone-w) * .115); box-shadow:inset 0 0 0 1px rgb(255 255 255 / .06), 0 30px 60px -20px rgb(0 0 0 / .55); }
+  .phone-frame .artifact-image { aspect-ratio:344 / 660; object-fit:cover; border-radius:calc(var(--phone-w) * .085); }
+
+  .exhibit-window .artifact,
+  .exhibit-paper .artifact,
+  .exhibit-browser .artifact { width:min(90%, calc(var(--art-h) * var(--ar))); }
+  .exhibit-window .artifact-frame { border-radius:calc(var(--art-h) * .016); }
+  .exhibit-paper .artifact-frame { background:#fafafa; }
+  .browser-frame { border-radius:8px; background:#e9ecef; }
+  .browser-bar { height:24px; padding-inline:12px; display:flex; align-items:center; gap:5px; }
+  .browser-bar i { width:6px; height:6px; border-radius:50%; background:#858b8e; }
+
+  figcaption { margin-top:var(--caption-gap); color:var(--muted); font-size:13px; line-height:1.5; text-wrap:pretty; }
+  .exhibit-phone figcaption { min-height:3lh; }
+  .exhibit-phone:not(.exhibit-pair) figcaption { width:calc(var(--phone-w) * 2); margin-inline:calc(var(--phone-w) * -.47); text-align:center; }
+  :global(html[data-world='active']) [data-in-scene] .artifact-frame { opacity:0; }
+  /* Still view keeps the gallery lighting: a soft pool of warm light behind the work. */
+  .exhibit { position:relative; isolation:isolate; }
+  .exhibit::before { content:''; position:absolute; inset:-14% -18% 18%; z-index:-1; pointer-events:none; background:radial-gradient(ellipse 50% 50% at 50% 45%, rgb(243 230 208 / .085), rgb(243 230 208 / 0)); }
+  :global(html[data-world='active']) .exhibit::before { display:none; }
+  @media(max-width:899px) { .exhibit-window .artifact, .exhibit-paper .artifact, .exhibit-browser .artifact { width:100%; } }
+</style>

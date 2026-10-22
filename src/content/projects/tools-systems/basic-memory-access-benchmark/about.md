@@ -15,5 +15,5 @@ A low-level systems benchmark in modern C++ evaluating memory access latency and
 - **Source Code**: [GitHub Repository (AokDesu/Basic-memory-access-benchmark)](https://github.com/AokDesu/Basic-memory-access-benchmark)
 
 ## Image Production
-- `01-benchmark-run.png`: Live terminal capture of the compilation and execution of `bechmark.sh` with millisecond timings and throughputs.
+- `01-benchmark-run.png`: Recorded compilation and execution of `bechmark.sh`. ImageMagick crop of the existing capture: 860×484 at x=70, y=83, retaining the terminal window only and removing surrounding dark padding. This refresh did not re-run the benchmark.
 - `02-performance-chart.png`: Comparative analysis chart illustrating average execution times (23.0ms vs 32.7ms) and memory throughput (5,576 MB/s vs 3,911 MB/s) over 10 consecutive benchmark runs.

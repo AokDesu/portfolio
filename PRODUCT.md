@@ -2,51 +2,47 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> Facts below come from the owner's written brief relayed through the task launcher; no live interview ran. Lines marked *(inferred)* are reasoned from that brief and the repository, not confirmed by the owner.
-
 ## Platform
 
 web
 
 ## Users
 
-- Recruiters, internship coordinators, and engineers reviewing a student developer's work, usually arriving from a GitHub profile, a CV link, or a message. *(inferred)*
-- They skim on a laptop or a phone, want to know within seconds what kind of developer this is, then open one or two projects to check depth and evidence. *(inferred)*
+Recruiters and engineers reviewing a student developer's work on desktop or phone (audience inferred from the portfolio purpose). They must find any project quickly and inspect real evidence without traversing a long animation.
 
 ## Product Purpose
 
-A personal portfolio for Aekarut Phetpradit, a KMUTT student and software developer. It shows eight real projects with screenshots and notes on how each image was produced, so a reviewer can judge real work rather than claims. Success: a visitor reaches a project page, sees the evidence, and follows the source link or the GitHub profile.
+Aekarut Phetpradit's portfolio. Personal details are limited to the name, **KMUTT student · Software Developer**, and https://github.com/AokDesu. Present real software work with its provenance and honest contribution credit.
 
 ## Positioning
 
-Every image is a capture of the real thing (running builds, terminal output, rendered charts, live PR pages) or an explicitly labelled design-prototype screen; each project page records how its images were produced. Breadth is real: Flutter mobile apps, data analysis, C++ from first principles, systems benchmarking, Python tooling, and upstream open source.
+A full 3D night gallery, not a dark card grid. Near-black space, light falling on real captured artifacts, equal phone frames and smooth camera travel. Real HTML text carries every title, summary, caption and fact. The experience is optional; access to the work is not.
 
 ## Operating Context
 
-- Static Astro site, hosted on Vercel by importing the GitHub repo `AokDesu/portfolio`; zero-config build, no adapter.
-- Content source is `src/data/projects.ts` plus the categorised image folders under `src/content/projects/<category>/<project>/`, mirrored in `content/`.
+Static Astro build hosted on Vercel; no new service. Project records in src/data/projects.ts; images/provenance in src/content/projects/, mirrored under content/. Astro optimizes images. Self-hosted Archivo. Three.js is progressively imported after HTML content paints.
 
 ## Capabilities and Constraints
 
-- Home page: name, "KMUTT student · Software Developer", link to https://github.com/AokDesu, short intro, project grid filterable by category (Mobile Apps, AI & Data, Tools & Systems, Open Source).
-- One page per project: screenshots, description, stack, team credit, source link when the repo is public, PR links for open-source work.
-- Images go through Astro's image pipeline.
-- No email, student ID, phone, or other personal detail. No contact form, analytics, CMS, or custom domain.
+- One continuous spatial gallery with native scroll and pointer camera movement; direct project list remains available.
+- Every existing project remains reachable. Add only Poke Monopoly Rules Helper, AI & Data, in the full-build phase. Private repository: label it; do not link its source.
+- Full, readable static experience for reduced motion, small/weak devices, no WebGL and no JavaScript.
+- Capture the real app, not the surrounding prototype page. Phone screenshots share one size/aspect ratio and one frame; terminal windows lose padding; browser captures lose GitHub site chrome; charts retain matching paper.
+- Team work stays labelled. Credits from README and commit authorship; no invented impact metrics or claims.
+- No personal contact details, analytics, contact form, CMS or paid model requests.
 
 ## Brand Commitments
 
-- Name: Aekarut Phetpradit. Role line: "KMUTT student · Software Developer". GitHub: https://github.com/AokDesu.
-- DroneAid and ScamReport show their design-prototype screens, not running-app captures; captions say so.
-- The owner rejected the previous dark, blue-accent card-grid look; a redesign with a distinct point of view was requested.
+The owner chose Full 3D world and Night gallery, with small category accents. The previous Swiss Poster Series is replaced. The previously rejected dark card grid/tag-chip design remains rejected. DroneAid and ScamReport are design-prototype evidence, not running production-app captures.
 
-## Evidence on Hand
+## Build Order
 
-- 25 project images across 8 projects (`src/content/projects/**`): phone-portrait prototype screens (DroneAid 520×1126, ScamReport 390×844), terminal captures, rendered charts, an architecture diagram, GitHub PR pages, a Discord-style alert, a GIS dashboard.
-- Team credits come from commit authorship and README credits only. No testimonials, employers, awards, or metrics beyond those in the project notes; none may be invented.
+Preview first: updated direction, home and DroneAid, remade evidence, desktop/phone proof, library/tool disclosure, local preview server, commit without push. Stop for review. Only after approval: remaining pages/captures and Rules Helper, full fallback/mobile coverage, final committed handoff.
 
 ## Product Principles
 
-1. Evidence over adjectives: the screenshots carry the argument.
-2. Honest credit: team work is labelled as team work.
-3. Fast to scan, deep on demand: the home page sorts, the project page proves.
-4. Nothing personal beyond name, school, role, and GitHub.
+1. Real work is the visual lead.
+2. Spatial exploration never gates reading or navigation.
+3. Matching frames and honest crops; never stretch or invent evidence.
+4. Motion is an enhancement, not a dependency.
+5. Keep team credit and capture provenance close to the work.

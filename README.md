@@ -115,8 +115,9 @@ Open `src/data/projects.ts` and append a new entry to the `PROJECTS` array:
 ```
 
 Layout notes:
-- Each category has one flat colour, defined as `--mobile`, `--data`, `--tools`, `--oss` in `src/layouts/Layout.astro`. A new category needs a colour and an `--on` text colour that reaches 4.5:1 contrast on it.
-- Images taller than 1.6× their width are treated as phone screens: they sit side by side on a coloured shelf. Every other image gets its own wide plate. Images are never upscaled past their source width.
+- The night-gallery preview covers the home page and DroneAid. Other project detail pages retain their previous presentation until the preview is approved. `DESIGN.md` is the new direction; old category plates are not rules for new work.
+- `GalleryLayout.astro` supplies the project index and the pinned-stage CSS. A page opts into the 3D gallery by wrapping its stations in `[data-track]` > `[data-stage]`, marking each station `[data-station]` (with `id` and `data-title`), and placing `<GalleryWorld />` inside the stage. `GalleryWorld.astro` decides whether the scene may run (viewport at least 900×560, no reduced motion, no data-saving, WebGL available, enough memory and cores, not switched to Still view) and only then imports `src/scripts/gallery-world.js` (Three.js). Otherwise, and until every texture has loaded, the stations stay in normal flow with their HTML images.
+- `Exhibit.astro` owns shared frames: `kind` is `phone`, `browser`, `paper` or `window`, and `scene` makes it a lit object in the 3D gallery. Every phone on a page uses the same `--phone-w`, so screens shown together match. Phone images are app-only 344×660 captures, never stretched; terminal captures contain only their window, browser captures omit site chrome, and charts retain matching paper. The preview remakes all home covers and all DroneAid images; remaining detail captures follow in phase two.
 - Design decisions live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
 
 ### 3. Verify Build
