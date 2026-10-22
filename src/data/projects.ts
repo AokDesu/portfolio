@@ -6,8 +6,8 @@ export interface ProjectImage {
   kind: ExhibitKind;
   /** What the image shows and how it was produced. */
   caption: string;
-  /** Description of the content for screen readers, when it differs from the caption. */
-  alt?: string;
+  /** Short description of what the picture shows, for screen readers. */
+  alt: string;
 }
 
 export interface PullRequestLink {
@@ -100,21 +100,25 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/mobile-apps/droneaid/01-login-screen.png',
         kind: 'phone',
         caption: 'Authentication and role selection — design prototype P-U-01, cropped to the complete 344×660 app bounds.',
+        alt: 'DroneAid login screen with the drone logo, an ID field, a masked password field, a Log in button and a list of demo accounts.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/02-request-screen.png',
         kind: 'phone',
         caption: 'Emergency supply request — design prototype P-U-03, cropped to the complete 344×660 app bounds.',
+        alt: 'DroneAid request screen listing six supplies with add buttons, a delivery pin in Bangkok and Normal and Urgent priority choices.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/03-tracking-screen.png',
         kind: 'phone',
         caption: 'Delivery tracking — design prototype P-U-05, cropped to the complete 344×660 app bounds.',
+        alt: 'DroneAid tracking screen: a map with a dashed drone route, an In flight status with ETA, battery and speed, and the cargo list.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/04-admin-map.png',
         kind: 'phone',
         caption: 'Coordinator map — design prototype P-A-05, cropped to the complete 344×660 app bounds.',
+        alt: 'DroneAid coordinator live map with one active drone on a city map, tabs for requests, drones and control.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/droneaid/05-architecture.png',
@@ -153,21 +157,25 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/mobile-apps/scamreport/01-guest-feed.png',
         kind: 'phone',
         caption: 'Guest dashboard re-captured from a copy of the standalone design prototype: app-only 344×660 viewport, clipboard banner dismissed; prototype page and device chrome removed.',
+        alt: 'ScamReport home screen on a dark theme: a paste-a-message search box, weekly report counts and recent fraud alerts.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/02-user-report.png',
         kind: 'phone',
         caption: 'Report a scam: title, description and scam type. Re-captured from a copy of the signed-in user prototype, app-only at 344×660.',
+        alt: 'ScamReport report form with title and description fields, six scam type buttons and a target identifier field.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/03-moderation-queue.png',
         kind: 'phone',
         caption: 'Moderation queue with pending, flagged and average-age counts. Re-captured from a copy of the admin prototype, app-only at 344×660.',
+        alt: 'ScamReport moderation queue with pending, flagged and average-age counts and a list of reports to review.',
       },
       {
         srcPath: '/src/content/projects/mobile-apps/scamreport/04-feed-search.png',
         kind: 'phone',
         caption: 'Verified feed filtered by scam type. Re-captured from a copy of the signed-in user prototype, app-only at 344×660.',
+        alt: 'ScamReport verified feed with weekly totals, scam type filter chips and cards for reported scams.',
       },
     ],
   },
@@ -202,16 +210,19 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/ai-data/poke-rules-helper/01-cited-answer.png',
         kind: 'phone',
         caption: 'A cited answer: a one-line direct answer, source tags and the rulebook passages. Captured offline at 344×660 from a replayed recorded answer; no model request.',
+        alt: 'Rules Helper chat on a phone: the question about starting money is answered with 20 coins, with rulebook source tags.',
       },
       {
         srcPath: '/src/content/projects/ai-data/poke-rules-helper/02-rules-conflict.png',
         kind: 'phone',
         caption: 'The Price Shield conflict answered locally: both passages, no house rule chosen. Captured offline at 344×660.',
+        alt: 'Rules Helper chat on a phone: a question about Price Shield is answered with two conflicting rulebook passages and no chosen rule.',
       },
       {
         srcPath: '/src/content/projects/ai-data/poke-rules-helper/03-rulebook-index.png',
         kind: 'browser',
         caption: 'Desktop view: the source tag §4.1 L143 opened its Rulebook index entry. Captured offline at 1440×900 from a replayed recorded answer; shown in the shared browser frame.',
+        alt: 'Rules Helper on desktop: a cited answer beside the opened rulebook index with the Starting kit entry highlighted.',
       },
     ],
   },
@@ -244,11 +255,13 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/tools-systems/nummailai/01-discord-alert.png',
         kind: 'window',
         caption: 'Discord-style alert rendered from the official test fixture without live credentials; cropped to the 820×584 client window, removing surrounding padding.',
+        alt: 'Discord channel with an MWA outage alert in Thai: a burst pipe notice with time window, distance, location, branch and map link.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/nummailai/02-web-dashboard.png',
         kind: 'browser',
         caption: 'Recorded capture of the local GIS dashboard (localhost:8085): outage map and filter controls. The app fills the 1440×900 page, so it is shown uncropped in the shared browser frame.',
+        alt: 'NumMailAI dashboard: a Bangkok map with outage markers and a radius circle, beside alert settings for location, keywords and branches.',
       },
     ],
   },
@@ -281,11 +294,13 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/tools-systems/dev-memory-ai/01-cli-help.png',
         kind: 'window',
         caption: 'Recorded memory-dev help and query workflow; cropped to the 880×534 terminal window without surrounding dark padding.',
+        alt: 'Terminal window showing memory-dev help with its six commands, then an answer to a question with cited source files.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/dev-memory-ai/02-architecture-and-mcp.png',
         kind: 'window',
         caption: 'Architecture card: ingestion, semantic vectoring, vector storage and MCP delivery. Cropped to the 900×440 card without surrounding dark padding.',
+        alt: 'Architecture card: code ingestion, semantic vectoring, vector storage and agent delivery, plus the MCP server and terminal UI.',
       },
     ],
   },
@@ -336,26 +351,31 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/01-companion-fate.png',
         kind: 'paper',
         caption: 'Passenger survival correlation by group and companion outcome; original chart tightly trimmed with an 8px matching-paper margin.',
+        alt: 'Chart of transport odds by whether a companion was transported, for exact cabin, travel group and surname links, with confidence bars.',
       },
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/02-cryosleep-rule.png',
         kind: 'paper',
         caption: 'CryoSleep rule and why it matters; original chart trimmed to its content with an 8px margin of its own paper.',
+        alt: 'Two charts: frozen passengers spend nothing on every service, and are transported 81.8% of the time against 32.9% for awake passengers.',
       },
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/03-confounding-dumbbell.png',
         kind: 'paper',
         caption: 'Naive versus within-awake effect of each service on transport rate; trimmed with an 8px margin of its own paper.',
+        alt: 'Dumbbell chart of each service spend effect on transport rate, naive against awake passengers only; FoodCourt flips from negative to positive.',
       },
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/04-rate-by-deck.png',
         kind: 'paper',
         caption: 'Transport rate by deck with 95% Wilson intervals; trimmed with an 8px margin of its own paper.',
+        alt: 'Bar chart of transport rate by deck A to T with confidence intervals; deck B is highest and deck T has only five rows.',
       },
       {
         srcPath: '/src/content/projects/ai-data/spaceship-titanic/05-spend-distributions.png',
         kind: 'paper',
         caption: 'Per-service spend distributions on a log scale, and total spend by outcome; trimmed with an 8px margin of its own paper.',
+        alt: 'Six histograms of service spend on a log scale, five per service and one of total spend by outcome.',
       },
     ],
   },
@@ -388,11 +408,13 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/ai-data/neural-network-from-scratch/01-training-output.png',
         kind: 'window',
         caption: 'Recorded Release-build training output showing 92.23% test accuracy; cropped to the 860×402 terminal window, with surrounding dark padding removed.',
+        alt: 'Terminal window building the C++ neural network, loading MNIST, training one epoch and reporting 92.23% test accuracy.',
       },
       {
         srcPath: '/src/content/projects/ai-data/neural-network-from-scratch/02-architecture-and-accuracy.png',
         kind: 'window',
         caption: 'Architecture and results card (layer sizes, 92.23% accuracy, 0.3840 loss); cropped to the 900×474 card without surrounding dark padding.',
+        alt: 'Card showing four network layers (784, 256, 128, 10) and results: 92.23% accuracy, 0.3840 loss, 70,000 samples.',
       },
     ],
   },
@@ -425,11 +447,13 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/tools-systems/basic-memory-access-benchmark/01-benchmark-run.png',
         kind: 'window',
         caption: 'Recorded benchmark compilation and execution output; cropped to the 860×484 terminal window without surrounding dark padding.',
+        alt: 'Terminal window compiling and running the raw pointer and smart pointer benchmarks, with elapsed times and throughput.',
       },
       {
         srcPath: '/src/content/projects/tools-systems/basic-memory-access-benchmark/02-performance-chart.png',
         kind: 'window',
         caption: 'Results card: average time and throughput for both pointer types over 10 runs; cropped to the 900×516 card without surrounding dark padding.',
+        alt: 'Results card comparing raw pointer at 32.7 ms with smart pointer at 23.0 ms, with throughput bars.',
       },
     ],
   },
@@ -472,16 +496,19 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/open-source/firstmate/01-pr-6699-merged.png',
         kind: 'browser',
         caption: 'Recorded merged pull-request content, cropped to 1216×708 without GitHub site or repository navigation; shown in a shared browser frame.',
+        alt: 'GitHub pull request #6699, merged, with its Intent and What Changed description.',
       },
       {
         srcPath: '/src/content/projects/open-source/firstmate/02-pr-6695-open.png',
         kind: 'browser',
         caption: 'Recorded open pull request #6695, cropped to 1232×720 without GitHub site or repository navigation; shown in the shared browser frame.',
+        alt: 'GitHub pull request #6695, open, with its Intent and What Changed description.',
       },
       {
         srcPath: '/src/content/projects/open-source/firstmate/03-pr-6699-diff.png',
         kind: 'browser',
         caption: 'Recorded files-changed view of #6699, cropped to the 1392×480 pull-request header and diff without GitHub site bars or footer.',
+        alt: 'Files-changed view of pull request #6699: one line in SKILL.md wrapped in a subshell.',
       },
     ],
   },

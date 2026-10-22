@@ -1,7 +1,7 @@
 import { BufferAttribute, Vector3 } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-// Two CC0 models from Poly Pizza (see the site credits and libraries.md):
+// Two CC0 models from Poly Pizza (credited in the site footer):
 // "Smartphone" by smallbigsquare and "Monitor" by CreativeTrio. Only their geometry is used;
 // the gallery supplies its own graphite material and puts each capture on the screen.
 

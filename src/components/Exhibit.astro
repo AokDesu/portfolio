@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { getProjectImage, widthsFor } from '../utils/images';
 
-interface Item { path: string; caption: string; alt?: string }
+interface Item { path: string; caption: string; alt: string }
 interface Props {
   items: Item[];
   kind?: 'phone' | 'browser' | 'paper' | 'window';
@@ -27,7 +27,7 @@ const sizes = kind === 'phone' ? '(max-width: 899px) 45vw, 300px' : '(max-width:
           src={image}
           width={image.width}
           height={image.height}
-          alt={alt ?? caption}
+          alt={alt}
           widths={widthsFor(image, kind === 'phone' ? [344, 688] : [688, 1000, 1440])}
           sizes={sizes}
           loading={eager ? 'eager' : 'lazy'}
