@@ -1,0 +1,148 @@
+<div id="gallery-world" aria-hidden="true"></div>
+<script>
+  // Progressive enhancement. The page is a complete normal-flow gallery until the scene has
+  // its textures; only then does the HTML switch into the pinned stage the camera flies through.
+  type World = {
+    start(options: { fromTop: boolean; index: number | null; fromBottom: number | null }): void;
+    stationScroll(index: number): number;
+    currentIndex(): number;
+    dispose(): void;
+  };
+  const root = document.documentElement;
+  const host = document.querySelector<HTMLElement>('#gallery-world');
+  const track = document.querySelector<HTMLElement>('[data-track]');
+  const stage = track?.querySelector<HTMLElement>('[data-stage]');
+  const toggle = document.querySelector<HTMLButtonElement>('.view-toggle');
+  const sections = [...(track?.querySelectorAll<HTMLElement>('[data-station]') ?? [])];
+  const rail = track?.querySelector<HTMLElement>('[data-rail]');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const roomy = matchMedia('(min-width: 900px) and (min-height: 560px)');
+  const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+  const STILL_KEY = 'gallery-view';
+  let still = localStorage.getItem(STILL_KEY) === 'still';
+  let failed = false;
+  let world: World | null = null;
+  let generation = 0;
+  let webgl: boolean | undefined;
+
+  function hasWebGL() {
+    if (webgl === undefined) {
+      try {
+        const context = document.createElement('canvas').getContext('webgl2');
+        webgl = !!context;
+        context?.getExtension('WEBGL_lose_context')?.loseContext();
+      } catch {
+        webgl = false;
+      }
+    }
+    return webgl;
+  }
+  const capable = () => !failed && roomy.matches && !reduced.matches && !device.connection?.saveData
+    && (device.deviceMemory ?? 8) >= 4 && (device.hardwareConcurrency ?? 8) >= 4 && hasWebGL();
+
+  function stationInView() {
+    const middle = innerHeight / 2;
+    return sections.findIndex(section => { const rect = section.getBoundingClientRect(); return rect.top <= middle && rect.bottom > middle; });
+  }
+
+  function teardown() {
+    if (!world) return;
+    const index = world.currentIndex();
+    const inTrack = track ? scrollY < track.getBoundingClientRect().bottom + scrollY - innerHeight : false;
+    world.dispose();
+    world = null;
+    delete root.dataset.world;
+    if (inTrack && scrollY > 0) sections[index]?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
+
+  function label() {
+    if (!toggle) return;
+    toggle.hidden = !capable() && !world;
+    toggle.textContent = still ? 'Enter 3D view' : 'Still view';
+  }
+
+  async function update() {
+    const current = ++generation;
+    teardown();
+    label();
+    if (!host || !track || !stage || !sections.length || still || !capable()) return;
+    try {
+      await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      const { mountGallery } = await import('../scripts/gallery-world.js');
+      if (current !== generation) return;
+      const api = await mountGallery({ host, track, stage, sections, modelBase: '/models/', onFailure: () => { failed = true; ++generation; teardown(); label(); } }) as World | null;
+      if (!api) return;
+      if (current !== generation) { api.dispose(); return; }
+      const fromTop = scrollY < 8;
+      const index = fromTop ? null : stationInView();
+      const fromBottom = !fromTop && index === -1 && track.getBoundingClientRect().bottom < innerHeight / 2
+        ? document.documentElement.scrollHeight - scrollY : null;
+      root.dataset.world = 'active';
+      world = api;
+      api.start({ fromTop, index: index === -1 ? null : index, fromBottom });
+      label();
+    } catch {
+      if (current === generation) { failed = true; teardown(); label(); }
+    }
+  }
+
+  // In the pinned stage every station shares one viewport, so in-page links and keyboard focus
+  // move the camera to the station instead of relying on the browser's anchor scroll.
+  const stationOf = (hash: string) => sections.findIndex(section => section.id && `#${section.id}` === hash);
+  const fly = (index: number) => scrollTo({ top: world!.stationScroll(index), behavior: 'smooth' });
+
+  document.addEventListener('click', event => {
+    if (!world || !(event.target instanceof Element)) return;
+    const link = event.target.closest<HTMLAnchorElement>('a[href*="#"]');
+    if (!link) return;
+    const url = new URL(link.href);
+    if (url.pathname !== location.pathname) return;
+    const index = stationOf(url.hash);
+    if (index < 0) return;
+    event.preventDefault();
+    history.replaceState(null, '', url.hash);
+    fly(index);
+  });
+  addEventListener('hashchange', () => {
+    const index = stationOf(location.hash);
+    if (world && index >= 0) fly(index);
+  });
+  track?.addEventListener('focusin', event => {
+    if (!world || !(event.target instanceof Element)) return;
+    const index = sections.indexOf(event.target.closest<HTMLElement>('[data-station]')!);
+    if (index >= 0 && index !== world.currentIndex()) scrollTo({ top: world.stationScroll(index), behavior: 'instant' });
+  });
+  track?.addEventListener('gallery:station', event => {
+    if (!rail) return;
+    const index = (event as CustomEvent<{ index: number }>).detail.index;
+    rail.querySelectorAll<HTMLElement>('[data-rail-index]').forEach(link => {
+      if (Number(link.dataset.railIndex) === index) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+    const name = rail.querySelector<HTMLElement>('[data-rail-current]');
+    const title = sections[index]?.dataset.title;
+    if (name && title && name.textContent !== title) name.textContent = title;
+    const category = sections[index] && getComputedStyle(sections[index]).getPropertyValue('--category').trim();
+    if (category) rail.style.setProperty('--category-current', category);
+  });
+
+  toggle?.addEventListener('click', () => {
+    still = !still;
+    localStorage.setItem(STILL_KEY, still ? 'still' : '3d');
+    update();
+  });
+  reduced.addEventListener('change', update);
+  roomy.addEventListener('change', update);
+  addEventListener('pagehide', () => { ++generation; teardown(); });
+  addEventListener('pageshow', event => { if (event.persisted) update(); });
+  update();
+</script>
+<style>
+  #gallery-world { display:none; }
+  :global(html[data-world='active']) #gallery-world { display:block; position:absolute; inset:0; z-index:0; pointer-events:none; }
+  #gallery-world::after { content:''; position:absolute; inset:0; background:
+    linear-gradient(90deg, var(--stage) 0%, rgb(16 18 17 / .9) 26%, rgb(16 18 17 / 0) 46%),
+    linear-gradient(180deg, rgb(16 18 17 / .94) 0, rgb(16 18 17 / .6) 64px, rgb(16 18 17 / 0) 150px),
+    linear-gradient(0deg, rgb(16 18 17 / .7) 0, rgb(16 18 17 / 0) 90px); }
+  #gallery-world :global(canvas) { display:block; width:100%; height:100%; }
+</style>

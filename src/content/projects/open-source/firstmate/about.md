@@ -15,6 +15,6 @@ Open-source contributions to `firstmate`, an autonomous agent fleet orchestratio
 - **Pull Request #6695 (Open)**: [https://github.com/kunchenguid/firstmate/pull/6695](https://github.com/kunchenguid/firstmate/pull/6695)
 
 ## Image Production
-- `01-pr-6699-merged.png`: Live browser capture of merged Pull Request #6699 on GitHub.
-- `02-pr-6695-open.png`: Live browser capture of open Pull Request #6695 on GitHub.
-- `03-pr-6699-diff.png`: Live browser capture of the code review diff for PR #6699.
+- `01-pr-6699-merged.png`: Recorded browser capture of https://github.com/kunchenguid/firstmate/pull/6699. ImageMagick crop: 1216×708 at x=112, y=192, retaining the captured pull-request content and removing GitHub's global menu, Sign-in bar and repository navigation. The portfolio supplies one neutral browser frame; the recorded status is not a fresh status check.
+- `02-pr-6695-open.png`: Recorded browser capture of https://github.com/kunchenguid/firstmate/pull/6695. ImageMagick crop: 1232×720 at x=104, y=180, retaining the pull-request header, conversation and sidebar and removing GitHub's global menu, Sign-in bar and repository navigation. Shown in the portfolio's shared browser frame; the recorded status is not a fresh status check.
+- `03-pr-6699-diff.png`: Recorded capture of the files-changed view of https://github.com/kunchenguid/firstmate/pull/6699. ImageMagick crop: 1392×480 at x=24, y=184, retaining the pull-request header and diff and removing GitHub's site bars and page footer.

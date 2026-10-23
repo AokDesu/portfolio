@@ -15,7 +15,3 @@ export function widthsFor(meta: ImageMetadata, candidates: number[]): number[] {
   return [...below, Math.min(meta.width, Math.max(...candidates))];
 }
 
-/** Phone-screen captures (tall, narrow) are laid out side by side on a shelf. */
-export function isPhone(meta: ImageMetadata): boolean {
-  return meta.height / meta.width > 1.6;
-}

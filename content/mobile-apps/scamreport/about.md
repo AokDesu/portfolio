@@ -16,7 +16,7 @@ A community-driven incident reporting and scam intelligence mobile application d
 - **Source Code**: [GitHub Repository (CSC234-UserCenteredMobileApp/ScamReport)](https://github.com/CSC234-UserCenteredMobileApp/ScamReport)
 
 ## Image Production
-- `01-guest-feed.png`: Public scam incident discovery dashboard and fraud alerts captured from standalone interactive prototype with clipboard banner dismissed at mobile viewport (390×844).
-- `02-user-report.png`: Multi-step incident reporting form with fraud category selection and evidence attachments captured from standalone interactive prototype (390×844).
-- `03-moderation-queue.png`: Content review, triage metrics, and report moderation queue captured from standalone interactive prototype (390×844).
-- `04-feed-search.png`: Verified incident database feed filterable by scam category with community report counts captured from standalone interactive prototype (390×844).
+- `01-guest-feed.png`: Re-captured from a read-only source copied from `ScamReport-docs/ScamReport Prototype _standalone_guest.html` into task scratch. Chrome renders the actual `.sr-app` at 344×660, fixed to the capture viewport; surrounding prototype heading, chips and device chrome are excluded. Clipboard banner dismissed using its real control. App scrolling and navigation retained; content is not stretched. Uses the portfolio's shared phone frame.
+- `02-user-report.png`: Re-captured from a copy of `ScamReport-docs/ScamReport Prototype _standalone_user.html` (the signed-in user build of the team's standalone interactive prototype) in headless Chrome. The prototype's own `.sr-app` element is fixed to a 344×660 viewport, so the prototype page heading, chips, status bar and device chrome are excluded; the Report tab was opened with the app's own bottom navigation. Uses the portfolio's shared phone frame.
+- `03-moderation-queue.png`: Re-captured the same way from a copy of `ScamReport Prototype _standalone_admin.html` (admin build): `.sr-app` at 344×660, Moderate tab opened with the app's own navigation.
+- `04-feed-search.png`: Re-captured the same way from a copy of the user build: `.sr-app` at 344×660, Feed tab opened with the app's own navigation, "All" scam-type filter selected.

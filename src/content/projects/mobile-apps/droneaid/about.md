@@ -21,8 +21,10 @@ Drone-based relief-supply delivery simulator designed for civilians impacted by 
 - **Source Code**: [GitHub Repository (AokDesu/CSC291-DroneAid)](https://github.com/AokDesu/CSC291-DroneAid)
 
 ## Image Production
-- `01-login-screen.png`: Authentication and role selection view captured from UI design specifications (`docs/prototype-screens/user/P-U-01_login.png`).
-- `02-request-screen.png`: Civilian emergency relief supply request interface captured from UI design specifications (`docs/prototype-screens/user/P-U-03_request.png`).
-- `03-tracking-screen.png`: Real-time relief flight and delivery tracking view captured from UI design specifications (`docs/prototype-screens/user/P-U-05_tracking.png`).
-- `04-admin-map.png`: Operational command center map with drone telemetry and relief hubs captured from UI design specifications (`docs/prototype-screens/admin/P-A-05_control_map.png`).
-- `05-architecture.png`: C4 software architecture diagram rendered from technical documentation (`docs/diagrams/07-architecture-1.png`).
+- `01-login-screen.png`: Authentication and role selection from the public UI design specification `docs/prototype-screens/user/P-U-01_login.png`; cropped the existing source capture at x=23, y=93 to the complete 344×660 app bounds. Prototype-page background removed; no content stretched.
+- `02-request-screen.png`: Civilian supply request from `docs/prototype-screens/user/P-U-03_request.png`; same app-only 344×660 crop at x=23, y=93.
+- `03-tracking-screen.png`: Delivery tracking from `docs/prototype-screens/user/P-U-05_tracking.png`; same app-only 344×660 crop at x=23, y=93.
+- `04-admin-map.png`: Coordinator map from `docs/prototype-screens/admin/P-A-05_control_map.png`; same app-only 344×660 crop at x=23, y=93.
+- `05-architecture.png`: C4 context diagram from `docs/diagrams/07-architecture-1.png`; existing rendered diagram trimmed to non-white bounds with an 8px white-paper margin.
+
+The four mobile images remain design-prototype captures, not running-app evidence. All use one shared phone frame on the portfolio; framing is separate from the image. Crops produced with ImageMagick 7.1.2-34. Original copies and remade images are retained under the portfolio-refresh task data directory; content/ mirrors these files.
