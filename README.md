@@ -119,6 +119,7 @@ Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its positi
       srcPath: '/src/content/projects/mobile-apps/my-project/01-cover.png',
       kind: 'phone', // 'phone' | 'browser' | 'paper' | 'window'
       caption: 'What this image shows and how it was produced.',
+      alt: 'Short description of what the picture shows.',
     },
   ],
 }

@@ -59,7 +59,6 @@
     if (!toggle) return;
     toggle.hidden = !capable() && !world;
     toggle.textContent = still ? 'Enter 3D view' : 'Still view';
-    toggle.setAttribute('aria-pressed', String(still));
   }
 
   async function update() {

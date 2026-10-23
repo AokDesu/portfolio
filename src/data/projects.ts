@@ -261,7 +261,7 @@ export const PROJECTS: Project[] = [
         srcPath: '/src/content/projects/tools-systems/nummailai/02-web-dashboard.png',
         kind: 'browser',
         caption: 'Recorded capture of the local GIS dashboard (localhost:8085): outage map and filter controls. The app fills the 1440×900 page, so it is shown uncropped in the shared browser frame.',
-        alt: 'NumMailAI dashboard: a Bangkok map with outage markers and a radius circle, beside alert settings for location, keywords and branches.',
+        alt: 'NumMaiLai dashboard: a Bangkok map with outage markers and a radius circle, beside alert settings for location, keywords and branches.',
       },
     ],
   },
