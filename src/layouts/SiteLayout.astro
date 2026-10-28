@@ -1,0 +1,166 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import Folders from '../components/Folders.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Field colour behind the top bar (a project page opens in its own colour). */
+  field?: { color: string; ink: string };
+}
+const {
+  title,
+  description = 'Aekarut Phetpradit — KMUTT student · Software Developer. Mobile apps, AI and data, systems tools and open-source work.',
+  field,
+} = Astro.props;
+const barStyle = field ? `--c:${field.color};--on:${field.ink}` : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={field?.color ?? '#F6F6F3'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="expect" href="#main-end" blocking="render" />
+    <script is:inline>
+      // Entrance motion only hides content once script is known to run; if the motion
+      // module never starts, the page falls back to fully visible content.
+      document.documentElement.classList.add('js');
+      setTimeout(function () { if (!window.__motion) document.documentElement.classList.remove('js'); }, 2500);
+      // Going back from a project: its colour field morphs into its own chapter. This runs
+      // here because pagereveal fires before deferred modules; motion.ts records the slug.
+      addEventListener('pagereveal', function (event) {
+        var from = sessionStorage.getItem('vt-from');
+        sessionStorage.removeItem('vt-from');
+        if (!event.viewTransition || !from || location.pathname.indexOf('/projects/') === 0) return;
+        var chapter = document.querySelector('.chapter[data-vt-field="' + CSS.escape(from) + '"]');
+        if (!chapter) return;
+        chapter.style.viewTransitionName = 'field';
+        var title = chapter.querySelector('[data-vt-title]');
+        if (title) title.style.viewTransitionName = 'title';
+      });
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class:list={['bar', { field: field }]} style={barStyle}>
+      <a class="identity" href="/">Aekarut Phetpradit</a>
+      <nav aria-label="Site">
+        <details class="projects-menu">
+          <summary>Projects</summary>
+          <div class="menu-panel">
+            <Folders compact />
+          </div>
+        </details>
+        <a class="github" href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">GitHub <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" /></svg></a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /><span id="main-end"></span></main>
+    <footer class="site-footer">
+      <p class="footer-name">Aekarut Phetpradit</p>
+      <div class="footer-row">
+        <p>KMUTT student · Software Developer</p>
+        <a href="https://github.com/AokDesu" target="_blank" rel="noopener noreferrer">github.com/AokDesu <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" /></svg></a>
+      </div>
+      <p class="footer-note">Built with Astro. Pokémon icons in the Rules Helper captures by Darius Dan – Flaticon.</p>
+    </footer>
+  </body>
+</html>
+<script>
+  import '../scripts/motion';
+</script>
+<style is:global>
+  :root {
+    --paper: #f6f6f3;
+    --paper-2: #ebebe5;
+    --ink: #111311;
+    --ink-2: #464a45;
+    --m: clamp(20px, 3.4vw, 56px);
+    --gap: clamp(24px, 4vw, 72px);
+    --phone-w: clamp(150px, 15vw, 250px);
+    --pair-gap: clamp(14px, 2vw, 28px);
+    --out: cubic-bezier(0.16, 1, 0.3, 1);
+    --display: 800 clamp(64px, 11.6vw, 188px) / 0.86 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    --head: 800 clamp(44px, 5.8vw, 92px) / 0.9 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    --lead: 500 clamp(20px, 1.6vw, 25px) / 1.32 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    --body: 400 18px / 1.55 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    --small: 500 15px / 1.45 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+    color-scheme: light;
+  }
+  @view-transition { navigation: auto; }
+  ::view-transition-group(*) { animation-duration: 520ms; animation-timing-function: var(--out); }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 320ms; }
+  ::view-transition-old(field), ::view-transition-new(field) { height: 100%; object-fit: cover; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { margin: 0; background: var(--paper); color: var(--ink); font: var(--body); font-stretch: 100%; -webkit-font-smoothing: antialiased; scrollbar-color: var(--ink-2) var(--paper); }
+  body { margin: 0; }
+  main { display: block; overflow-x: clip; }
+  main:focus { outline: none; }
+  h1, h2, h3, p, figure, dl, dd, ol, ul { margin: 0; }
+  ol, ul { padding: 0; list-style: none; }
+  h1, h2, h3 { text-wrap: balance; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+  img { display: block; width: 100%; height: auto; }
+  svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; vertical-align: middle; flex: none; }
+  [hidden] { display: none !important; }
+  ::selection { background: var(--ink); color: var(--paper); }
+  .field ::selection, .field::selection { background: var(--on); color: var(--c); }
+  :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; border-radius: 2px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .skip { position: fixed; top: -100px; left: var(--m); z-index: 30; padding: 12px 20px; background: var(--ink); color: var(--paper); text-decoration: none; }
+  .skip:focus { top: 12px; }
+
+  .field { background: var(--c); color: var(--on); }
+
+  /* Top bar: wordmark, the project list, GitHub. On a project page it takes the project's field. */
+  .bar { position: relative; z-index: 20; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 14px var(--m); font: 600 18px/1.2 'Archivo Variable', sans-serif; }
+  .bar a, .bar summary { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+  .bar nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 32px); font-weight: 500; }
+  .bar a:hover, .bar summary:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .projects-menu { position: relative; }
+  .projects-menu summary { cursor: pointer; list-style: none; }
+  .projects-menu summary::-webkit-details-marker { display: none; }
+  .projects-menu summary::after { content: ''; width: 8px; height: 8px; margin-left: 2px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); transition: transform 200ms var(--out); }
+  .projects-menu[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+  .menu-panel { position: absolute; right: 0; top: calc(100% + 10px); width: min(440px, calc(100vw - 2 * var(--m))); padding: 10px; border-radius: 16px; background: var(--ink); color: var(--paper); }
+
+  .btn { display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 26px; border-radius: 999px; background: var(--on, var(--ink)); color: var(--c, var(--paper)); font: 700 18px/1 'Archivo Variable', sans-serif; text-decoration: none; }
+  .btn svg { width: 20px; height: 14px; }
+
+  .site-footer { background: var(--ink); color: var(--paper); padding: clamp(72px, 12vw, 160px) var(--m) 40px; }
+  .footer-name { font: var(--display); font-stretch: 68%; letter-spacing: -0.02em; }
+  .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; margin-top: 36px; font: var(--lead); }
+  .footer-row a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-underline-offset: 6px; }
+  .footer-row a svg { width: 20px; height: 20px; }
+  .footer-note { margin-top: 40px; font: var(--small); }
+
+  /* Motion. Content is visible by default; it only waits for its entrance when script runs
+     and the visitor has not asked for reduced motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .js [data-rise] > * { transition: opacity 760ms var(--out), transform 760ms var(--out); transition-delay: calc(var(--i, 0) * 85ms); }
+    .js [data-rise]:not(.in) > * { opacity: 0; transform: translateY(28px); }
+    .btn, .btn svg { transition: transform 260ms var(--out); }
+    .btn:hover { transform: translateY(-3px); }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn:active { transform: translateY(0) scale(0.97); transition-duration: 90ms; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  }
+  @media (max-width: 899px) {
+    :root { --phone-w: min(calc((100vw - 2 * var(--m) - var(--pair-gap)) / 2), 220px); }
+    .bar { padding-block: 8px; }
+  }
+  @media (max-width: 380px) {
+    :root { --m: 16px; }
+    .bar { gap: 12px; }
+    .bar nav { gap: 14px; }
+  }
+</style>

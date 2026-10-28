@@ -1,0 +1,43 @@
+---
+import { PROJECTS } from '../data/projects';
+
+interface Props {
+  /** The smaller list used inside the top bar's Projects menu. */
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+<ol class:list={['folders', { compact }]} aria-label="Projects">
+  {PROJECTS.map(project => (
+    <li>
+      <a
+        class="folder field"
+        href={`/projects/${project.slug}/`}
+        style={`--c:${project.color};--on:${project.ink}`}
+        data-vt-field={compact ? undefined : project.slug}
+      >
+        <span class="name" data-vt-title>{project.title}</span>
+        <span class="kind">{project.categoryLabel}</span>
+      </a>
+    </li>
+  ))}
+</ol>
+<style>
+  .folders { display: grid; gap: 6px; }
+  .folder { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 16px; min-height: 58px; padding: 10px 22px; border-radius: 14px 14px 4px 4px; text-decoration: none; }
+  .name { font: 700 clamp(20px, 1.6vw, 25px)/1.05 'Archivo Variable', sans-serif; font-stretch: 86%; }
+  .kind { font: 500 15px/1.2 'Archivo Variable', sans-serif; }
+  .compact { gap: 4px; }
+  .compact .folder { min-height: 48px; padding: 8px 16px; border-radius: 10px 10px 3px 3px; }
+  .compact .name { font-size: 18px; }
+  .folder:hover .name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .folder { transition: transform 360ms var(--out); }
+    .folder:hover, .folder:focus-visible { transform: translateX(10px); }
+    .folder:active { transform: translateX(4px) scale(0.99); transition-duration: 90ms; }
+  }
+  @media (max-width: 420px) {
+    .folder { grid-template-columns: 1fr; padding: 10px 16px; }
+    .name { font-size: 20px; }
+  }
+</style>

@@ -1,104 +1,82 @@
 ---
-import GalleryLayout from '../layouts/GalleryLayout.astro';
-import GalleryWorld from '../components/GalleryWorld.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Folders from '../components/Folders.astro';
 import Exhibit from '../components/Exhibit.astro';
 import { PROJECTS } from '../data/projects';
-
-type Project = (typeof PROJECTS)[number];
-const [first, ...rest] = PROJECTS;
-const cover = (project: Project) => project.cover.map(index => {
-  const image = project.images[index];
-  return { path: image.srcPath, caption: image.caption, alt: image.alt };
-});
-const kind = (project: Project) => project.images[project.cover[0]].kind;
-const credit = (project: Project) => project.teamType === 'team' ? 'Team work' : 'Individual contribution';
 ---
-<GalleryLayout title="Aekarut Phetpradit — Portfolio" home>
-  <div class="collection" id="work" data-track>
-    <div class="stage" data-stage>
-      <GalleryWorld />
-      <section class="station opening" id={first.slug} data-station data-title={first.title} data-category={first.category} aria-labelledby="name">
-        <div class="station-inner">
-          <div class="station-label">
-            <h1 id="name">Aekarut<br />Phetpradit</h1>
-            <p class="role">KMUTT student · Software Developer</p>
-            <p class="intro">Mobile experiences, systems from first principles, and the tools in between.</p>
-            <div class="hero-work">
-              <p class="category-line">{first.categoryLabel} · {credit(first)}</p>
-              <a href={`/projects/${first.slug}/`} class="text-link">Explore {first.title} <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
-            </div>
+<SiteLayout title="Aekarut Phetpradit — Portfolio">
+  <section class="intro" aria-labelledby="name">
+    <div class="intro-text" data-rise>
+      <h1 id="name">Aekarut<br />Phetpradit</h1>
+      <p class="role">KMUTT student · Software Developer</p>
+      <p class="intro-line">Mobile experiences, systems from first principles, and the tools in between.</p>
+    </div>
+    <nav class="intro-index" aria-label="All projects">
+      <Folders />
+    </nav>
+  </section>
+
+  <div class="collection" id="work">
+    {PROJECTS.map((project, order) => (
+      <>
+        <span class="anchor" id={project.slug}></span>
+        <section
+          class="chapter field"
+          style={`--c:${project.color};--on:${project.ink}`}
+          data-vt-field={project.slug}
+          aria-labelledby={`title-${project.slug}`}
+        >
+          <div class="chapter-text" data-rise>
+            <h2 id={`title-${project.slug}`} class:list={{ long: project.title.length > 18 }} data-vt-title>{project.title}</h2>
+            <p class="lead">{project.lead}</p>
+            <p class="meta">{project.categoryLabel} · {project.roleNote}</p>
+            <p class="stack">{project.stack.slice(0, 5).join(', ')}</p>
+            <a class="btn" href={`/projects/${project.slug}/`}>Open project<span class="sr-only">: {project.title}</span> <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
           </div>
-          <div class="station-art">
-            <Exhibit kind={kind(first)} eager scene items={cover(first)} />
-          </div>
-          <a class="scroll-cue" href={`#${rest[0].slug}`}>Scroll through the collection <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v13M3 9l5 5 5-5" /></svg></a>
-        </div>
-      </section>
-      {rest.map(project => (
-        <section class="station" id={project.slug} data-station data-title={project.title} data-category={project.category} aria-labelledby={`title-${project.slug}`}>
-          <div class="station-inner">
-            <div class="station-label">
-              <p class="category-line">{project.categoryLabel} · {credit(project)}</p>
-              <h2 id={`title-${project.slug}`}>{project.title}</h2>
-              <p class="summary">{project.summary}</p>
-              <p class="stack">{project.stack.slice(0, 3).join(' / ')}</p>
-              <a href={`/projects/${project.slug}/`} class="text-link">View project<span class="sr-only">: {project.title}</span> <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M0 8h22M15 1l7 7-7 7" /></svg></a>
-            </div>
-            <div class="station-art">
-              <Exhibit kind={kind(project)} scene items={cover(project)} />
-            </div>
+          <div class="chapter-art" data-rise>
+            <Exhibit
+              kind={project.images[project.cover[0]].kind}
+              eager={order === 0}
+              captions={false}
+              items={project.cover.map(index => ({ path: project.images[index].srcPath, caption: project.images[index].caption, alt: project.images[index].alt }))}
+            />
           </div>
         </section>
-      ))}
-      <nav class="rail" data-rail aria-label="Collection">
-        <span>Now showing <span class="rail-current" data-rail-current>{first.title}</span></span>
-        <ol>
-          {PROJECTS.map((project, index) => (
-            <li><a href={`#${project.slug}`} data-rail-index={index} aria-current={index === 0 ? 'step' : undefined}><span class="sr-only">{project.title}</span></a></li>
-          ))}
-        </ol>
-      </nav>
-    </div>
+      </>
+    ))}
   </div>
-</GalleryLayout>
+</SiteLayout>
 <style>
-  .station-inner { min-height:100svh; padding:120px var(--margin) 96px; display:grid; grid-template-columns:5fr 6fr; column-gap:6vw; align-items:center; position:relative; }
-  :global(html[data-world='active']) .station-inner { min-height:0; height:100%; padding-block:clamp(80px,12vh,120px) clamp(64px,10vh,96px); }
-  :global(html[data-world='active']) h1 { font-size:min(clamp(52px,6.2vw,92px),9vh); margin-bottom:min(26px,3vh); }
-  :global(html[data-world='active']) h2 { font-size:min(clamp(40px,4.6vw,68px),7.5vh); margin-block:min(18px,2.4vh) min(22px,2.8vh); }
-  @media(max-height:719px) {
-    :global(html[data-world='active']) .station-inner { padding-block:84px 64px; }
-    :global(html[data-world='active']) .text-link { min-height:36px; padding-block:4px; }
-    :global(html[data-world='active']) h1 { font-size:min(clamp(36px,4.6vw,64px),8vh); margin-bottom:12px; }
-    :global(html[data-world='active']) h2 { font-size:min(clamp(30px,3.6vw,48px),6.5vh); margin-block:8px 12px; }
-    :global(html[data-world='active']) .intro { font-size:15px; margin-top:10px; }
-    :global(html[data-world='active']) .hero-work { margin-top:16px; padding-top:12px; gap:6px; }
-    :global(html[data-world='active']) .summary { font-size:14px; line-height:1.5; max-width:50ch; }
-    :global(html[data-world='active']) .stack { margin-block:10px 12px; }
+  .intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--gap); align-items: end; min-height: min(calc(100svh - 72px), 780px); padding: clamp(24px, 5vh, 64px) var(--m) clamp(48px, 8vh, 96px); }
+  h1 { font: var(--display); font-stretch: 68%; letter-spacing: -0.02em; }
+  .role { margin-top: 30px; font: var(--lead); font-weight: 650; }
+  .intro-line { margin-top: 10px; font: var(--lead); max-width: 30ch; }
+
+  .anchor { display: block; height: 0; }
+  .chapter { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--gap); align-items: center; min-height: 100svh; padding: clamp(56px, 9vh, 112px) var(--m); }
+  .chapter h2 { font: var(--head); font-stretch: 70%; letter-spacing: -0.015em; }
+  .chapter h2.long { font-size: clamp(40px, 4.4vw, 68px); }
+  .lead { margin-top: 22px; font: var(--lead); max-width: 26ch; }
+  .meta { margin-top: 26px; max-width: 46ch; }
+  .stack { margin-top: 10px; max-width: 46ch; }
+  .btn { margin-top: 34px; }
+  .chapter-art { min-width: 0; }
+  .chapter-art :global(.exhibit-window), .chapter-art :global(.exhibit-browser), .chapter-art :global(.exhibit-paper) { max-height: 72svh; }
+
+  /* The signature: on screens big enough to hold a whole chapter, each one pins and the
+     next slides over it. Elsewhere, when a chapter is taller than the window, and with
+     reduced motion, they simply follow each other. */
+  @media (min-width: 900px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+    .chapter { position: sticky; top: 0; }
+    .chapter.loose { position: relative; }
   }
-  .station-label { max-width:540px; position:relative; z-index:2; }
-  h1 { font-size:clamp(52px,6.2vw,92px); letter-spacing:-.035em; line-height:.98; margin-bottom:26px; }
-  h2 { font-size:clamp(40px,4.6vw,68px); letter-spacing:-.03em; margin-block:18px 22px; }
-  .role { font-size:clamp(15px,1.2vw,18px); }
-  .intro { color:var(--muted); max-width:32ch; margin-top:18px; font-size:18px; line-height:1.6; }
-  .hero-work { margin-top:44px; padding-top:22px; border-top:1px solid var(--line); max-width:340px; display:grid; gap:10px; justify-items:start; }
-  .summary { font-size:18px; color:var(--muted); line-height:1.65; max-width:42ch; }
-  .stack { font-size:13px; color:var(--muted); margin-block:18px 26px; }
-  .station-art { position:relative; min-width:0; z-index:1; display:flex; justify-content:center; }
-  .scroll-cue { position:absolute; left:var(--margin); bottom:28px; display:inline-flex; align-items:center; gap:12px; min-height:44px; font-size:13px; color:var(--muted); }
-  .scroll-cue:hover { color:var(--ink); }
-  :global(html[data-world='active']) .scroll-cue { display:none; }
-  .station:not(.opening) { border-top:1px solid var(--line); }
-  :global(html[data-world='active']) .station { border-top:0; }
-  @media(max-width:899px) {
-    .station-inner { min-height:0; grid-template-columns:1fr; padding-block:56px 72px; row-gap:36px; }
-    .opening .station-inner { padding-top:112px; padding-bottom:96px; }
-    h1 { font-size:clamp(48px,12vw,76px); margin-bottom:18px; }
-    h2 { font-size:clamp(34px,8vw,52px); margin-block:14px 16px; }
-    .intro { font-size:16px; }
-    .hero-work { margin-top:28px; }
-    .summary { font-size:16px; }
-    .stack { margin-block:14px 18px; }
-    .scroll-cue { bottom:24px; }
+
+  @media (max-width: 899px) {
+    .intro { grid-template-columns: 1fr; min-height: 0; align-items: start; padding-bottom: 56px; }
+    h1 { font-size: clamp(56px, 22vw, 120px); }
+    .role { margin-top: 20px; }
+    .chapter { grid-template-columns: 1fr; min-height: 0; padding: 56px var(--m) 64px; }
+    .chapter h2 { font-size: clamp(44px, 14vw, 72px); }
+    .chapter h2.long { font-size: clamp(36px, 10.5vw, 56px); }
   }
 </style>

@@ -1,22 +1,26 @@
-# ScamReport
+# ScamReport v2
 
-A community-driven incident reporting and scam intelligence mobile application designed to empower citizens to report fraudulent schemes, verify suspicious communications, search an aggregated database of verified incidents, and streamline moderation workflows.
+A scam-reporting phone web app for citizens and a desktop console for the organisations that review the reports, built as one React application. Citizens search a feed of verified scams, file a two-step report (scam type, channel, amount, story and evidence, then destination and contact consent) and follow numbered tickets from received to reviewing to result. In the console, moderators call the next report and verify, reject or flag it, organisation admins manage members and read the activity log, and executives see aggregates only. Thai is the default language, with an English switch on every screen.
 
 ## Stack
-- **Mobile App**: Flutter (Dart)
-- **Backend API**: Elysia.js (TypeScript, Bun runtime)
-- **Contracts & Database**: TypeBox shared schema contracts, PostgreSQL
-- **Media**: Object storage for evidence attachments
+- **Web**: React, TypeScript, Vite, Tailwind CSS v4, shadcn/ui on Radix primitives, self-hosted Noto fonts
+- **API**: Bun and Elysia, shared request and response schemas, OpenAPI documentation, request IDs
+- **Data**: Supabase PostgreSQL, Auth and private Storage; every table under row-level security, organisations as tenants, the caller's own token on every request
+- **Tests**: pgTAP access tests, Bun API tests, Vitest component tests, Playwright browser tests
+- **Packaging**: Docker images for the API and web app
 
 ## Team
-- **Type**: Team Project (CSC234 User-Centered Mobile Application, KMUTT)
-- **Aekarut's Role**: Full-stack developer contributing to the mobile application architecture, state management, and TypeBox API contract integration.
+- **Type**: Solo rebuild of the 5-person CSC234 team project, built with AI coding agents I directed.
+- **Original**: KMUTT CSC234 User-Centered Mobile Application team project (Flutter and Elysia.js). The team repository is not used by v2.
 
 ## Links
-- **Source Code**: [GitHub Repository (CSC234-UserCenteredMobileApp/ScamReport)](https://github.com/CSC234-UserCenteredMobileApp/ScamReport)
+- **Source Code**: [GitHub Repository (AokDesu/scamreport-v2)](https://github.com/AokDesu/scamreport-v2)
 
 ## Image Production
-- `01-guest-feed.png`: Re-captured from a read-only source copied from `ScamReport-docs/ScamReport Prototype _standalone_guest.html` into task scratch. Chrome renders the actual `.sr-app` at 344×660, fixed to the capture viewport; surrounding prototype heading, chips and device chrome are excluded. Clipboard banner dismissed using its real control. App scrolling and navigation retained; content is not stretched. Uses the portfolio's shared phone frame.
-- `02-user-report.png`: Re-captured from a copy of `ScamReport-docs/ScamReport Prototype _standalone_user.html` (the signed-in user build of the team's standalone interactive prototype) in headless Chrome. The prototype's own `.sr-app` element is fixed to a 344×660 viewport, so the prototype page heading, chips, status bar and device chrome are excluded; the Report tab was opened with the app's own bottom navigation. Uses the portfolio's shared phone frame.
-- `03-moderation-queue.png`: Re-captured the same way from a copy of `ScamReport Prototype _standalone_admin.html` (admin build): `.sr-app` at 344×660, Moderate tab opened with the app's own navigation.
-- `04-feed-search.png`: Re-captured the same way from a copy of the user build: `.sr-app` at 344×660, Feed tab opened with the app's own navigation, "All" scam-type filter selected.
+All five images are existing app-only captures of the local v2 build running its fictional seed data (fictional organisations, accounts and reports). No real person's data appears.
+
+- `01-citizen-feed.png`: Verified-scam feed, English, 390×844 viewport at 2×.
+- `02-report-step-1.png`: Report a scam, step 1 of 2, English; the top 390×844 (2×) of a full-page capture of the same screen.
+- `03-my-reports.png`: My reports with numbered tickets, English, 390×844 at 2×.
+- `04-console-review.png`: Console report review, Thai, 1440×900; the bottom 32 px are trimmed so no partial contact row shows.
+- `05-executive-overview.png`: Console executive overview (aggregates only), Thai, 1440×900.

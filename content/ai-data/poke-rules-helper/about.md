@@ -1,6 +1,6 @@
 # Poke Monopoly Rules Helper
 
-A loopback-only rules chatbot for CSC493 preparation, styled as a handheld Pokédex. A Python standard-library BM25 retriever picks labelled passages from the Poke Monopoly rulebook; Claude Haiku 5.5 streams an answer that opens with a one-line direct answer and cites the passages it used, and the server checks every citation against the passages it actually sent. Local guardrails refuse instruction overrides and requests for opponents' hidden information, and show the registered Price Shield rules conflict without settling it, all without a paid request.
+A loopback-only rules chatbot built as the CSC493 open-exam project, styled as a handheld Pokédex. A Python standard-library BM25 retriever picks labelled passages from the Poke Monopoly rulebook; Claude Haiku 5.5 streams an answer that opens with a one-line direct answer and cites the passages it used, and the server checks every citation against the passages it actually sent. Local guardrails refuse instruction overrides and requests for opponents' hidden information, and show the registered Price Shield rules conflict without settling it, all without a paid request.
 
 ## Stack
 - **Server**: Python 3.11+ standard library (no packages, no build step), loopback-only
@@ -9,8 +9,8 @@ A loopback-only rules chatbot for CSC493 preparation, styled as a handheld Poké
 - **Interface**: HTML, CSS and JavaScript, self-hosted fonts and icons
 
 ## Team
-- **Type**: Individual project (CSC493 Intelligent Systems coursework)
-- **Authorship**: All four commits in the repository are by a single author. Source: commit history and README of the private repository AokDesu/poke-rules-helper.
+- **Type**: Individual project (CSC493 Intelligent Systems open-exam project)
+- **Authorship**: All four commits in the repository are by a single author. Source: commit history and README of the private repository.
 
 ## Links
 - **Source Code**: Private repository; no public link.
