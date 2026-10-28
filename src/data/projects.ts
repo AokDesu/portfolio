@@ -58,6 +58,11 @@ export interface Project {
   images: ProjectImage[];
 }
 
+/** Titles that need the smaller display step: long ones, and single words too wide to set large. */
+export function hasLongTitle(project: Project): boolean {
+  return project.title.length > 18 || /\S{12,}/.test(project.title);
+}
+
 // Order is the collection order everywhere (home, index, next project), as the owner set it.
 export const PROJECTS: Project[] = [
   {

@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Exhibit from '../../components/Exhibit.astro';
-import { PROJECTS, type Project } from '../../data/projects';
+import { PROJECTS, hasLongTitle, type Project } from '../../data/projects';
 
 export function getStaticPaths() {
   return PROJECTS.map((project, index) => ({
@@ -26,7 +26,7 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
   <article>
     <header class="hero field vt-field" style={field}>
       <div class="hero-text">
-        <h1 class:list={['vt-title', { long: project.title.length > 18 }]}>{project.title}</h1>
+        <h1 class:list={['vt-title', { long: hasLongTitle(project) }]}>{project.title}</h1>
         <p class="lead">{project.lead}</p>
         <p class="meta">{project.categoryLabel} · {project.roleNote}</p>
         <div class="actions">
@@ -48,12 +48,12 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
       <>
         <span class="anchor" id={station.id}></span>
         <section
-          class:list={['chapter', 'station', order % 2 === 0 ? 'deep' : 'paper', { flip: order % 2 === 1 }]}
+          class:list={['chapter', 'station', (project.stations.length - 1 - order) % 2 === 0 ? 'deep' : 'paper', { flip: order % 2 === 1 }]}
           style={field}
           aria-labelledby={`${station.id}-title`}
         >
           <div class="station-text" data-rise>
-            <h2 id={`${station.id}-title`}>{station.title}</h2>
+            <h2 id={`${station.id}-title`} class:list={{ long: station.title.length > 24, xlong: station.title.length > 36 }}>{station.title}</h2>
             <p>{station.copy}</p>
           </div>
           <div class="station-art" data-rise>
@@ -112,7 +112,7 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; align-items: center; }
   .btn.ghost { background: transparent; color: var(--on); border: 2px solid var(--on); }
   .private { font: var(--lead); font-weight: 650; }
-  .hero-art { min-width: 0; }
+  .hero-art { min-width: 0; --art-max-h: 66svh; }
 
   .anchor { display: block; height: 0; }
   .station { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: var(--gap); align-items: center; min-height: 100svh; padding: clamp(64px, 10vh, 120px) var(--m); }
@@ -121,8 +121,10 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
   .station.flip .station-text { order: 2; }
   .station.paper { background: var(--paper); color: var(--ink); }
   .station h2 { font: var(--head); font-size: clamp(40px, 4.6vw, 76px); font-stretch: 72%; letter-spacing: -0.01em; }
+  .station h2.long { font-size: clamp(32px, 3.4vw, 56px); }
+  .station h2.xlong { font-size: clamp(28px, 2.7vw, 44px); }
   .station-text p { margin-top: 20px; max-width: 42ch; }
-  .station-art { min-width: 0; }
+  .station-art { min-width: 0; --art-max-h: 70svh; }
   .station-art :global(.exhibit-phone) { justify-content: center; }
 
   .facts { position: relative; z-index: 2; background: var(--paper); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--gap); padding: clamp(80px, 12vw, 160px) var(--m); }
@@ -154,7 +156,9 @@ const ext = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M4 4
   @media (max-width: 899px) {
     .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 12px; }
     h1 { font-size: clamp(56px, 19vw, 104px); }
-    h1.long { font-size: clamp(42px, 12.4vw, 72px); }
+    h1.long { font-size: clamp(40px, 11vw, 72px); }
+    .station h2.long { font-size: clamp(30px, 8.6vw, 44px); }
+    .station h2.xlong { font-size: clamp(24px, 7vw, 36px); }
     .station { grid-template-columns: 1fr; min-height: 0; padding: 64px var(--m); }
     .station.flip .station-text { order: 0; }
     .facts { grid-template-columns: 1fr; padding-block: 72px; }

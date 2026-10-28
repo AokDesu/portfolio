@@ -2,7 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Folders from '../components/Folders.astro';
 import Exhibit from '../components/Exhibit.astro';
-import { PROJECTS } from '../data/projects';
+import { PROJECTS, hasLongTitle } from '../data/projects';
 ---
 <SiteLayout title="Aekarut Phetpradit — Portfolio">
   <section class="intro" aria-labelledby="name">
@@ -27,7 +27,7 @@ import { PROJECTS } from '../data/projects';
           aria-labelledby={`title-${project.slug}`}
         >
           <div class="chapter-text" data-rise>
-            <h2 id={`title-${project.slug}`} class:list={{ long: project.title.length > 18 }} data-vt-title>{project.title}</h2>
+            <h2 id={`title-${project.slug}`} class:list={{ long: hasLongTitle(project) }} data-vt-title>{project.title}</h2>
             <p class="lead">{project.lead}</p>
             <p class="meta">{project.categoryLabel} · {project.roleNote}</p>
             <p class="stack">{project.stack.slice(0, 5).join(', ')}</p>
@@ -61,7 +61,7 @@ import { PROJECTS } from '../data/projects';
   .stack { margin-top: 10px; max-width: 46ch; }
   .btn { margin-top: 34px; }
   .chapter-art { min-width: 0; }
-  .chapter-art :global(.exhibit-window), .chapter-art :global(.exhibit-browser), .chapter-art :global(.exhibit-paper) { max-height: 72svh; }
+  .chapter-art { --art-max-h: 68svh; }
 
   /* The signature: on screens big enough to hold a whole chapter, each one pins and the
      next slides over it. Elsewhere, when a chapter is taller than the window, and with

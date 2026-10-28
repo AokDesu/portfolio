@@ -52,7 +52,12 @@ const sizes = kind === 'phone' ? '(max-width: 899px) 45vw, 250px' : '(max-width:
   .frame-phone { padding: calc(var(--phone-w) * 0.03); border-radius: calc(var(--phone-w) * 0.13); background: #0d0f0d; }
   .frame-phone img { border-radius: calc(var(--phone-w) * 0.1); }
 
-  .exhibit-window .artifact, .exhibit-browser .artifact, .exhibit-paper .artifact { width: 100%; }
+  /* Wide captures keep their own ratio and never grow taller than --art-max-h (set by
+     sections that must fit one screen); the caption follows the picture's width. */
+  .exhibit-window .artifact, .exhibit-browser .artifact, .exhibit-paper .artifact { width: fit-content; max-width: 100%; }
+  .exhibit-window img, .exhibit-paper img { width: auto; max-width: 100%; max-height: var(--art-max-h, none); }
+  .exhibit-browser img { width: auto; max-width: 100%; max-height: calc(var(--art-max-h, 100vh) - 26px); }
+  .exhibit-window figcaption, .exhibit-browser figcaption, .exhibit-paper figcaption { width: 0; min-width: 100%; }
   .frame-window { border-radius: 12px; }
   .frame-paper { border-radius: 4px; background: #fafafa; }
   .frame-browser { border-radius: 12px; background: #e6e8e5; }

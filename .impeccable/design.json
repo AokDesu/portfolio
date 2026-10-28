@@ -1,222 +1,73 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T17:04:32+00:00",
-  "title": "Design System: Aekarut Phetpradit — Work After Dark",
+  "generatedAt": "2026-10-28T09:30:25+00:00",
+  "title": "Design System: Aekarut Phetpradit — Colour Chapters",
   "extensions": {
     "colorMeta": {
-      "primary": {
-        "role": "primary",
-        "displayName": "Gallery Ink",
-        "canonical": "#eeeae2",
-        "oklch": "oklch(93.8% 0.012 84.6)",
-        "tonalRamp": [
-          "oklch(15% 0.012 84.6)",
-          "oklch(26% 0.012 84.6)",
-          "oklch(38% 0.012 84.6)",
-          "oklch(49% 0.012 84.6)",
-          "oklch(61% 0.012 84.6)",
-          "oklch(72% 0.012 84.6)",
-          "oklch(84% 0.012 84.6)",
-          "oklch(95% 0.012 84.6)"
-        ]
-      },
-      "secondary": {
-        "role": "secondary",
-        "displayName": "Muted Ink",
-        "canonical": "#aaa9a4",
-        "oklch": "oklch(73.4% 0.007 97.4)",
-        "tonalRamp": [
-          "oklch(15% 0.007 97.4)",
-          "oklch(26% 0.007 97.4)",
-          "oklch(38% 0.007 97.4)",
-          "oklch(49% 0.007 97.4)",
-          "oklch(61% 0.007 97.4)",
-          "oklch(72% 0.007 97.4)",
-          "oklch(84% 0.007 97.4)",
-          "oklch(95% 0.007 97.4)"
-        ]
-      },
-      "tertiary": {
-        "role": "tertiary",
-        "displayName": "Focus Celadon",
-        "canonical": "#b9d9cd",
-        "oklch": "oklch(85.9% 0.038 170.7)",
-        "tonalRamp": [
-          "oklch(15% 0.038 170.7)",
-          "oklch(26% 0.038 170.7)",
-          "oklch(38% 0.038 170.7)",
-          "oklch(49% 0.038 170.7)",
-          "oklch(61% 0.038 170.7)",
-          "oklch(72% 0.038 170.7)",
-          "oklch(84% 0.038 170.7)",
-          "oklch(95% 0.038 170.7)"
-        ]
-      },
       "neutral": {
         "role": "neutral",
-        "displayName": "Night Stage",
-        "canonical": "#101211",
-        "oklch": "oklch(18.0% 0.004 164.6)",
+        "displayName": "Paper",
+        "canonical": "oklch(97.2% 0.004 106.5)",
         "tonalRamp": [
-          "oklch(15% 0.004 164.6)",
-          "oklch(26% 0.004 164.6)",
-          "oklch(38% 0.004 164.6)",
-          "oklch(49% 0.004 164.6)",
-          "oklch(61% 0.004 164.6)",
-          "oklch(72% 0.004 164.6)",
-          "oklch(84% 0.004 164.6)",
-          "oklch(95% 0.004 164.6)"
+          "oklch(15% 0.004 106.5)",
+          "oklch(26% 0.004 106.5)",
+          "oklch(38% 0.004 106.5)",
+          "oklch(49% 0.004 106.5)",
+          "oklch(61% 0.004 106.5)",
+          "oklch(72% 0.004 106.5)",
+          "oklch(84% 0.004 106.5)",
+          "oklch(95% 0.004 106.5)"
         ]
       },
-      "surface": {
+      "paper-2": {
         "role": "neutral",
-        "displayName": "Index Surface",
-        "canonical": "#191d1b",
-        "oklch": "oklch(22.6% 0.007 164.3)",
+        "displayName": "Paper Step",
+        "canonical": "oklch(93.8% 0.008 106.6)",
         "tonalRamp": [
-          "oklch(15% 0.007 164.3)",
-          "oklch(26% 0.007 164.3)",
-          "oklch(38% 0.007 164.3)",
-          "oklch(49% 0.007 164.3)",
-          "oklch(61% 0.007 164.3)",
-          "oklch(72% 0.007 164.3)",
-          "oklch(84% 0.007 164.3)",
-          "oklch(95% 0.007 164.3)"
+          "oklch(15% 0.008 106.6)",
+          "oklch(26% 0.008 106.6)",
+          "oklch(38% 0.008 106.6)",
+          "oklch(49% 0.008 106.6)",
+          "oklch(61% 0.008 106.6)",
+          "oklch(72% 0.008 106.6)",
+          "oklch(84% 0.008 106.6)",
+          "oklch(95% 0.008 106.6)"
         ]
       },
-      "line": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "oklch(18.4% 0.005 145.4)",
+        "tonalRamp": [
+          "oklch(15% 0.005 145.4)",
+          "oklch(26% 0.005 145.4)",
+          "oklch(38% 0.005 145.4)",
+          "oklch(49% 0.005 145.4)",
+          "oklch(61% 0.005 145.4)",
+          "oklch(72% 0.005 145.4)",
+          "oklch(84% 0.005 145.4)",
+          "oklch(95% 0.005 145.4)"
+        ]
+      },
+      "ink-2": {
         "role": "neutral",
-        "displayName": "Hairline",
-        "canonical": "#3c423e",
-        "oklch": "oklch(37.2% 0.010 156.7)",
+        "displayName": "Ink Two",
+        "canonical": "oklch(40.4% 0.010 139.4)",
         "tonalRamp": [
-          "oklch(15% 0.010 156.7)",
-          "oklch(26% 0.010 156.7)",
-          "oklch(38% 0.010 156.7)",
-          "oklch(49% 0.010 156.7)",
-          "oklch(61% 0.010 156.7)",
-          "oklch(72% 0.010 156.7)",
-          "oklch(84% 0.010 156.7)",
-          "oklch(95% 0.010 156.7)"
+          "oklch(15% 0.010 139.4)",
+          "oklch(26% 0.010 139.4)",
+          "oklch(38% 0.010 139.4)",
+          "oklch(49% 0.010 139.4)",
+          "oklch(61% 0.010 139.4)",
+          "oklch(72% 0.010 139.4)",
+          "oklch(84% 0.010 139.4)",
+          "oklch(95% 0.010 139.4)"
         ]
       },
-      "mobile": {
-        "role": "accent",
-        "displayName": "Mobile Accent",
-        "canonical": "#9bd4c5",
-        "oklch": "oklch(82.6% 0.062 176.6)",
-        "tonalRamp": [
-          "oklch(15% 0.062 176.6)",
-          "oklch(26% 0.062 176.6)",
-          "oklch(38% 0.062 176.6)",
-          "oklch(49% 0.062 176.6)",
-          "oklch(61% 0.062 176.6)",
-          "oklch(72% 0.062 176.6)",
-          "oklch(84% 0.062 176.6)",
-          "oklch(95% 0.062 176.6)"
-        ]
-      },
-      "data": {
-        "role": "accent",
-        "displayName": "Data Accent",
-        "canonical": "#dcb997",
-        "oklch": "oklch(80.8% 0.061 66.0)",
-        "tonalRamp": [
-          "oklch(15% 0.061 66.0)",
-          "oklch(26% 0.061 66.0)",
-          "oklch(38% 0.061 66.0)",
-          "oklch(49% 0.061 66.0)",
-          "oklch(61% 0.061 66.0)",
-          "oklch(72% 0.061 66.0)",
-          "oklch(84% 0.061 66.0)",
-          "oklch(95% 0.061 66.0)"
-        ]
-      },
-      "tools": {
-        "role": "accent",
-        "displayName": "Tools Accent",
-        "canonical": "#afc2db",
-        "oklch": "oklch(80.8% 0.041 255.3)",
-        "tonalRamp": [
-          "oklch(15% 0.041 255.3)",
-          "oklch(26% 0.041 255.3)",
-          "oklch(38% 0.041 255.3)",
-          "oklch(49% 0.041 255.3)",
-          "oklch(61% 0.041 255.3)",
-          "oklch(72% 0.041 255.3)",
-          "oklch(84% 0.041 255.3)",
-          "oklch(95% 0.041 255.3)"
-        ]
-      },
-      "oss": {
-        "role": "accent",
-        "displayName": "Open Source Accent",
-        "canonical": "#d6ce9a",
-        "oklch": "oklch(84.5% 0.069 100.4)",
-        "tonalRamp": [
-          "oklch(15% 0.069 100.4)",
-          "oklch(26% 0.069 100.4)",
-          "oklch(38% 0.069 100.4)",
-          "oklch(49% 0.069 100.4)",
-          "oklch(61% 0.069 100.4)",
-          "oklch(72% 0.069 100.4)",
-          "oklch(84% 0.069 100.4)",
-          "oklch(95% 0.069 100.4)"
-        ]
-      },
-      "graphite": {
+      "on-dark": {
         "role": "neutral",
-        "displayName": "Graphite Frame",
-        "canonical": "#272d2a",
-        "oklch": "oklch(29.0% 0.010 164.2)",
-        "tonalRamp": [
-          "oklch(15% 0.010 164.2)",
-          "oklch(26% 0.010 164.2)",
-          "oklch(38% 0.010 164.2)",
-          "oklch(49% 0.010 164.2)",
-          "oklch(61% 0.010 164.2)",
-          "oklch(72% 0.010 164.2)",
-          "oklch(84% 0.010 164.2)",
-          "oklch(95% 0.010 164.2)"
-        ]
-      },
-      "browser-paper": {
-        "role": "neutral",
-        "displayName": "Browser Header",
-        "canonical": "#e9ecef",
-        "oklch": "oklch(94.2% 0.005 247.9)",
-        "tonalRamp": [
-          "oklch(15% 0.005 247.9)",
-          "oklch(26% 0.005 247.9)",
-          "oklch(38% 0.005 247.9)",
-          "oklch(49% 0.005 247.9)",
-          "oklch(61% 0.005 247.9)",
-          "oklch(72% 0.005 247.9)",
-          "oklch(84% 0.005 247.9)",
-          "oklch(95% 0.005 247.9)"
-        ]
-      },
-      "browser-dot": {
-        "role": "neutral",
-        "displayName": "Browser Dot",
-        "canonical": "#858b8e",
-        "oklch": "oklch(63.3% 0.008 228.9)",
-        "tonalRamp": [
-          "oklch(15% 0.008 228.9)",
-          "oklch(26% 0.008 228.9)",
-          "oklch(38% 0.008 228.9)",
-          "oklch(49% 0.008 228.9)",
-          "oklch(61% 0.008 228.9)",
-          "oklch(72% 0.008 228.9)",
-          "oklch(84% 0.008 228.9)",
-          "oklch(95% 0.008 228.9)"
-        ]
-      },
-      "chart-paper": {
-        "role": "neutral",
-        "displayName": "Chart Paper",
-        "canonical": "#fafafa",
-        "oklch": "oklch(98.5% 0.000 89.9)",
+        "displayName": "White on Fields",
+        "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
           "oklch(15% 0.000 89.9)",
           "oklch(26% 0.000 89.9)",
@@ -228,194 +79,420 @@
           "oklch(95% 0.000 89.9)"
         ]
       },
-      "gallery-light": {
-        "role": "accent",
-        "displayName": "Gallery Light",
-        "canonical": "#f3e6d0",
-        "oklch": "oklch(92.9% 0.032 81.0)",
+      "scamreport": {
+        "role": "tertiary",
+        "displayName": "ScamReport Teal",
+        "canonical": "oklch(47.8% 0.082 194.8)",
         "tonalRamp": [
-          "oklch(15% 0.032 81.0)",
-          "oklch(26% 0.032 81.0)",
-          "oklch(38% 0.032 81.0)",
-          "oklch(49% 0.032 81.0)",
-          "oklch(61% 0.032 81.0)",
-          "oklch(72% 0.032 81.0)",
-          "oklch(84% 0.032 81.0)",
-          "oklch(95% 0.032 81.0)"
+          "oklch(15% 0.082 194.8)",
+          "oklch(26% 0.082 194.8)",
+          "oklch(38% 0.082 194.8)",
+          "oklch(49% 0.082 194.8)",
+          "oklch(61% 0.082 194.8)",
+          "oklch(72% 0.082 194.8)",
+          "oklch(84% 0.082 194.8)",
+          "oklch(95% 0.082 194.8)"
+        ]
+      },
+      "scamreport-action": {
+        "role": "tertiary",
+        "displayName": "Ticket Amber",
+        "canonical": "oklch(81.6% 0.147 80.2)",
+        "tonalRamp": [
+          "oklch(15% 0.147 80.2)",
+          "oklch(26% 0.147 80.2)",
+          "oklch(38% 0.147 80.2)",
+          "oklch(49% 0.147 80.2)",
+          "oklch(61% 0.147 80.2)",
+          "oklch(72% 0.147 80.2)",
+          "oklch(84% 0.147 80.2)",
+          "oklch(95% 0.147 80.2)"
+        ]
+      },
+      "rules-helper": {
+        "role": "tertiary",
+        "displayName": "Pokédex Red",
+        "canonical": "oklch(52.9% 0.208 22.7)",
+        "tonalRamp": [
+          "oklch(15% 0.208 22.7)",
+          "oklch(26% 0.208 22.7)",
+          "oklch(38% 0.208 22.7)",
+          "oklch(49% 0.208 22.7)",
+          "oklch(61% 0.208 22.7)",
+          "oklch(72% 0.208 22.7)",
+          "oklch(84% 0.208 22.7)",
+          "oklch(95% 0.208 22.7)"
+        ]
+      },
+      "droneaid": {
+        "role": "tertiary",
+        "displayName": "DroneAid Aqua",
+        "canonical": "oklch(89.5% 0.118 194.6)",
+        "tonalRamp": [
+          "oklch(15% 0.118 194.6)",
+          "oklch(26% 0.118 194.6)",
+          "oklch(38% 0.118 194.6)",
+          "oklch(49% 0.118 194.6)",
+          "oklch(61% 0.118 194.6)",
+          "oklch(72% 0.118 194.6)",
+          "oklch(84% 0.118 194.6)",
+          "oklch(95% 0.118 194.6)"
+        ]
+      },
+      "droneaid-ink": {
+        "role": "neutral",
+        "displayName": "DroneAid Ink",
+        "canonical": "oklch(24.9% 0.038 192.1)",
+        "tonalRamp": [
+          "oklch(15% 0.038 192.1)",
+          "oklch(26% 0.038 192.1)",
+          "oklch(38% 0.038 192.1)",
+          "oklch(49% 0.038 192.1)",
+          "oklch(61% 0.038 192.1)",
+          "oklch(72% 0.038 192.1)",
+          "oklch(84% 0.038 192.1)",
+          "oklch(95% 0.038 192.1)"
+        ]
+      },
+      "nummailai": {
+        "role": "tertiary",
+        "displayName": "Water Blue",
+        "canonical": "oklch(49.3% 0.089 244.2)",
+        "tonalRamp": [
+          "oklch(15% 0.089 244.2)",
+          "oklch(26% 0.089 244.2)",
+          "oklch(38% 0.089 244.2)",
+          "oklch(49% 0.089 244.2)",
+          "oklch(61% 0.089 244.2)",
+          "oklch(72% 0.089 244.2)",
+          "oklch(84% 0.089 244.2)",
+          "oklch(95% 0.089 244.2)"
+        ]
+      },
+      "dev-memory": {
+        "role": "tertiary",
+        "displayName": "Terminal Green",
+        "canonical": "oklch(73.7% 0.139 146.2)",
+        "tonalRamp": [
+          "oklch(15% 0.139 146.2)",
+          "oklch(26% 0.139 146.2)",
+          "oklch(38% 0.139 146.2)",
+          "oklch(49% 0.139 146.2)",
+          "oklch(61% 0.139 146.2)",
+          "oklch(72% 0.139 146.2)",
+          "oklch(84% 0.139 146.2)",
+          "oklch(95% 0.139 146.2)"
+        ]
+      },
+      "dev-memory-ink": {
+        "role": "neutral",
+        "displayName": "Terminal Ink",
+        "canonical": "oklch(21.7% 0.042 147.3)",
+        "tonalRamp": [
+          "oklch(15% 0.042 147.3)",
+          "oklch(26% 0.042 147.3)",
+          "oklch(38% 0.042 147.3)",
+          "oklch(49% 0.042 147.3)",
+          "oklch(61% 0.042 147.3)",
+          "oklch(72% 0.042 147.3)",
+          "oklch(84% 0.042 147.3)",
+          "oklch(95% 0.042 147.3)"
+        ]
+      },
+      "neural-network": {
+        "role": "tertiary",
+        "displayName": "Results Lime",
+        "canonical": "oklch(75.6% 0.153 123.4)",
+        "tonalRamp": [
+          "oklch(15% 0.153 123.4)",
+          "oklch(26% 0.153 123.4)",
+          "oklch(38% 0.153 123.4)",
+          "oklch(49% 0.153 123.4)",
+          "oklch(61% 0.153 123.4)",
+          "oklch(72% 0.153 123.4)",
+          "oklch(84% 0.153 123.4)",
+          "oklch(95% 0.153 123.4)"
+        ]
+      },
+      "neural-network-ink": {
+        "role": "neutral",
+        "displayName": "Lime Ink",
+        "canonical": "oklch(19.3% 0.027 131.5)",
+        "tonalRamp": [
+          "oklch(15% 0.027 131.5)",
+          "oklch(26% 0.027 131.5)",
+          "oklch(38% 0.027 131.5)",
+          "oklch(49% 0.027 131.5)",
+          "oklch(61% 0.027 131.5)",
+          "oklch(72% 0.027 131.5)",
+          "oklch(84% 0.027 131.5)",
+          "oklch(95% 0.027 131.5)"
+        ]
+      },
+      "memory-benchmark": {
+        "role": "tertiary",
+        "displayName": "Throughput Blue",
+        "canonical": "oklch(71.4% 0.140 251.2)",
+        "tonalRamp": [
+          "oklch(15% 0.140 251.2)",
+          "oklch(26% 0.140 251.2)",
+          "oklch(38% 0.140 251.2)",
+          "oklch(49% 0.140 251.2)",
+          "oklch(61% 0.140 251.2)",
+          "oklch(72% 0.140 251.2)",
+          "oklch(84% 0.140 251.2)",
+          "oklch(95% 0.140 251.2)"
+        ]
+      },
+      "memory-benchmark-ink": {
+        "role": "neutral",
+        "displayName": "Throughput Ink",
+        "canonical": "oklch(20.8% 0.044 249.1)",
+        "tonalRamp": [
+          "oklch(15% 0.044 249.1)",
+          "oklch(26% 0.044 249.1)",
+          "oklch(38% 0.044 249.1)",
+          "oklch(49% 0.044 249.1)",
+          "oklch(61% 0.044 249.1)",
+          "oklch(72% 0.044 249.1)",
+          "oklch(84% 0.044 249.1)",
+          "oklch(95% 0.044 249.1)"
+        ]
+      },
+      "firstmate": {
+        "role": "tertiary",
+        "displayName": "Merged Purple",
+        "canonical": "oklch(56.2% 0.200 295.0)",
+        "tonalRamp": [
+          "oklch(15% 0.200 295.0)",
+          "oklch(26% 0.200 295.0)",
+          "oklch(38% 0.200 295.0)",
+          "oklch(49% 0.200 295.0)",
+          "oklch(61% 0.200 295.0)",
+          "oklch(72% 0.200 295.0)",
+          "oklch(84% 0.200 295.0)",
+          "oklch(95% 0.200 295.0)"
+        ]
+      },
+      "spaceship": {
+        "role": "tertiary",
+        "displayName": "Chart Blue",
+        "canonical": "oklch(55.2% 0.164 256.5)",
+        "tonalRamp": [
+          "oklch(15% 0.164 256.5)",
+          "oklch(26% 0.164 256.5)",
+          "oklch(38% 0.164 256.5)",
+          "oklch(49% 0.164 256.5)",
+          "oklch(61% 0.164 256.5)",
+          "oklch(72% 0.164 256.5)",
+          "oklch(84% 0.164 256.5)",
+          "oklch(95% 0.164 256.5)"
+        ]
+      },
+      "phone-bezel": {
+        "role": "neutral",
+        "displayName": "Phone Bezel",
+        "canonical": "oklch(16.5% 0.005 145.3)",
+        "tonalRamp": [
+          "oklch(15% 0.005 145.3)",
+          "oklch(26% 0.005 145.3)",
+          "oklch(38% 0.005 145.3)",
+          "oklch(49% 0.005 145.3)",
+          "oklch(61% 0.005 145.3)",
+          "oklch(72% 0.005 145.3)",
+          "oklch(84% 0.005 145.3)",
+          "oklch(95% 0.005 145.3)"
+        ]
+      },
+      "browser-chrome": {
+        "role": "neutral",
+        "displayName": "Browser Chrome",
+        "canonical": "oklch(92.9% 0.005 134.9)",
+        "tonalRamp": [
+          "oklch(15% 0.005 134.9)",
+          "oklch(26% 0.005 134.9)",
+          "oklch(38% 0.005 134.9)",
+          "oklch(49% 0.005 134.9)",
+          "oklch(61% 0.005 134.9)",
+          "oklch(72% 0.005 134.9)",
+          "oklch(84% 0.005 134.9)",
+          "oklch(95% 0.005 134.9)"
+        ]
+      },
+      "chart-paper": {
+        "role": "neutral",
+        "displayName": "Chart Paper",
+        "canonical": "oklch(98.5% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(38% 0.000 89.9)",
+          "oklch(49% 0.000 89.9)",
+          "oklch(61% 0.000 89.9)",
+          "oklch(72% 0.000 89.9)",
+          "oklch(84% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Name on the home opening and project titles on detail openings."
+        "purpose": "The name (home, footer) and a project title on its page. Archivo 800 at width 66–68%, clamp(64px, 11.6vw, 188px)."
       },
-      "headline-lg": {
-        "displayName": "Station Title",
-        "purpose": "Project names on home stations."
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Chapter, station and section titles. Archivo 800 at width 70–72%, clamp(44px, 5.8vw, 92px); long titles take clamp(40px, 4.4vw, 68px)."
       },
-      "headline-md": {
-        "displayName": "Section Title",
-        "purpose": "Detail-page station and facts headings."
-      },
-      "title": {
+      "lead": {
         "displayName": "Lead",
-        "purpose": "One-line project lead under a detail title."
+        "purpose": "The line under a title, the role line, folder tab names. clamp(20px, 1.6vw, 25px)."
       },
-      "body-lg": {
-        "displayName": "Wall Label",
-        "purpose": "Summaries and station copy beside an exhibit."
-      },
-      "body-md": {
+      "body": {
         "displayName": "Body",
-        "purpose": "Facts and long descriptions."
+        "purpose": "All running text, full ink of its ground, 18px/1.55."
       },
-      "label-md": {
-        "displayName": "Label",
-        "purpose": "Navigation, category line, links."
-      },
-      "label-sm": {
-        "displayName": "Caption",
-        "purpose": "Exhibit captions with capture provenance; rail."
+      "small": {
+        "displayName": "Small",
+        "purpose": "Captions, categories, fact labels, 15px."
       }
     },
-    "shadows": [
-      {
-        "name": "artifact",
-        "value": "0 30px 60px -20px rgb(0 0 0 / .55)",
-        "purpose": "Separates a framed capture from the stage in the still view."
-      },
-      {
-        "name": "index",
-        "value": "0 24px 72px rgb(0 0 0 / .4)",
-        "purpose": "Project index panel over the stage."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "ease-out-expo",
+        "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "UI transitions 240–420ms."
+        "purpose": "Every entrance, slide and morph."
       },
       {
-        "name": "camera-damping",
-        "value": "7/s exponential",
-        "purpose": "Camera follows native scroll."
+        "name": "rise",
+        "value": "opacity 0 → 1, translateY 28px → 0, 760ms, 85ms stagger",
+        "purpose": "Title, text, then pictures entering a section, once."
       },
       {
-        "name": "flight",
-        "value": "quintic smootherstep over 55% of a station viewport",
-        "purpose": "Camera flight between stations; rests 30% before and 15% after."
+        "name": "chapter-slide",
+        "value": "position: sticky; top: 0 (≥900×640, motion allowed)",
+        "purpose": "Each project field slides over the last."
       },
       {
-        "name": "pointer-parallax",
-        "value": "±0.25 × ±0.14 units, 4/s",
-        "purpose": "Bounded pointer response."
+        "name": "page-morph",
+        "value": "cross-document view transition, names field/title, 520ms",
+        "purpose": "The clicked tab, chapter or next band becomes the next opening."
       },
       {
-        "name": "intro-dolly",
-        "value": "6.5 units, decay 2.4/s",
-        "purpose": "First load at the top only."
-      },
-      {
-        "name": "view-transition",
-        "value": "420ms cross-document",
-        "purpose": "Page to page; disabled for reduced motion."
+        "name": "press",
+        "value": "translateY(-3px) hover, scale(0.97) press in 90ms",
+        "purpose": "Buttons and folder tabs (10px slide)."
       }
     ],
     "breakpoints": [
       {
-        "name": "stage",
-        "value": "900px wide and 560px tall",
-        "purpose": "Pinned 3D stage may run at or above this size."
+        "name": "stack",
+        "value": "899px"
       },
       {
-        "name": "compact",
-        "value": "360px"
+        "name": "pin",
+        "value": "min-width 900px and min-height 640px"
+      },
+      {
+        "name": "narrow",
+        "value": "420px"
+      },
+      {
+        "name": "tight",
+        "value": "380px"
       }
     ]
   },
   "components": [
     {
-      "name": "Gallery Navigation",
-      "kind": "nav",
-      "refersTo": "index",
-      "description": "Identity, still-view toggle, project index and GitHub; transparent over the pinned stage.",
-      "html": "<header class=\"ds-nav\"><a class=\"ds-id\" href=\"#\">Aekarut Phetpradit<span>Portfolio</span></a><nav><button class=\"ds-quiet\">Still view</button><a href=\"#\">Project index <b>9</b></a><a href=\"#\">GitHub</a></nav></header>",
-      "css": ".ds-nav{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:20px 32px;background:rgb(16 18 17/.96);border-bottom:1px solid #3c423e;color:#eeeae2;font:14px/1.4 \"Archivo Variable\",sans-serif}.ds-id{color:inherit;text-decoration:none;font-size:15px;font-weight:500}.ds-id span{display:block;color:#aaa9a4;font-size:12px;font-weight:400}.ds-nav nav{display:flex;gap:28px;align-items:center}.ds-nav a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:10px}.ds-nav b{font-weight:400;font-size:12px;border:1px solid #3c423e;border-radius:50%;width:25px;height:25px;display:inline-grid;place-items:center}.ds-quiet{background:none;border:0;color:#aaa9a4;font:inherit;cursor:pointer}.ds-quiet:hover,.ds-nav a:hover{text-decoration:underline;text-underline-offset:5px}.ds-nav :focus-visible{outline:2px solid #b9d9cd;outline-offset:6px}"
+      "name": "Folder Tab",
+      "kind": "custom",
+      "refersTo": "folder-tab",
+      "description": "One project in the project list: its field colour, name and category.",
+      "html": "<a class=\"ds-folder\" href=\"#\"><span class=\"ds-folder-name\">ScamReport v2</span><span class=\"ds-folder-kind\">Mobile Apps</span></a>",
+      "css": ".ds-folder { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; min-height: 58px; padding: 10px 22px; border-radius: 14px 14px 4px 4px; background: #006B6B; color: #fff; text-decoration: none; font-family: 'Archivo Variable', sans-serif; transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-folder-name { font-weight: 700; font-size: 22px; font-stretch: 86%; } .ds-folder-kind { font-size: 15px; font-weight: 500; } .ds-folder:hover, .ds-folder:focus-visible { transform: translateX(10px); } .ds-folder:focus-visible { outline: 3px solid #111311; outline-offset: 4px; }"
     },
     {
-      "name": "Text Link",
+      "name": "Primary Button",
       "kind": "button",
-      "refersTo": "action",
-      "description": "The only action style: underlined text with a drawn arrow.",
-      "html": "<a class=\"ds-link\" href=\"#\">View project <svg viewBox=\"0 0 24 16\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M0 8h22M15 1l7 7-7 7\"/></svg></a>",
-      "css": ".ds-link{display:inline-flex;align-items:center;gap:24px;min-height:44px;padding-block:8px;border-bottom:1px solid #eeeae2;color:#eeeae2;text-decoration:none;font:15px \"Archivo Variable\",sans-serif}.ds-link svg{transition:transform 240ms cubic-bezier(.16,1,.3,1)}.ds-link:hover svg{transform:translateX(5px)}.ds-link:focus-visible{outline:2px solid #b9d9cd;outline-offset:6px}"
+      "refersTo": "button-primary",
+      "description": "Open project / Source on GitHub: the field ink as fill, the field as text.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Open project <svg viewBox=\"0 0 24 16\" width=\"20\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M0 8h22M15 1l7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 26px; border-radius: 999px; background: #fff; color: #006B6B; font: 700 18px/1 'Archivo Variable', sans-serif; text-decoration: none; transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover { transform: translateY(-3px); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }"
     },
     {
-      "name": "Category Line",
-      "kind": "custom",
-      "refersTo": "mobile-marker",
-      "description": "Category and credit with a 6px accent dot; the only category colour in HTML.",
-      "html": "<p class=\"ds-cat\">Mobile Apps · Team work</p>",
-      "css": ".ds-cat{display:flex;align-items:center;gap:10px;color:#aaa9a4;font:14px \"Archivo Variable\",sans-serif}.ds-cat::before{content:\"\";width:6px;height:6px;border-radius:50%;background:#9bd4c5}"
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pull-request links in a project opening.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">PR #6699 · Merged</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 56px; padding: 0 26px; border-radius: 999px; border: 2px solid #fff; color: #fff; background: #8152DB; font: 700 18px/1 'Archivo Variable', sans-serif; text-decoration: none; } .ds-btn-ghost:hover { transform: translateY(-3px); }"
     },
     {
-      "name": "Phone Exhibit",
-      "kind": "custom",
-      "refersTo": "phone-frame",
-      "description": "Shared graphite phone frame at the page phone width, with its provenance caption.",
-      "html": "<figure class=\"ds-phone\"><div class=\"ds-frame\"><div class=\"ds-screen\"></div></div><figcaption>Delivery tracking — design prototype P-U-05, cropped to the complete 344×660 app bounds.</figcaption></figure>",
-      "css": ".ds-phone{--w:180px;width:calc(var(--w)*1.06);margin:0;font:13px/1.5 \"Archivo Variable\",sans-serif;color:#aaa9a4}.ds-frame{padding:calc(var(--w)*.03);background:#272d2a;border-radius:calc(var(--w)*.115);box-shadow:inset 0 0 0 1px rgb(255 255 255/.06),0 30px 60px -20px rgb(0 0 0/.55)}.ds-screen{aspect-ratio:344/660;border-radius:calc(var(--w)*.085);background:#f4f9f8}.ds-phone figcaption{margin-top:22px}"
-    },
-    {
-      "name": "Browser Exhibit",
-      "kind": "custom",
-      "refersTo": "browser-bar",
-      "description": "Shared neutral browser frame for web captures without site chrome.",
-      "html": "<figure class=\"ds-browser\"><div class=\"ds-bar\"><i></i><i></i><i></i></div><div class=\"ds-page\"></div></figure>",
-      "css": ".ds-browser{width:320px;margin:0;border-radius:8px;background:#e9ecef;overflow:hidden;box-shadow:0 30px 60px -20px rgb(0 0 0/.55)}.ds-bar{height:24px;padding-inline:12px;display:flex;align-items:center;gap:5px}.ds-bar i{width:6px;height:6px;border-radius:50%;background:#858b8e}.ds-page{aspect-ratio:1216/708;background:#fff}"
-    },
-    {
-      "name": "Station Rail",
+      "name": "Top Bar",
       "kind": "nav",
-      "refersTo": "rail",
-      "description": "Current station name and one link per station on the pinned stage.",
-      "html": "<nav class=\"ds-rail\"><span>Now showing <b>ScamReport</b></span><ol><li><a href=\"#\"></a></li><li><a href=\"#\" aria-current=\"step\"></a></li><li><a href=\"#\"></a></li></ol></nav>",
-      "css": ".ds-rail{display:flex;justify-content:space-between;align-items:center;gap:24px;color:#aaa9a4;font:12px \"Archivo Variable\",sans-serif}.ds-rail b{color:#eeeae2;font-weight:400}.ds-rail ol{display:flex;gap:4px;list-style:none;margin:0;padding:0}.ds-rail a{display:flex;align-items:center;justify-content:center;width:28px;height:44px}.ds-rail a::before{content:\"\";width:18px;height:2px;background:#3c423e;transition:width 300ms cubic-bezier(.16,1,.3,1)}.ds-rail a:hover::before{background:#aaa9a4}.ds-rail a[aria-current]::before{width:24px;background:#9bd4c5}"
+      "refersTo": "page",
+      "description": "Wordmark, Projects menu, GitHub; takes the project field on a project page.",
+      "html": "<nav class=\"ds-bar\"><a href=\"#\">Aekarut Phetpradit</a><span><a href=\"#\">Projects</a><a href=\"#\">GitHub ↗</a></span></nav>",
+      "css": ".ds-bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; background: #F6F6F3; color: #111311; font: 600 18px/1.2 'Archivo Variable', sans-serif; } .ds-bar span { display: flex; gap: 28px; font-weight: 500; } .ds-bar a { color: inherit; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; } .ds-bar a:hover { text-decoration: underline; text-underline-offset: 5px; }"
     },
     {
-      "name": "Facts Row",
+      "name": "Chapter",
       "kind": "custom",
-      "refersTo": "rule",
-      "description": "Definition-list row for project facts; never chips.",
-      "html": "<dl class=\"ds-facts\"><div><dt>Context</dt><dd>Group Project · KMUTT CSC291</dd></div><div><dt>Source</dt><dd><a href=\"#\">AokDesu/CSC291-DroneAid</a></dd></div></dl>",
-      "css": ".ds-facts{margin:0;font:15px/1.7 \"Archivo Variable\",sans-serif;color:#eeeae2}.ds-facts div{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid #3c423e}.ds-facts dt{color:#aaa9a4;font-size:14px}.ds-facts dd{margin:0}.ds-facts a{color:inherit;text-underline-offset:5px}"
+      "refersTo": "chapter",
+      "description": "A project as a full-screen field: title, lead, category and credit, stack, button, captures.",
+      "html": "<section class=\"ds-chapter\"><h2>ScamReport v2</h2><p class=\"ds-lead\">Citizens report a scam on their phone. The bank or unit it was sent to reviews it in a console.</p><p>Mobile Apps · Solo rebuild of the 5-person CSC234 team project, built with AI coding agents I directed.</p></section>",
+      "css": ".ds-chapter { background: #006B6B; color: #fff; padding: 64px 40px; font: 400 18px/1.55 'Archivo Variable', sans-serif; } .ds-chapter h2 { margin: 0; font: 800 72px/0.9 'Archivo Variable', sans-serif; font-stretch: 70%; letter-spacing: -0.015em; } .ds-lead { font-size: 24px; font-weight: 500; line-height: 1.32; max-width: 26ch; }"
+    },
+    {
+      "name": "Phone Capture",
+      "kind": "card",
+      "refersTo": "phone-frame",
+      "description": "A phone capture at its own ratio in a dark bezel; one width per page.",
+      "html": "<figure class=\"ds-phone\"><div class=\"ds-phone-screen\"></div><figcaption>Verified-scam feed in English, app-only at 390×844.</figcaption></figure>",
+      "css": ".ds-phone { width: 200px; margin: 0; font: 500 15px/1.45 'Archivo Variable', sans-serif; } .ds-phone-screen { aspect-ratio: 390 / 844; border-radius: 26px; background: #E8F1EE; border: 6px solid #0D0F0D; } figcaption { margin-top: 14px; }"
     }
   ],
   "narrative": {
-    "northStar": "Work After Dark",
-    "overview": "**Concept: Work After Dark.** Aekarut's real software is the light source in a quiet exhibition space. Visitors move through projects, not a grid of decorated cards. The first viewport pairs the name and role with two precisely aligned DroneAid screens; the gallery continues in depth behind them.\n\nRedesign decision: **Replace direction.** The Swiss Poster Series is superseded, including its flat-sheet, square-corner and category-plate rules. The earlier rejected dark card grid remains rejected. Dark is explicitly requested here; cards, chips and ornamental glows are not.\n\nFixed: static Astro/Vercel, real captured evidence, honest team credit, HTML text, direct project access, the approved personal details, complete non-3D access. Flexible: composition, light, framing, typography weights. Assumption: retain the already self-hosted Archivo rather than add a font download.\n\nPrimary aesthetic: restrained dark gallery. Layout: continuous spatial exhibition plus a compact index. Material: real device models in graphite (one phone, one monitor), dark stone-like plinths, untinted screens. Motion: camera translation with restrained pointer parallax, not perpetual spinning. Runner-up: glass-led full-canvas controls; declined because reflective chrome would compete with the work.",
+    "northStar": "Colour Chapters",
+    "overview": "Each project's own interface colour becomes the field the visitor scrolls through, so the portfolio is as colourful as the work and the colour is never decoration. The nine field colours were sampled from the projects' own captures and adjusted only where text needed 4.5:1.\n\nRedesign decision (2026-10-28, owner's direction board): replace direction. The Three.js night gallery is retired with its models, stage and camera. Kept from v1: real captures as the visual lead, honest captions and credits, one phone width per page, a full reading experience without script or motion.",
     "keyCharacteristics": [
-      "One continuous 3D space; the camera flies between projects as you scroll.",
-      "Real captures as the light source: unlit screens on real phone and monitor models, standing on lit plinths.",
-      "Every title, summary, caption and fact is real HTML.",
-      "One phone size per page; pairs are symmetric.",
-      "A complete still version for reduced motion, small or weak devices and no WebGL.",
-      "Category colour only as small dots and plinth edge lines.",
-      "Collection order: applications first, then studies and open-source work."
+      "Paper ground and near-black ink; nine flat fields in the projects' own colours.",
+      "One family, Archivo Variable, condensed and heavy for titles, normal width for reading.",
+      "Full-screen chapters that pin and slide over each other on large screens.",
+      "Captures untinted, uncropped, in matched frames; no lines, rest shadows, gradients or glass."
     ],
-    "rules": [],
+    "rules": [
+      {
+        "name": "The Own Colour Rule",
+        "body": "A project's colour comes from its own interface. A new project gets a colour sampled from its captures, checked to 4.5:1 with its text colour, before it gets a chapter.",
+        "section": "colors"
+      },
+      {
+        "name": "The Name Beside Colour Rule",
+        "body": "Colour never identifies a project alone: every field carries the project's name.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Lines Rule",
+        "body": "No title wraps past two lines at any width.",
+        "section": "typography"
+      }
+    ],
     "dos": [
-      "Do show the artifact in the first viewport, keep exact screen aspect ratios and symmetric pairs.",
-      "Do keep a direct route to every project and all facts in HTML.",
-      "Do preserve natural scrolling, keyboard navigation, image zoom and source links.",
-      "Do use category color sparingly and lighting only to explain physical depth."
+      "**Do** take a new project's colour from its own captures and check it to 4.5:1 with its text colour.",
+      "**Do** show captures at their own ratio, untinted, with a caption that says how they were made.",
+      "**Do** keep every phone on a page the same width.",
+      "**Do** keep each chapter within one screen on desktop, or let it release (`.loose`).",
+      "**Do** keep content visible without script and with reduced motion."
     ],
     "donts": [
-      "Don't revive colored plates, the expanding column accordion, heavy condensed poster type or a dark card grid.",
-      "Don't hide content for an entrance animation, draw text in WebGL, require a GPU, distort screenshots, or imply a prototype is a running production app.",
-      "Don't use device models with brand marks or licences that need more than a credit; every model is credited in the footer."
+      "**Don't** put a label above a heading; fold the category and credit into the line under it.",
+      "**Don't** add lines, rest shadows, gradients, glass or icon cards.",
+      "**Don't** set running text in a soft grey; use the full ink of its ground.",
+      "**Don't** name a client or marketplace, or add personal details beyond the name, \"KMUTT student · Software Developer\" and github.com/AokDesu.",
+      "**Don't** bring back 3D models, WebGL or a camera ride."
     ]
   }
 }
