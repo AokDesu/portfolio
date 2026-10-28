@@ -1,24 +1,24 @@
 ---
 version: 1
-slug: src-pages-index-astro
-primary_target: src/pages/index.astro
-related_targets: ["src/pages/projects/[slug].astro", "src/scripts/gallery-models.js", "src/layouts/GalleryLayout.astro", "src/components/GalleryWorld.astro", "src/components/Exhibit.astro", "src/scripts/gallery-world.js"]
+slug: "src-pages-index-astro"
+primary_target: "src/pages/index.astro"
+related_targets: ["src/pages/projects/[slug].astro","src/layouts/SiteLayout.astro","src/components/Exhibit.astro","src/components/Folders.astro","src/data/projects.ts"]
 ---
 
-# Night gallery — home and project evidence
+# Colour Chapters — home and project pages
 
-Mode: Experience. Captain-approved direction: Full 3D world + Night gallery; after the preview review: applications first, real 3D models. Scope: home and every project page.
+Mode: Experience. Captain-approved on the 2026-10-28 direction board: B · Colour Chapters, motion "Lively", no new library, 3D removed. Scope: home and every project page. Seed key 570a9e56 (pick).
 
-THESIS: Real software artifacts are lit exhibits in one continuous near-black space. Scroll moves the camera from station to station; text remains real HTML on a pinned stage. Direct project access takes precedence over spectacle.
+## Direction contract
 
-FIRST VIEWPORT: Name and exact role at left, two equally sized DroneAid phones at right in a symmetric V on a lit plinth, the next station faint in the fog. Quiet transparent navigation at the top with the project index; a station rail at the bottom. On first load the camera dollies in once. No full-screen introduction or loading gate.
+THESIS: Each project's own interface colour becomes the field the visitor scrolls through, so the portfolio is as colourful as the work and the colour is never decoration. Refuses the dark developer card grid and the 3D gallery it replaces.
 
-FORM: One sticky stage, nine stations on home (applications first) and an opening plus one station per authored stop on each project page, each one viewport of native scroll: rest, fly, rest. Real CC0 phone and monitor models in graphite, plinths, a beam and a floor light pool per station, a 1px category line on each plinth. Warm-white Archivo at normal width. One phone width per page for every phone.
+OWN-WORLD: Paper #F6F6F3 and ink #111311, plus nine flat chapter fields sampled from the captures (ScamReport teal, Pokédex red, DroneAid aqua, water blue, terminal green, results lime, throughput sky, merged purple, chart blue), each with its own ink at 4.5:1 or more. Archivo Variable only: condensed 800 for titles, normal width for reading. Folder tabs (14px top corners), pill buttons in the field's ink, captures untinted in matched frames. No lines, no rest shadows, no gradients.
 
-STORY: See real work immediately; scroll through the collection, jump with the rail, or open any project from the index. Each project page opens on the same exhibit as its home station, then its stations, then the facts in normal flow and the next project.
+STORY: A recruiter sees the name, the role and nine coloured tabs naming every project; one click opens any of them. Scrolling, each project arrives as a full-screen colour with its real screens, credit and stack. A project page opens in the same colour, then its stations, facts, source and the next project's colour.
 
-CONSTRAINTS: All content static HTML before Three.js loads; the scene replaces images only after every texture has loaded. Narrow/short viewports, weak devices, reduced motion, no WebGL, context loss and the still-view choice keep the entire normal-flow content. No tag chips, card grid, colored plates, invented metrics or additional personal details.
+FIRST VIEWPORT: Left: "Aekarut / Phetpradit" at up to 200px in condensed 800, the role and the intro line under it. Right: the stack of nine folder tabs in collection order, each a link in its colour. Plain bar on top: name, Projects, GitHub.
 
-Direction round: explicit board choices supersede concept seed 5bc64d38. Candidate worlds considered: night exhibition, photographic light table, projection room, architectural model gallery, archive reading room, record sleeve, engineering drawing. Comic/punk/brocade/skin/phosphor/risograph challengers declined: their expressive state vocabularies confuse a recruiter's evidence scan.
+FORM: Sticky full-viewport chapters that slide over each other on wide, tall screens; normal flow elsewhere. Project pages: coloured hero, stations alternating paper and deep tone of the project colour, facts on paper, next-project band in the next colour.
 
-Verification: desktop and phone browser captures at several scroll positions, mid-flight frames, still view, reduced motion (forced flag) and WebGL-disabled runs, keyboard Tab through stations, rail and deep links. Task evidence lives outside the worktree under data/portfolio-refresh/preview/.
+SIGNATURE: The chapter slide-over, plus the View Transition that morphs the clicked tab or chapter field into the project hero. Staggered rise (title, text, screens) once per section; press and hover feedback. Reduced motion: no travel, no morph; content never hidden without JS.

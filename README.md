@@ -6,17 +6,17 @@ Hosted statically on [Vercel](https://vercel.com).
 
 ## 🚀 Projects Included
 
-Software and applications first, then studies and open-source work (the same order as the site):
+In the owner's order (the same order as the site):
 
+- **ScamReport v2**: Solo rebuild of a CSC234 team project: a citizen scam-reporting phone web app and an organisation console (React, Bun + Elysia, Supabase with row-level security).
+- **Poke Monopoly Rules Helper**: Rulebook chatbot that answers only from cited passages (Python BM25 + Claude Haiku), the CSC493 open-exam project; private repository.
 - **DroneAid**: Drone-based relief-supply delivery simulator for conflict zones (Flutter + Firebase).
-- **ScamReport**: Mobile scam reporting and intelligence feed (Flutter + Elysia.js + TypeBox).
-- **Poke Monopoly Rules Helper**: Rulebook chatbot that answers only from cited passages (Python BM25 + Claude Haiku); private repository.
 - **NumMaiLai**: Real-time water outage monitor with Discord alerts and GIS dashboard (Python, MWA API).
 - **dev-memory-ai**: Semantic codebase memory engine and Model Context Protocol (MCP) server (TypeScript, Tree-sitter, Prisma).
-- **Spaceship Titanic EDA**: Kaggle exploratory data analysis with 12 empirical findings (Python, Pandas, Seaborn).
 - **Neural Network From Scratch**: Deep learning engine written from first principles in C++ (C++20, Matrix math, MNIST).
 - **Basic Memory Access Benchmark**: Cache line access and zero-cost abstraction latency study in C++ (C++20, GCC -O3).
 - **Firstmate Contributions**: Open-source pull requests contributed to `kunchenguid/firstmate`.
+- **Spaceship Titanic EDA**: Kaggle exploratory data analysis with 12 empirical findings (Python, Pandas, Seaborn).
 
 ---
 
@@ -92,7 +92,7 @@ Write an `about.md` containing:
 - How each numbered screenshot was captured
 
 ### 2. Register the Project
-Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its position is its place in the collection (home page, project index and "next project"): software and applications before studies and contributions.
+Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its position is its place in the collection (home page, Projects menu and "next project").
 
 ```typescript
 {
@@ -100,6 +100,8 @@ Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its positi
   title: 'My Project Title',
   category: 'mobile-apps', // 'mobile-apps' | 'ai-data' | 'tools-systems' | 'open-source'
   categoryLabel: 'Mobile Apps',
+  color: '#006B6B', // the chapter field, sampled from the project's own interface
+  ink: '#FFFFFF', // text on that field; `npm test` fails below 4.5:1
   summary: 'A 1-2 sentence summary for the home page.',
   lead: 'One line under the project title.',
   description: 'Full one-paragraph description from about.md.',
@@ -126,17 +128,17 @@ Open `src/data/projects.ts` and add an entry to the `PROJECTS` array. Its positi
 ```
 
 Layout notes:
-- Every project page is generated from this entry by `src/pages/projects/[slug].astro`: an opening with the cover images, one station per entry in `stations`, then the facts and the next project.
-- `GalleryLayout.astro` supplies the project index and the pinned-stage CSS. A page opts into the 3D gallery by wrapping its stations in `[data-track]` > `[data-stage]`, marking each station `[data-station]` (with `id` and `data-title`), and placing `<GalleryWorld />` inside the stage. `GalleryWorld.astro` decides whether the scene may run (viewport at least 900×560, no reduced motion, no data-saving, WebGL available, enough memory and cores, not switched to Still view) and only then imports `src/scripts/gallery-world.js` (Three.js). Otherwise, and until every texture and model has loaded, the stations stay in normal flow with their HTML images.
-- In 3D, phone captures are shown on the phone model (`public/models/phone.glb`) and every other capture on the monitor model (`public/models/monitor.glb`); `src/scripts/gallery-models.js` fits each model's screen to the capture. Both models are CC0; their sources are in the site footer.
-- `Exhibit.astro` owns the still-view frames: `kind` picks the frame, and `scene` makes it an object in the 3D gallery. Every phone on a page uses the same `--phone-w`, so screens shown together match. Phone images are app-only 344×660 captures, never stretched; terminal captures contain only their window, browser captures omit site chrome, and charts retain their own paper.
-- Design decisions live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
+- The home page (`src/pages/index.astro`) shows every project as a coloured folder tab (`Folders.astro`, also the top bar's Projects menu) and then as a full-screen chapter in its `color`: title, lead, category and `roleNote`, the first five `stack` items and the `cover` images.
+- Every project page is generated from this entry by `src/pages/projects/[slug].astro`: an opening in the project's colour with the cover images, one station per entry in `stations` (alternating paper and a deep tone of the colour), then the facts and the next project.
+- On screens at least 900×640 with motion allowed, chapters and stations pin and the next slides over the last; `src/scripts/motion.ts` releases any that is taller than the window, runs the staggered entrances and names the cross-document view transition. Without JavaScript or with reduced motion everything is visible and nothing slides.
+- `Exhibit.astro` owns the frames: `kind` picks phone, browser, window or chart paper. Every phone on a page uses the same `--phone-w` and keeps its capture's own ratio; wide captures are capped by `--art-max-h` so a chapter fits one screen. A missing image fails the build. Terminal captures contain only their window, browser captures omit site chrome, and charts retain their own paper.
+- Design decisions live in `PRODUCT.md`, `DESIGN.md` (the previous 3D design is kept as `DESIGN.v1.md`) and `.impeccable/`.
 
 ### 3. Verify Build
-Run the build to ensure images are processed by Astro's optimization pipeline:
+Run the build and the checks (Node's built-in test runner over `dist/`: order, links, credits, contrast, privacy):
 
 ```bash
-npm run build
+npm test
 ```
 
 ---
