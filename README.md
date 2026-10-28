@@ -135,11 +135,13 @@ Layout notes:
 - Design decisions live in `PRODUCT.md`, `DESIGN.md` (the previous 3D design is kept as `DESIGN.v1.md`) and `.impeccable/`.
 
 ### 3. Verify Build
-Run the build and the checks (Node's built-in test runner over `dist/`: order, links, credits, contrast, privacy):
+Run the build and the checks (Node's built-in test runner over `dist/`: order, links, credits, contrast, privacy, and mobile Projects menu geometry):
 
 ```bash
 npm test
 ```
+
+The browser regression uses an installed `chrome-devtools-axi` CLI and Chrome, with no npm test dependency. It opens the real built menu at 360, 375 and 390 px and checks the panel and project names stay inside the viewport without horizontal scrolling. If the CLI or browser is unavailable, this test reports **skipped**, not passed.
 
 ---
 

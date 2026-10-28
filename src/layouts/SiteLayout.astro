@@ -158,6 +158,11 @@ const barStyle = field ? `--c:${field.color};--on:${field.ink}` : undefined;
     :root { --phone-w: min(calc((100vw - 2 * var(--m) - var(--pair-gap)) / 2), 220px); }
     .bar { padding-block: 8px; }
   }
+  @media (max-width: 599px) {
+    /* Anchor the phone panel to the full header, not the narrow Projects control. */
+    .projects-menu { position: static; }
+    .menu-panel { right: var(--m); }
+  }
   @media (max-width: 380px) {
     :root { --m: 16px; }
     .bar { gap: 12px; }

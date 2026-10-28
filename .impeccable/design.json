@@ -450,7 +450,7 @@
       "kind": "card",
       "refersTo": "phone-frame",
       "description": "A phone capture at its own ratio in a dark bezel; one width per page.",
-      "html": "<figure class=\"ds-phone\"><div class=\"ds-phone-screen\"></div><figcaption>Verified-scam feed in English, app-only at 390×844.</figcaption></figure>",
+      "html": "<figure class=\"ds-phone\"><div class=\"ds-phone-screen\"></div><figcaption>Searchable scam warnings help citizens spot common tricks before they pay.</figcaption></figure>",
       "css": ".ds-phone { width: 200px; margin: 0; font: 500 15px/1.45 'Archivo Variable', sans-serif; } .ds-phone-screen { aspect-ratio: 390 / 844; border-radius: 26px; background: #E8F1EE; border: 6px solid #0D0F0D; } figcaption { margin-top: 14px; }"
     }
   ],

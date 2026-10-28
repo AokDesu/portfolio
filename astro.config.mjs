@@ -3,5 +3,5 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://portfolio-aokdesu.vercel.app',
+  site: 'https://portfolio-alpha-jet-54.vercel.app',
 });
