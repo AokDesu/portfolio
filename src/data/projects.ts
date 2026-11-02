@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
     teamLabel: 'Solo rebuild · KMUTT CSC234 team project',
     roleNote: 'Solo rebuild of the 5-person CSC234 team project, built with AI coding agents I directed.',
     teamCredit: 'Solo rebuild of the 5-person CSC234 team project, built with AI coding agents I directed.',
-    repoUrl: 'https://github.com/AokDesu/scamreport-v2',
+    repoUrl: 'https://github.com/AokDesu/scamreport',
     evidence: 'App-only captures of the local build with its fictional seed data: three citizen phone screens in English and two console screens in Thai.',
     cover: [0, 2],
     stations: [

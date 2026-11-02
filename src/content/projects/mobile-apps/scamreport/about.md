@@ -14,7 +14,7 @@ A scam-reporting phone web app for citizens and a desktop console for the organi
 - **Original**: KMUTT CSC234 User-Centered Mobile Application team project (Flutter and Elysia.js). The team repository is not used by v2.
 
 ## Links
-- **Source Code**: [GitHub Repository (AokDesu/scamreport-v2)](https://github.com/AokDesu/scamreport-v2)
+- **Source Code**: [GitHub Repository (AokDesu/scamreport)](https://github.com/AokDesu/scamreport)
 
 ## Image Production
 All five images are existing app-only captures of the local v2 build running its fictional seed data (fictional organisations, accounts and reports). No real person's data appears.

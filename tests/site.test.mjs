@@ -47,7 +47,11 @@ test('the ScamReport page shows v2: its five captures, credit line and own repos
   const main = mainOf(html);
   assert.ok(main.includes('ScamReport v2'));
   assert.ok(main.includes(CREDIT), 'credit line verbatim');
-  assert.match(main, /href="https:\/\/github\.com\/AokDesu\/scamreport-v2"/);
+  const repo = 'https://github.com/AokDesu/scamreport';
+  const githubScam = hrefsIn(html, /href="(https?:\/\/github\.com\/[^"]*scamreport[^"]*)"/g);
+  assert.deepEqual(githubScam, [repo, repo], 'button and facts source both use the renamed repository');
+  assert.match(main, />AokDesu\/scamreport <svg/, 'facts list names the renamed repository');
+  assert.ok(!html.includes('scamreport-v2'), 'old repository name is not on the page');
   assert.ok(!html.includes('CSC234-UserCenteredMobileApp'), 'no team repository link');
   for (const old of ['Flutter', 'guest-feed', 'moderation-queue', 'feed-search', 'user-report']) assert.ok(!main.includes(old), old);
   const imgs = [...main.matchAll(/<img [^>]*>/g)].map(m => m[0]);
@@ -61,6 +65,39 @@ test('the ScamReport page shows v2: its five captures, credit line and own repos
   });
   assert.equal(ratios.filter(r => Math.abs(r - 390 / 844) < 0.01).length, 3, 'three 390x844 phone captures, uncropped');
   assert.equal(ratios.filter(r => r > 1.5).length, 2, 'two console captures');
+});
+
+test('built output never names the old ScamReport repository', () => {
+  for (const file of walk(dist)) {
+    assert.ok(!readFileSync(file).includes('scamreport-v2'), relative(root, file));
+  }
+});
+
+test('project docs name AokDesu/scamreport and keep the v2 project wording', () => {
+  const repo = 'https://github.com/AokDesu/scamreport';
+  const sourceLine = '- **Source Code**: [GitHub Repository (AokDesu/scamreport)](https://github.com/AokDesu/scamreport)';
+  for (const base of ['content', 'src/content/projects']) {
+    const text = readFileSync(join(root, base, 'mobile-apps/scamreport/about.md'), 'utf8');
+    assert.equal(text.split('\n').find(line => line.startsWith('- **Source Code**')), sourceLine, base);
+    assert.ok(!text.includes('scamreport-v2'), base);
+    assert.ok(text.startsWith('# ScamReport v2\n'), base);
+    assert.ok(text.includes('local v2 build'), base);
+    assert.ok(text.includes('The team repository is not used by v2.'), base);
+  }
+  const product = readFileSync(join(root, 'PRODUCT.md'), 'utf8');
+  assert.ok(product.includes('source AokDesu/scamreport)'), 'PRODUCT.md names the renamed repository');
+  assert.ok(!product.includes('scamreport-v2'));
+  assert.ok(product.includes('solo ScamReport v2 rebuild'));
+  assert.ok(product.includes(CREDIT));
+  const scam = PROJECTS.find(p => p.slug === 'scamreport');
+  assert.ok(scam, 'scamreport project');
+  assert.equal(scam.repoUrl, repo);
+  assert.equal(scam.title, 'ScamReport v2');
+  assert.equal(scam.teamCredit, CREDIT);
+  for (const project of PROJECTS) {
+    if (project.slug === 'scamreport') continue;
+    assert.ok(project.repoUrl == null || !project.repoUrl.includes('scamreport'), project.slug);
+  }
 });
 
 test('the Rules Helper page uses the confirmed open-exam wording and keeps the repository private', () => {
